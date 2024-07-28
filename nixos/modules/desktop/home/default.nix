@@ -14,5 +14,6 @@ args:
     ./hyprland.nix
     ./media.nix
     ./shell.nix
+    ./nvim
   ];
 }

@@ -46,7 +46,6 @@ in
           "JetBrainsMono"
         ];
       })
-      inputs.neovim-flake.packages.${system}.nvim
       yubikey-manager-qt
       yubioath-flutter
       wl-clipboard
@@ -69,8 +68,5 @@ in
     allowUnfree = true;
   };
 
-  xdg.configFile."nvim/colors/base-16-stylix.vim" = {
-    source = themeFile;
-  };
 
 }

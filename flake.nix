@@ -17,11 +17,6 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
 
-    neovim-flake = {
-      url = "github:nikolaiser/nvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
-
     private = {
       url = "git+ssh://git@github.com/nikolaiser/dungeon-private";
       inputs.nixpkgs.follows = "nixpkgs";

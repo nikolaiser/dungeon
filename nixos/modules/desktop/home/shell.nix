@@ -95,7 +95,7 @@
   home.packages = with pkgs; [ tmux-sessionizer ];
 
   xdg.configFile."tms/config.toml" = {
-    text = "search_paths = ['${config.home.homeDirectory}/Documents', '${config.home.homeDirectory}/.config/nvim']";
+    text = "search_paths = ['${config.home.homeDirectory}/Documents', '${config.home.homeDirectory}/.config/nvim', '${config.home.homeDirectory}/.config/dungeon' ]";
   };
 
 }

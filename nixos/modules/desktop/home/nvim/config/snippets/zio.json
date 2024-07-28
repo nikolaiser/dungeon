@@ -1,0 +1,14 @@
+{
+  "zio_service": {
+    "prefix": "zsvc",
+    "body": [
+      "trait ${1:Name}Service {",
+      "\t${2:}",
+      "}",
+      "",
+      "object ${1:Name}ServiceLive extends ${1:Name}Service {",
+      "\t ${2:}",
+      "}"
+    ]
+  }
+}
