@@ -21,6 +21,8 @@ let
     coursier
     marksman
     vscode-langservers-extracted
+    typos-lsp
+    nodePackages.bash-language-server
   ]);
 
   parsers = pkgs-unstable.symlinkJoin {

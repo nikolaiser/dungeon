@@ -3,9 +3,6 @@ return {
   -- Displays a popup with possible key bindings of the command you started typing
   {
     'folke/which-key.nvim',
-    opts = function(_, opts)
-      opts.defaults['<leader>sn'] = { name = '+noice' }
-    end,
   },
 
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
@@ -56,7 +53,7 @@ return {
   { 'nvim-tree/nvim-web-devicons', lazy = true },
 
   -- ui components
-  { 'MunifTanjim/nui.nvim', lazy = true },
+  { 'MunifTanjim/nui.nvim',        lazy = true },
 
   -- Better `vim.notify()`
   {

@@ -43,8 +43,6 @@
       terraform
       usbutils
       visualvm
-      pkgs-unstable.typos-lsp
-      pkgs-unstable.nodePackages.bash-language-server
     ];
 
 }
