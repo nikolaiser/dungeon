@@ -3,7 +3,6 @@ args@{ lib, ... }:
 args.lib.mkMerge [
   (import ./base.nix args)
   (import ./bluetooth.nix)
-  (import ./gaming.nix)
   (import ./hyprland.nix args)
   (import ./keyboard.nix args)
   (import ./network.nix args)

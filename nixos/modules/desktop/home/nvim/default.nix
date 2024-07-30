@@ -5,6 +5,7 @@
 }:
 
 let
+  metalsPackage = (pkgs-unstable.metals.override { jre = pkgs-unstable.temurin-bin-21; });
   binPath = lib.makeBinPath (with pkgs-unstable;[
     git
     deadnix
@@ -23,6 +24,16 @@ let
     vscode-langservers-extracted
     typos-lsp
     nodePackages.bash-language-server
+    zig
+    metalsPackage
+    markdownlint-cli2
+    nodejs_22
+    lazygit
+    dockerfile-language-server-nodejs
+    hadolint
+    nixd 
+    statix
+    efm-langserver
   ]);
 
   parsers = pkgs-unstable.symlinkJoin {
@@ -62,7 +73,6 @@ let
     ];
   };
 
-  metalsPackage = (pkgs-unstable.metals.override { jre = pkgs-unstable.temurin-bin-21; });
 
   preInit =
     ''
