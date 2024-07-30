@@ -18,7 +18,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
 
     private = {
-      url = "git+ssh://git@github.com/nikolaiser/dungeon-private";
+      url = "github:nikolaiser/dungeon-private";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -113,7 +113,6 @@
 
         baseImage = mkServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-
         ];
       };
     };

@@ -331,17 +331,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1722158517,
-        "narHash": "sha256-B1DYZB7Fe6UPeYuO4KGH/8z25zzc6Dx6ceTJ42YAFnE=",
-        "ref": "refs/heads/main",
-        "rev": "94e1330e8fc2646af7ebc6092fbe6c420cca49fc",
-        "revCount": 7,
-        "type": "git",
-        "url": "ssh://git@github.com/nikolaiser/dungeon-private"
+        "lastModified": 1722355026,
+        "narHash": "sha256-M0yTSDTXIChP9z4s1PKPCqrspVBUG0RwzXz56aFm9ec=",
+        "owner": "nikolaiser",
+        "repo": "dungeon-private",
+        "rev": "643a292d94edb8337954df22aaf1e7b6d42938d0",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/nikolaiser/dungeon-private"
+        "owner": "nikolaiser",
+        "repo": "dungeon-private",
+        "type": "github"
       }
     },
     "root": {
