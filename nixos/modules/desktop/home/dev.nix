@@ -18,6 +18,7 @@
       kconf
       kubectl
       kubectx
+      kubeswitch
       pkgs-unstable.kubefwd
       kubelogin-oidc
       kubernetes-helm
