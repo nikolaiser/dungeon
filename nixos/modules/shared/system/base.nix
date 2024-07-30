@@ -1,5 +1,7 @@
-{ pkgs, ... }:
-
+{ pkgs, config, ... }:
+let
+  stateVersion = "24.05";
+in
 {
   time = {
     hardwareClockInLocalTime = true;
@@ -15,8 +17,8 @@
 
   virtualisation.docker.enable = true;
 
-  system.stateVersion = "24.05";
-
+  system.stateVersion = stateVersion;
+  home-manager.users.${config.username}.home.stateVersion = stateVersion;
 
   nix.settings = {
     experimental-features = [

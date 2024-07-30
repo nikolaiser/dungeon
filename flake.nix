@@ -63,14 +63,14 @@
             ./nixos/modules
             inputs.private.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+            inputs.nix-flatpak.nixosModules.nix-flatpak
             { home-manager.extraSpecialArgs = specialArgs; }
           ];
         };
 
       mkDesktopSystem = modules: mkNixosSystem
         (modules ++ [
-          inputs.stylix.nixosModules.stylix
-          inputs.nix-flatpak.nixosModules.nix-flatpak
 
           {
             desktop.enable = true;
@@ -78,6 +78,17 @@
             username = "nikolaiser";
           }
         ]);
+
+      mkServerSystem = modules: mkNixosSystem
+        (modules ++ [
+
+          {
+            ssh.enable = true;
+            username = "ops";
+          }
+        ]);
+
+
 
     in
     {
@@ -98,6 +109,11 @@
             gpu.model = "intel-iris";
             networking.hostName = "ri-t-0929";
           }
+        ];
+
+        baseImage = mkServerSystem [
+          "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+
         ];
       };
     };

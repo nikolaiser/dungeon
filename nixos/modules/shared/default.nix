@@ -6,6 +6,7 @@
     ./system/base.nix
     ./system/bootloader.nix
     ./system/zfs.nix
+    ./system/user.nix
   ];
 
   options.username = lib.mkOption {

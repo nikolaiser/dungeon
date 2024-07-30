@@ -17,8 +17,6 @@ in
     username = osConfig.username;
     homeDirectory = "/home/${osConfig.username}";
 
-    stateVersion = "24.05";
-
     packages = with pkgs; [
       firefox
       xdg-utils

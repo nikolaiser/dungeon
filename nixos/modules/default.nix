@@ -4,5 +4,6 @@
     ./desktop
     ./gpu
     ./gaming
+    ./ssh
   ];
 }
