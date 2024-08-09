@@ -25,6 +25,7 @@ in
     gnupg # gpg
     vlc
     prusa-slicer
+    orca-slicer
     brave
     via
     graphviz-nox

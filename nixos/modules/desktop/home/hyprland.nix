@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, osConfig, ... }:
 
 let
   mainMod = "SUPER";

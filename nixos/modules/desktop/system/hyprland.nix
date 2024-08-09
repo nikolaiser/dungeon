@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, config, ... }:
 
 {
   xdg.portal = {
@@ -6,6 +6,7 @@
 
     extraPortals = with pkgs; [
       xdg-desktop-portal-kde
+      xdg-desktop-portal-gtk
       xdg-desktop-portal-hyprland
     ];
   };

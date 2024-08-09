@@ -51,7 +51,7 @@ return {
         metalsBinaryPath = vim.g.metals_binary,
         -- showImplicitArguments = true,
         -- showImplicitConversionsAndClasses = true,
-        showInferredType = true,
+        -- showInferredType = true,
         defaultBspToBuildTool = true,
         excludedPackages = {},
         fallbackScalaVersion = "3.3.3",

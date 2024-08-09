@@ -1,11 +1,12 @@
 { lib
 , pkgs-unstable
+, pkgs-master
 , config
 , ...
 }:
 
 let
-  metalsPackage = (pkgs-unstable.metals.override { jre = pkgs-unstable.temurin-bin-21; });
+  metalsPackage = (pkgs-master.metals.override { jre = pkgs-unstable.temurin-bin-21; });
   binPath = lib.makeBinPath (with pkgs-unstable;[
     git
     deadnix
@@ -31,7 +32,7 @@ let
     lazygit
     dockerfile-language-server-nodejs
     hadolint
-    nixd 
+    nixd
     statix
     efm-langserver
   ]);

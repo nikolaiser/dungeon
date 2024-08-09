@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -25,6 +26,7 @@
 
     stylix.url = "github:danth/stylix";
 
+
   };
 
   outputs = inputs@{ nixpkgs, ... }:
@@ -45,6 +47,12 @@
         inherit inputs system;
 
         pkgs-unstable = import inputs.nixpkgs-unstable {
+          inherit overlays system;
+
+          config.allowUnfree = true;
+        };
+
+        pkgs-master = import inputs.nixpkgs-master {
           inherit overlays system;
 
           config.allowUnfree = true;

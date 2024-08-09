@@ -44,6 +44,7 @@
       terraform
       usbutils
       visualvm
+      rclone
     ];
 
 }
