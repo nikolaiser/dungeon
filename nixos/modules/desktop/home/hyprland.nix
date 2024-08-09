@@ -83,9 +83,9 @@ in
 
       bind = [
         "${secondaryMod}, RETURN, exec, ${lib.exe pkgs.foot}"
-        "${secondaryMod}, C, killactive"
-        "${mainMod}, P, exec, ${lib.exe pkgs.fuzzel}"
-        "${mainMod}, J, togglesplit"
+        "${secondaryMod}, Q, killactive"
+        "${mainMod}, J, exec, ${lib.exe pkgs.fuzzel}"
+        "${mainMod}, N, togglesplit"
 
         "${mainMod}, 1, workspace, 1"
         "${mainMod}, 2, workspace, 2"
