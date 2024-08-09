@@ -33,6 +33,7 @@ in
     playerctl
     networkmanagerapplet # networkmanager applet
     libsForQt5.plasma-pa
+    slides
   ];
 
   services.mpris-proxy.enable = true;

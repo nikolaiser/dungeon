@@ -26,7 +26,10 @@
 
     stylix.url = "github:danth/stylix";
 
-
+    vim-tmux-navigator-sturdy = {
+      url = "github:nikolaiser/vim-tmux-navigator-sturdy";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ nixpkgs, ... }:

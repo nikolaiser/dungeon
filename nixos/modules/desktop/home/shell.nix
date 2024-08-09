@@ -1,9 +1,15 @@
 { pkgs
 , lib
 , config
+, inputs
 , ...
 }:
 
+let
+  vim-tmux-navigator-sturdy = pkgs.tmuxPlugins.vim-tmux-navigator.overrideAttrs (final: {
+    src = inputs.vim-tmux-navigator-sturdy;
+  });
+in
 {
 
   stylix.targets.fish.enable = false;
@@ -53,21 +59,17 @@
       clock24 = true;
 
       plugins = with pkgs.tmuxPlugins; [
-        vim-tmux-navigator
+        vim-tmux-navigator-sturdy
         dracula
         yank
       ];
 
       extraConfig = ''
-        set -g prefix C-a
+        set -g prefix C-s
 
         # act like vim
         setw -g mode-keys vi
-        bind-key h select-pane -L
-        bind-key j select-pane -D
-        bind-key k select-pane -U
-        bind-key l select-pane -R
-        bind-key C-x display-popup -E "tms"
+        bind-key C-k display-popup -E "tms"
 
         set -g default-terminal "tmux-256color"
         set -ag terminal-overrides ",xterm-256color:RGB"

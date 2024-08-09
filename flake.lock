@@ -369,7 +369,8 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "private": "private",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "vim-tmux-navigator-sturdy": "vim-tmux-navigator-sturdy"
       }
     },
     "stylix": {
@@ -412,6 +413,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vim-tmux-navigator-sturdy": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723212288,
+        "narHash": "sha256-G5bDspfgDU3Hhzygi34N2x9C8aA70FGYEnv30+hRuOc=",
+        "owner": "nikolaiser",
+        "repo": "vim-tmux-navigator-sturdy",
+        "rev": "474e5d4848df2076584495b6805151aaef365130",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nikolaiser",
+        "repo": "vim-tmux-navigator-sturdy",
         "type": "github"
       }
     }
