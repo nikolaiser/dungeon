@@ -45,6 +45,8 @@
       usbutils
       visualvm
       rclone
+      just
+      nixos-generators
     ];
 
 }
