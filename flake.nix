@@ -30,39 +30,44 @@
       url = "github:nikolaiser/vim-tmux-navigator-sturdy";
       flake = false;
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
   };
 
   outputs = inputs@{ nixpkgs, ... }:
     let
-      system = "x86_64-linux";
 
-      overlays = [ (import ./nixos/overlays inputs) ];
 
-      pkgs = import inputs.nixpkgs {
-        inherit overlays system;
-        config.allowUnfree = true;
-        config.allowUnfreePredicate = (pkg: true);
-      };
+      mkNixosSystem = system: modules:
+        let
+          overlays = [ (import ./nixos/overlays inputs) ];
 
-      inherit (pkgs) lib;
+          pkgs = import inputs.nixpkgs {
+            inherit overlays system;
+            config.allowUnfree = true;
+            config.allowUnfreePredicate = (pkg: true);
+          };
 
-      specialArgs = {
-        inherit inputs system;
+          inherit (pkgs) lib;
 
-        pkgs-unstable = import inputs.nixpkgs-unstable {
-          inherit overlays system;
+          specialArgs = {
+            inherit inputs system;
 
-          config.allowUnfree = true;
-        };
+            pkgs-unstable = import inputs.nixpkgs-unstable {
+              inherit overlays system;
 
-        pkgs-master = import inputs.nixpkgs-master {
-          inherit overlays system;
+              config.allowUnfree = true;
+            };
 
-          config.allowUnfree = true;
-        };
-      };
+            pkgs-master = import inputs.nixpkgs-master {
+              inherit overlays system;
 
-      mkNixosSystem = modules:
+              config.allowUnfree = true;
+            };
+          };
+
+        in
         nixpkgs.lib.nixosSystem {
           inherit
             system
@@ -81,16 +86,20 @@
         };
 
       mkDesktopSystem = modules: mkNixosSystem
+        "x86_64-linux"
         (modules ++ [
 
           {
             desktop.enable = true;
             gpu.enable = true;
+            systemd-boot.enable = true;
+            zfs.enable = true;
             username = "nikolaiser";
           }
         ]);
 
-      mkServerSystem = modules: mkNixosSystem
+      mkServerSystem = system: modules: mkNixosSystem
+        system
         (modules ++ [
 
           {
@@ -98,6 +107,9 @@
             username = "ops";
           }
         ]);
+
+      mkArmServerSystem = mkServerSystem "aarch64-linux";
+      mkx86_64ServerSystem = mkServerSystem "x86_64-linux";
 
 
 
@@ -122,9 +134,18 @@
           }
         ];
 
-        baseImage = mkServerSystem [
+        iskra = mkArmServerSystem [
+          inputs.nixos-hardware.nixosModules.raspberry-pi-4
+          {
+            networking.hostName = "iskra";
+            vpn.enable = true;
+          }
+        ];
+
+        baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];
       };
+
     };
 }

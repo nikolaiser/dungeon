@@ -276,6 +276,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1723310128,
+        "narHash": "sha256-IiH8jG6PpR4h9TxSGMYh+2/gQiJW9MwehFvheSb5rPc=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "c54cf53e022b0b3c1d3b8207aa0f9b194c24f0cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1722869614,
@@ -347,11 +363,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722355026,
-        "narHash": "sha256-M0yTSDTXIChP9z4s1PKPCqrspVBUG0RwzXz56aFm9ec=",
+        "lastModified": 1723383714,
+        "narHash": "sha256-aIlv1QFLmeC00v56R/reGwHGo5JuIF9tf3QIGf0/aq4=",
         "owner": "nikolaiser",
         "repo": "dungeon-private",
-        "rev": "643a292d94edb8337954df22aaf1e7b6d42938d0",
+        "rev": "ba193f21ff02ea7615ca8220a918f21379c78878",
         "type": "github"
       },
       "original": {
@@ -365,6 +381,7 @@
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
         "nix-ld": "nix-ld",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",

@@ -1,9 +1,12 @@
 {
   imports = [
-    ./shared
     ./desktop
-    ./gpu
     ./gaming
+    ./gpu
+    ./shared
+    ./systemd-boot
     ./ssh
+    ./vpn
+    ./zfs
   ];
 }
