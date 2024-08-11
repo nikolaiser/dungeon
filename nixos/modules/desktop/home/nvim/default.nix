@@ -35,6 +35,7 @@ let
     nixd
     statix
     efm-langserver
+    curl
   ]);
 
   parsers = pkgs-unstable.symlinkJoin {
