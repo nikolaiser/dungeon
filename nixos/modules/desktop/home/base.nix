@@ -47,6 +47,7 @@ in
       yubikey-manager-qt
       yubioath-flutter
       wl-clipboard
+      inputs.agenix.packages.${system}.default
     ];
 
     sessionVariables = {

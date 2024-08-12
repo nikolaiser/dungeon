@@ -19,7 +19,8 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
 
     private = {
-      url = "github:nikolaiser/dungeon-private";
+      #url = "github:nikolaiser/dungeon-private";
+      url = "git+file:///home/nikolaiser/Documents/dungeon-private";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,9 +34,16 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    agenix.url = "github:ryantm/agenix";
+
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
-  outputs = inputs@{ nixpkgs, ... }:
+  outputs = inputs@{ self, nixpkgs, ... }:
     let
 
 
@@ -81,7 +89,18 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
+            inputs.agenix.nixosModules.default
+            inputs.agenix-rekey.nixosModules.default
             { home-manager.extraSpecialArgs = specialArgs; }
+            {
+              age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+              age.rekey.storageMode = "derivation";
+              nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
+              age.rekey.cacheDir = "/var/tmp/agenix-rekey/\"$UID\"";
+              systemd.tmpfiles.rules = [
+                "d /var/tmp/agenix-rekey 1777 root root"
+              ];
+            }
           ];
         };
 
@@ -123,6 +142,7 @@
             gpu.model = "amd";
             gaming.enable = true;
             networking.hostId = "bda049b5";
+            age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOWLtHtqMmX9AyVShn5M0CbcJNIesVxdbe5Yn1OhGlEK root@nixos";
           }
         ];
 
@@ -145,6 +165,11 @@
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];
+
+      };
+      agenix-rekey = inputs.agenix-rekey.configure {
+        userFlake = inputs.private;
+        nodes = self.nixosConfigurations;
       };
 
     };
