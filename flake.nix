@@ -112,7 +112,6 @@
             desktop.enable = true;
             gpu.enable = true;
             systemd-boot.enable = true;
-            zfs.enable = true;
             username = "nikolaiser";
           }
         ]);
@@ -140,6 +139,7 @@
           ./nixos/hosts/home-desktop.nix
           {
             gpu.model = "amd";
+            zfs.enable = true;
             gaming.enable = true;
             networking.hostId = "bda049b5";
           }
