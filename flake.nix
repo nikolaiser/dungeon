@@ -19,8 +19,8 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
 
     private = {
-      #url = "github:nikolaiser/dungeon-private";
-      url = "git+file:///home/nikolaiser/Documents/dungeon-private";
+      url = "github:nikolaiser/dungeon-private";
+      #url = "git+file:///home/nikolaiser/Documents/dungeon-private";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -142,7 +142,6 @@
             gpu.model = "amd";
             gaming.enable = true;
             networking.hostId = "bda049b5";
-            age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOWLtHtqMmX9AyVShn5M0CbcJNIesVxdbe5Yn1OhGlEK root@nixos";
           }
         ];
 
