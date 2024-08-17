@@ -153,13 +153,13 @@
           }
         ];
 
-        iskra = mkArmServerSystem [
-          inputs.nixos-hardware.nixosModules.raspberry-pi-4
-          {
-            networking.hostName = "iskra";
-            vpn.enable = true;
-          }
-        ];
+        # iskra = mkArmServerSystem [
+        #   inputs.nixos-hardware.nixosModules.raspberry-pi-4
+        #   {
+        #     networking.hostName = "iskra";
+        #     vpn.enable = true;
+        #   }
+        # ];
 
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"

@@ -6,7 +6,10 @@ args@{ lib, config, pkgs, ... }:
     (lib.mkMerge [
       (import ./system args)
       {
-        home-manager.users.${config.username}.imports = [ ./home ];
+        home-manager = {
+          users.${config.username}.imports = [ ./home ];
+          backupFileExtension = "backup";
+        };
       }
     ]);
 }
