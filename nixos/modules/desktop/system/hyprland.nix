@@ -7,7 +7,6 @@
     extraPortals = with pkgs; [
       xdg-desktop-portal-kde
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
     ];
   };
 
@@ -35,6 +34,9 @@
     };
   };
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+  };
+
   security.polkit.enable = true;
 }

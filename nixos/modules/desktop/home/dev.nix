@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -19,7 +19,7 @@
       kubectl
       kubectx
       kubeswitch
-      pkgs-unstable.kubefwd
+      kubefwd
       kubelogin-oidc
       kubernetes-helm
       lua
@@ -27,11 +27,11 @@
       mongodb-tools
       mongosh
       nix-du
-      nix-init
+      #nix-init
       nodejs-slim
       nvd
       pciutils
-      pkgs-unstable.cargo
+      cargo
       postgresql_16
       pulumi
       robo3t

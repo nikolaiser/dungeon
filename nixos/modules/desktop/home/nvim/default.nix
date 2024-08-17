@@ -1,13 +1,13 @@
 { lib
-, pkgs-unstable
+, pkgs
 , pkgs-master
 , config
 , ...
 }:
 
 let
-  metalsPackage = (pkgs-master.metals.override { jre = pkgs-unstable.temurin-bin-21; });
-  binPath = lib.makeBinPath (with pkgs-unstable;[
+  metalsPackage = (pkgs-master.metals.override { jre = pkgs.temurin-bin-21; });
+  binPath = lib.makeBinPath (with pkgs;[
     git
     deadnix
     ripgrep
@@ -39,9 +39,9 @@ let
     docker-compose-language-service
   ]);
 
-  parsers = pkgs-unstable.symlinkJoin {
+  parsers = pkgs.symlinkJoin {
     name = "nvim-ts-parsers";
-    paths = with pkgs-unstable.vimPlugins.nvim-treesitter-parsers; [
+    paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
       c
       lua
       vim
@@ -86,7 +86,7 @@ let
 
   nvimConfig =
     let
-      cfg = pkgs-unstable.neovimUtils.makeNeovimConfig {
+      cfg = pkgs.neovimUtils.makeNeovimConfig {
         extraName = "";
         vimAlias = false;
         viAlias = false;
@@ -106,12 +106,12 @@ let
         ]
         ++ [
           "--add-flags"
-          ''--cmd "luafile ${pkgs-unstable.writeText "pre-init.lua" preInit}"''
+          ''--cmd "luafile ${pkgs.writeText "pre-init.lua" preInit}"''
         ];
     };
 
   neovim-package =
-    (pkgs-unstable.neovim-unwrapped.override {
+    (pkgs.neovim-unwrapped.override {
       treesitter-parsers = { };
     }).overrideAttrs
       (oa: {
@@ -122,7 +122,7 @@ let
           '';
         treesitter-parsers = { };
       });
-  nvim-wrapped = pkgs-unstable.wrapNeovimUnstable neovim-package nvimConfig;
+  nvim-wrapped = pkgs.wrapNeovimUnstable neovim-package nvimConfig;
 in
 {
   home.packages = [ nvim-wrapped ];

@@ -2,12 +2,12 @@
   description = "";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -62,7 +62,7 @@
           specialArgs = {
             inherit inputs system;
 
-            pkgs-unstable = import inputs.nixpkgs-unstable {
+            pkgs-stable = import inputs.nixpkgs-stable {
               inherit overlays system;
 
               config.allowUnfree = true;

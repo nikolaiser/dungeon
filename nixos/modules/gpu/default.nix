@@ -12,7 +12,7 @@ let
       videoDrivers = [ "modesetting" ];
     };
 
-    hardware.opengl = {
+    hardware.graphics = {
       extraPackages = with pkgs; [
         amdvlk
         vaapiVdpau
@@ -21,8 +21,8 @@ let
 
       extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
 
-      driSupport = true;
-      driSupport32Bit = true;
+      #driSupport = true;
+      #driSupport32Bit = true;
     };
 
     systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];

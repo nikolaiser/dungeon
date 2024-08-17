@@ -20,7 +20,7 @@
     u2f = {
       enable = true;
       control = "sufficient";
-      cue = true;
+      settings.cue = true;
     };
 
     services = {

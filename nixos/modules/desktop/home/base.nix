@@ -3,7 +3,6 @@
 , inputs
 , config
 , osConfig
-, pkgs-unstable
 , ...
 }:
 
@@ -35,7 +34,7 @@ in
       neofetch
       unzip
       gron # make json greppable
-      delta # syntax highlighting for git, diff and grep
+      #delta # syntax highlighting for git, diff and grep
       age
       libargon2
       wireguard-tools
@@ -49,7 +48,7 @@ in
       yubioath-flutter
       wl-clipboard
       inputs.agenix.packages.${system}.default
-      pkgs-unstable.ladybird
+      ladybird
     ];
 
     sessionVariables = {
