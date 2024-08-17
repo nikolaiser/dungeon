@@ -588,16 +588,17 @@
         ]
       },
       "locked": {
-        "dirtyRev": "a2f4c5e240cc3ef52e6edd314929050d0d5c1f33-dirty",
-        "dirtyShortRev": "a2f4c5e-dirty",
-        "lastModified": 1723401663,
+        "lastModified": 1723888627,
         "narHash": "sha256-4ZQ2hUWtHcZBYfbu9nUtlPdSy3/uqT2/BjLeRnpKiKE=",
-        "type": "git",
-        "url": "file:///home/nikolaiser/Documents/dungeon-private"
+        "owner": "nikolaiser",
+        "repo": "dungeon-private",
+        "rev": "a2c155f869f1a88724836c5b7eb608f47006e961",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/nikolaiser/Documents/dungeon-private"
+        "owner": "nikolaiser",
+        "repo": "dungeon-private",
+        "type": "github"
       }
     },
     "root": {
