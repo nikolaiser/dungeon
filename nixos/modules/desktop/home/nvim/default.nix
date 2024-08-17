@@ -36,6 +36,7 @@ let
     statix
     efm-langserver
     curl
+    docker-compose-language-service
   ]);
 
   parsers = pkgs-unstable.symlinkJoin {

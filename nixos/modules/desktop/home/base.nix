@@ -3,6 +3,7 @@
 , inputs
 , config
 , osConfig
+, pkgs-unstable
 , ...
 }:
 
@@ -48,6 +49,7 @@ in
       yubioath-flutter
       wl-clipboard
       inputs.agenix.packages.${system}.default
+      pkgs-unstable.ladybird
     ];
 
     sessionVariables = {

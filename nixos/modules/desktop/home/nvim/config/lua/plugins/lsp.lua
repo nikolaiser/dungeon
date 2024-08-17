@@ -115,6 +115,13 @@ return {
         },
         yamlls = {
           mason = false,
+          settings = {
+            yaml = {
+              format = {
+                singleQuote = true
+              },
+            },
+          },
         },
         terraformls = {
           mason = false
@@ -127,7 +134,13 @@ return {
         },
         helm_ls = {
           mason = false,
-        }
+        },
+        dockerls = {
+          mason = false
+        },
+        docker_compose_language_service = {
+          mason = false
+        },
       },
     },
   },
