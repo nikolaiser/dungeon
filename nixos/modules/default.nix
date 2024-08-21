@@ -6,7 +6,7 @@
     ./shared
     ./systemd-boot
     ./ssh
-    ./vpn
     ./zfs
+    ./kodi
   ];
 }

@@ -6,7 +6,7 @@
 }:
 
 let
-  metalsPackage = (pkgs-master.metals.override { jre = pkgs.temurin-bin-21; });
+  metalsPackage = (pkgs.metals.override { jre = pkgs.temurin-bin-21; });
   binPath = lib.makeBinPath (with pkgs;[
     git
     deadnix
@@ -22,7 +22,8 @@ let
     helm-ls
     coursier
     marksman
-    vscode-langservers-extracted
+    # TODO: go back to unstable
+    pkgs-master.vscode-langservers-extracted
     typos-lsp
     nodePackages.bash-language-server
     zig

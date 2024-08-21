@@ -10,4 +10,8 @@ rec {
 
   lib = prev.lib.extend (_: _: { inherit (mylib) exe; });
 
+  makeModulesClosure = x:
+    prev.makeModulesClosure (x // { allowMissing = true; });
+
+
 }

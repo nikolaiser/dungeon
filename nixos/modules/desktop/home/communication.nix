@@ -6,6 +6,5 @@
     slack
     telegram-desktop
     webcord
-    element-desktop
   ];
 }

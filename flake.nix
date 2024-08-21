@@ -49,7 +49,7 @@
 
       mkNixosSystem = system: modules:
         let
-          overlays = [ (import ./nixos/overlays inputs) ];
+          overlays = [ (import ./nixos/overlays inputs) inputs.agenix-rekey.overlays.default ];
 
           pkgs = import inputs.nixpkgs {
             inherit overlays system;
@@ -93,10 +93,14 @@
             inputs.agenix-rekey.nixosModules.default
             { home-manager.extraSpecialArgs = specialArgs; }
             {
-              age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-              age.rekey.storageMode = "derivation";
+              age = {
+                rekey = {
+                  storageMode = "derivation";
+                  cacheDir = "/var/tmp/agenix-rekey/\"$UID\"";
+                };
+                identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+              };
               nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
-              age.rekey.cacheDir = "/var/tmp/agenix-rekey/\"$UID\"";
               systemd.tmpfiles.rules = [
                 "d /var/tmp/agenix-rekey 1777 root root"
               ];
@@ -119,7 +123,6 @@
       mkServerSystem = system: modules: mkNixosSystem
         system
         (modules ++ [
-
           {
             ssh.enable = true;
             username = "ops";
@@ -153,17 +156,20 @@
           }
         ];
 
-        # iskra = mkArmServerSystem [
-        #   inputs.nixos-hardware.nixosModules.raspberry-pi-4
-        #   {
-        #     networking.hostName = "iskra";
-        #     vpn.enable = true;
-        #   }
-        # ];
+        iskra = mkArmServerSystem [
+          inputs.nixos-hardware.nixosModules.raspberry-pi-4
+          ./nixos/hosts/iskra.nix
+          {
+            networking.hostName = "iskra";
+            #kodi.enable = true;
+          }
+        ];
 
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];
+
+
 
       };
       agenix-rekey = inputs.agenix-rekey.configure {
