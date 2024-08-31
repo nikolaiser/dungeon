@@ -1,9 +1,10 @@
-{ pkgs
-, system
-, inputs
-, config
-, osConfig
-, ...
+{
+  pkgs,
+  system,
+  inputs,
+  config,
+  osConfig,
+  ...
 }:
 
 let
@@ -67,6 +68,5 @@ in
   nixpkgs.config = {
     allowUnfree = true;
   };
-
 
 }

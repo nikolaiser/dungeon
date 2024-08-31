@@ -24,7 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
     stylix.url = "github:danth/stylix";
 
     vim-tmux-navigator-sturdy = {
@@ -43,13 +42,18 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, ... }:
+  outputs =
+    inputs@{ self, nixpkgs, ... }:
     let
 
-
-      mkNixosSystem = system: modules:
+      mkNixosSystem =
+        system: modules:
         let
-          overlays = [ (import ./nixos/overlays inputs) inputs.agenix-rekey.overlays.default ];
+
+          overlays = [
+            (import ./nixos/overlays inputs)
+            inputs.agenix-rekey.overlays.default
+          ];
 
           pkgs = import inputs.nixpkgs {
             inherit overlays system;
@@ -101,38 +105,40 @@
                 identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
               };
               nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
-              systemd.tmpfiles.rules = [
-                "d /var/tmp/agenix-rekey 1777 root root"
-              ];
+              systemd.tmpfiles.rules = [ "d /var/tmp/agenix-rekey 1777 root root" ];
             }
           ];
         };
 
-      mkDesktopSystem = modules: mkNixosSystem
-        "x86_64-linux"
-        (modules ++ [
+      mkDesktopSystem =
+        modules:
+        mkNixosSystem "x86_64-linux" (
+          modules
+          ++ [
 
-          {
-            desktop.enable = true;
-            gpu.enable = true;
-            systemd-boot.enable = true;
-            username = "nikolaiser";
-          }
-        ]);
+            {
+              desktop.enable = true;
+              gpu.enable = true;
+              systemd-boot.enable = true;
+              username = "nikolaiser";
+            }
+          ]
+        );
 
-      mkServerSystem = system: modules: mkNixosSystem
-        system
-        (modules ++ [
-          {
-            ssh.enable = true;
-            username = "ops";
-          }
-        ]);
+      mkServerSystem =
+        system: modules:
+        mkNixosSystem system (
+          modules
+          ++ [
+            {
+              ssh.enable = true;
+              username = "ops";
+            }
+          ]
+        );
 
       mkArmServerSystem = mkServerSystem "aarch64-linux";
       mkx86_64ServerSystem = mkServerSystem "x86_64-linux";
-
-
 
     in
     {
@@ -161,15 +167,22 @@
           ./nixos/hosts/iskra.nix
           {
             networking.hostName = "iskra";
-            #kodi.enable = true;
+            kodi.enable = true;
+          }
+        ];
+
+        pepel = mkx86_64ServerSystem [
+          ./nixos/hosts/pepel.nix
+          {
+            networking.hostName = "pepel";
+            services.qemuGuest.enable = true;
           }
         ];
 
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          { services.qemuGuest.enable = true; }
         ];
-
-
 
       };
       agenix-rekey = inputs.agenix-rekey.configure {

@@ -3,7 +3,6 @@
 {
   networking.networkmanager.enable = true;
 
-
   networking = {
     hosts = {
       "127.0.0.2" = pkgs.lib.mkForce [ ];

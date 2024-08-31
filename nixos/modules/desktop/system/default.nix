@@ -11,4 +11,3 @@ args.lib.mkMerge [
   (import ./user.nix args)
   (import ./yubikey.nix args)
 ]
-

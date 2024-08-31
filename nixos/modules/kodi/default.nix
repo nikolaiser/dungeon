@@ -1,9 +1,18 @@
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   libcec = pkgs.libcec.override { withLibraspberrypi = true; };
-  kodi = pkgs.kodi-wayland.withPackages (p: with p; [ youtube ]);
+  kodi = pkgs.kodi-wayland.withPackages (
+    p: with p; [
+      youtube
+      keymap
+    ]
+  );
 
 in
 {
@@ -20,7 +29,6 @@ in
       isNormalUser = true;
       extraGroups = [ "video" ];
     };
-
 
     services.cage = {
       enable = true;
@@ -67,5 +75,3 @@ in
   };
 
 }
-
-

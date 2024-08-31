@@ -1,5 +1,9 @@
-{ lib, config, pkgs, ... }:
-
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.gpu;
@@ -29,7 +33,9 @@ let
 
   };
 
-  intelIrisConfig = { boot.kernelParams = [ "i915.force_probe=46a6" ]; };
+  intelIrisConfig = {
+    boot.kernelParams = [ "i915.force_probe=46a6" ];
+  };
 in
 {
 
@@ -43,10 +49,11 @@ in
 
   };
 
-  config = lib.mkIf cfg.enable (lib.mkMerge [
-    (lib.mkIf (cfg.model == "amd") amdConfig)
-    (lib.mkIf (cfg.model == "intel-iris") intelIrisConfig)
-  ]);
-
+  config = lib.mkIf cfg.enable (
+    lib.mkMerge [
+      (lib.mkIf (cfg.model == "amd") amdConfig)
+      (lib.mkIf (cfg.model == "intel-iris") intelIrisConfig)
+    ]
+  );
 
 }

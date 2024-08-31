@@ -1,6 +1,5 @@
 {
 
-
   hardware.bluetooth = {
     enable = true;
     settings = {

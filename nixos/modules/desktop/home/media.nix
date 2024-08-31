@@ -28,6 +28,7 @@ in
     orca-slicer
     brave
     via
+    vial
     graphviz-nox
     zgrviewer
     playerctl

@@ -1,8 +1,9 @@
-{ pkgs
-, lib
-, config
-, inputs
-, ...
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
 }:
 
 let
@@ -37,7 +38,6 @@ in
           exec tmux new-session -A -s main
         end
       '';
-
 
       shellAliases = {
         ls = "${lib.exe pkgs.eza}";

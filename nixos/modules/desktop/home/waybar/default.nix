@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with config.lib.stylix.colors.withHashtag;
 with config.stylix.fonts;
@@ -28,7 +33,11 @@ with config.stylix.fonts;
         tooltip {
             border-color: @base0D;
         }
-      '' + (builtins.readFile ./style.css) + (import ./colors.nix "left") + (import ./colors.nix "center") + (import ./colors.nix "right");
+      ''
+      + (builtins.readFile ./style.css)
+      + (import ./colors.nix "left")
+      + (import ./colors.nix "center")
+      + (import ./colors.nix "right");
 
     settings = {
       "bar" = {

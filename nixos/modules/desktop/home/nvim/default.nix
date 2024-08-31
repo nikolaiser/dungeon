@@ -1,44 +1,48 @@
-{ lib
-, pkgs
-, pkgs-master
-, config
-, ...
+{
+  lib,
+  pkgs,
+  pkgs-master,
+  config,
+  ...
 }:
 
 let
   metalsPackage = (pkgs.metals.override { jre = pkgs.temurin-bin-21; });
-  binPath = lib.makeBinPath (with pkgs;[
-    git
-    deadnix
-    ripgrep
-    fd
-    nixpkgs-fmt
-    nil
-    rust-analyzer
-    terraform-ls
-    gopls
-    lua-language-server
-    yaml-language-server
-    helm-ls
-    coursier
-    marksman
-    # TODO: go back to unstable
-    pkgs-master.vscode-langservers-extracted
-    typos-lsp
-    nodePackages.bash-language-server
-    zig
-    metalsPackage
-    markdownlint-cli2
-    nodejs_22
-    lazygit
-    dockerfile-language-server-nodejs
-    hadolint
-    nixd
-    statix
-    efm-langserver
-    curl
-    docker-compose-language-service
-  ]);
+  binPath = lib.makeBinPath (
+    with pkgs;
+    [
+      git
+      deadnix
+      ripgrep
+      fd
+      nixpkgs-fmt
+      nil
+      rust-analyzer
+      terraform-ls
+      gopls
+      lua-language-server
+      yaml-language-server
+      helm-ls
+      coursier
+      marksman
+      # TODO: go back to unstable
+      pkgs-master.vscode-langservers-extracted
+      typos-lsp
+      nodePackages.bash-language-server
+      zig
+      metalsPackage
+      markdownlint-cli2
+      nodejs_22
+      lazygit
+      dockerfile-language-server-nodejs
+      hadolint
+      nixd
+      statix
+      efm-langserver
+      curl
+      docker-compose-language-service
+    ]
+  );
 
   parsers = pkgs.symlinkJoin {
     name = "nvim-ts-parsers";
@@ -77,13 +81,11 @@ let
     ];
   };
 
-
-  preInit =
-    ''
-      -- Globals
-      vim.g.is_nix_package = 1
-      vim.g.metals_binary = "${lib.exe metalsPackage}"
-    '';
+  preInit = ''
+    -- Globals
+    vim.g.is_nix_package = 1
+    vim.g.metals_binary = "${lib.exe metalsPackage}"
+  '';
 
   nvimConfig =
     let
@@ -111,18 +113,14 @@ let
         ];
     };
 
-  neovim-package =
-    (pkgs.neovim-unwrapped.override {
-      treesitter-parsers = { };
-    }).overrideAttrs
-      (oa: {
-        preConfigure =
-          oa.preConfigure
-          + ''
-            cp -f ${parsers}/parser/* $out/lib/nvim/parser/
-          '';
-        treesitter-parsers = { };
-      });
+  neovim-package = (pkgs.neovim-unwrapped.override { treesitter-parsers = { }; }).overrideAttrs (oa: {
+    preConfigure =
+      oa.preConfigure
+      + ''
+        cp -f ${parsers}/parser/* $out/lib/nvim/parser/
+      '';
+    treesitter-parsers = { };
+  });
   nvim-wrapped = pkgs.wrapNeovimUnstable neovim-package nvimConfig;
 in
 {

@@ -1,8 +1,6 @@
 { config, ... }:
 
-
 {
-
 
   users.users.${config.username}.extraGroups = [
     "networkmanager"

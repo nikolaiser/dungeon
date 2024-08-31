@@ -1,13 +1,11 @@
 { lib, config, ... }:
 
-
 let
   cfg = config.ssh;
 in
 {
 
   options.ssh.enable = lib.mkEnableOption "Enable ssh server";
-
 
   config = lib.mkIf cfg.enable {
     services.openssh = {

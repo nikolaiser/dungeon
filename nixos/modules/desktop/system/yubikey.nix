@@ -1,4 +1,9 @@
-{ pkgs, inputs, system, ... }:
+{
+  pkgs,
+  inputs,
+  system,
+  ...
+}:
 
 {
 
@@ -15,7 +20,10 @@
     ssh.startAgent = false;
   };
 
-  environment.systemPackages = [ pkgs.age-plugin-yubikey pkgs.agenix-rekey ];
+  environment.systemPackages = [
+    pkgs.age-plugin-yubikey
+    pkgs.agenix-rekey
+  ];
 
   security.pam = {
     u2f = {
@@ -31,6 +39,5 @@
       gnome-keyring.u2fAuth = true;
     };
   };
-
 
 }

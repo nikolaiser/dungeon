@@ -1,13 +1,11 @@
 { lib, config, ... }:
 
-
 let
   cfg = config.gaming;
 in
 {
 
   options.gaming.enable = lib.mkEnableOption "Enable gaming presets";
-
 
   config = lib.mkIf cfg.enable {
     services.flatpak = {
