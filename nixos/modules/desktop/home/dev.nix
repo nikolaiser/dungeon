@@ -47,6 +47,7 @@
       rclone
       just
       nixos-generators
+      freecad-wayland
     ];
 
 }
