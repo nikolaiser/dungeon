@@ -202,6 +202,26 @@
         "type": "github"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1725377834,
+        "narHash": "sha256-tqoAO8oT6zEUDXte98cvA1saU9+1dLJQe3pMKLXv8ps=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "e55f9a8678adc02024a4877c2a403e3f6daf24fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -608,11 +628,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725103819,
-        "narHash": "sha256-ykKMcuRkEVY0/My/nMp1/Ni9dkjq3LCbsHI8BJVQYDI=",
+        "lastModified": 1725559101,
+        "narHash": "sha256-pSFq8lKCv52ytljp80YbyHyYjbHknpRMTXyrXwAznKU=",
         "owner": "nikolaiser",
         "repo": "dungeon-private",
-        "rev": "b5a53c93a5655985a03eb4228026ad6aac63e358",
+        "rev": "44e57606e4d5ce4c8fb04aa06a5643d7ef51cab5",
         "type": "github"
       },
       "original": {
@@ -625,6 +645,7 @@
       "inputs": {
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
+        "disko": "disko",
         "home-manager": "home-manager_2",
         "nix-flatpak": "nix-flatpak",
         "nix-ld": "nix-ld",

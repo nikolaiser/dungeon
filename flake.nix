@@ -40,6 +40,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -179,9 +184,20 @@
           }
         ];
 
+        nas = mkx86_64ServerSystem [
+          ./nixos/hosts/nas.nix
+          inputs.disko.nixosModules.disko
+          {
+            gpu.model = "amd";
+            networking = {
+              hostName = "nas";
+              hostId = "d4cf0337";
+            };
+          }
+        ];
+
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-          { services.qemuGuest.enable = true; }
         ];
 
       };

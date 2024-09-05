@@ -20,6 +20,7 @@ in
 
     packages = with pkgs; [
       firefox
+      brave
       xdg-utils
       bat # cat alternative
       bottom # alternative to htop
