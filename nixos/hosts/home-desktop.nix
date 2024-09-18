@@ -22,37 +22,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "rpool/root";
-    fsType = "zfs";
-  };
-
-  fileSystems."/home" = {
-    device = "rpool/home";
-    fsType = "zfs";
+    device = "/dev/disk/by-uuid/757efbad-bc97-4a8f-a81a-7bc2c62335b0";
+    fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/C496-41C2";
+    device = "/dev/disk/by-uuid/492B-63FF";
     fsType = "vfat";
     options = [
-      "fmask=0077"
-      "dmask=0077"
+      "fmask=0022"
+      "dmask=0022"
     ];
-  };
-
-  fileSystems."/var" = {
-    device = "rpool/var";
-    fsType = "zfs";
-  };
-
-  fileSystems."/nix" = {
-    device = "rpool/nix";
-    fsType = "zfs";
-  };
-
-  fileSystems."/home/nikolaiser/.local/share/atuin" = {
-    device = "/dev/disk/by-uuid/4422c6d0-4377-4f33-9360-82ac2d23b0e3";
-    fsType = "ext4";
   };
 
   swapDevices = [ ];

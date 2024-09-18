@@ -25,8 +25,19 @@ let
 
   };
 
-  root1Id = "/dev/disk/by-id/ata-INTENSO_SSD_1642311001016696";
-  root2Id = "/dev/disk/by-id/ata-INTENSO_SSD_1642311001016674";
+  fastStorageDriveContent = {
+    type = "gpt";
+    partitions = {
+      zfs = {
+        size = "100%";
+        content = {
+          type = "zfs";
+          pool = "nvme";
+        };
+      };
+    };
+  };
+
 in
 {
 
@@ -48,13 +59,28 @@ in
     disk = {
       root1 = {
         type = "disk";
-        device = root1Id;
+        device = "/dev/disk/by-id/ata-INTENSO_SSD_1642311001016696";
         content = rootDriveContent "/boot1";
       };
       root2 = {
         type = "disk";
-        device = root2Id;
+        device = "/dev/disk/by-id/ata-INTENSO_SSD_1642311001016674";
         content = rootDriveContent "/boot2";
+      };
+      nvme1 = {
+        type = "disk";
+        device = "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_YDBKF1HXZ0EA";
+        content = fastStorageDriveContent;
+      };
+      nvme2 = {
+        type = "disk";
+        device = "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_YDBKF184Z0EA";
+        content = fastStorageDriveContent;
+      };
+      nvme3 = {
+        type = "disk";
+        device = "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_YDBKF1H9Z0EA";
+        content = fastStorageDriveContent;
       };
     };
     zpool = {
@@ -85,7 +111,54 @@ in
           };
         };
       };
+      # nvme = {
+      #   type = "zpool";
+      #   mode = {
+      #     topology = {
+      #       type = "topology";
+      #       vdev = [
+      #         {
+      #           mode = "raidz1";
+      #           members = [
+      #             "nvme1"
+      #             "nvme2"
+      #             "nvme3"
+      #           ];
+      #         }
+      #       ];
+      #
+      #     };
+      #     options = {
+      #       acltype = "posixacl";
+      #       atime = "off";
+      #       compression = "lz4";
+      #       mountpoint = "none";
+      #       xattr = "sa";
+      #       "com.sun:auto-snapshot" = "true";
+      #       autoexpand = "on";
+      #       ashift = "12";
+      #       "feature@async_destroy"="enabled";
+      #       "feature@empty_bpobj"="enabled";
+      #       "feature@lz4_compress"="enabled";
+      #     };
+      #     datasets = {
+      #       "local" = {
+      #         type = "zfs_fs";
+      #         options.mountpoint = "none";
+      #       };
+      #       "local/nvmeStorage" = {
+      #         type = "zfs_fs";
+      #         mountpoint = "/nvmeStorage";
+      #       };
+      #     };
+      #   };
+      # };
     };
+  };
+
+  fileSystems."/nvmeStorage" = {
+    device = "nvme/nvmeStorage";
+    fsType = "zfs";
   };
 
   boot.loader.grub = {
@@ -95,12 +168,12 @@ in
     devices = lib.mkForce [ ];
     mirroredBoots = [
       {
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         path = "/boot1";
         efiSysMountPoint = "/boot1";
       }
       {
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         path = "/boot2";
         efiSysMountPoint = "/boot2";
       }

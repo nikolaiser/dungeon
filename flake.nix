@@ -153,9 +153,9 @@
           ./nixos/hosts/home-desktop.nix
           {
             gpu.model = "amd";
-            zfs.enable = true;
+            #zfs.enable = true;
             gaming.enable = true;
-            networking.hostId = "bda049b5";
+            #networking.hostId = "bda049b5";
           }
         ];
 
@@ -176,14 +176,6 @@
           }
         ];
 
-        pepel = mkx86_64ServerSystem [
-          ./nixos/hosts/pepel.nix
-          {
-            networking.hostName = "pepel";
-            services.qemuGuest.enable = true;
-          }
-        ];
-
         nas = mkx86_64ServerSystem [
           ./nixos/hosts/nas.nix
           inputs.disko.nixosModules.disko
@@ -193,6 +185,7 @@
               hostName = "nas";
               hostId = "d4cf0337";
             };
+            smart.enable = true;
           }
         ];
 

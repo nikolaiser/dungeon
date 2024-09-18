@@ -4,6 +4,7 @@
     ./gaming
     ./gpu
     ./shared
+    ./smart
     ./systemd-boot
     ./ssh
     ./zfs

@@ -52,10 +52,10 @@ require("lazy").setup({
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
-  },                -- automatically check for plugin updates
-  checker = {
-    concurrency = 1,
+    -- concurrency = 1,
   },
+  -- concurrency = 4,
+
   performance = {
     rtp = {
       -- disable some rtp plugins
