@@ -1,5 +1,6 @@
 {
   imports = [
+    ./by-host
     ./desktop
     ./gaming
     ./gpu

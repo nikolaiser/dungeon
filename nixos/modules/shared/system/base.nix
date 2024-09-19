@@ -26,4 +26,6 @@ in
       "flakes"
     ];
   };
+
+  networking.firewall.enable = true;
 }
