@@ -8,6 +8,7 @@ in
     enable = true;
     dataDir = postgresqlDataDir;
     enableTCPIP = true;
+    authentication = "host all all 10.10.0.1/16 md5";
   };
 
   networking.firewall.allowedTCPPorts = [ 5432 ];
