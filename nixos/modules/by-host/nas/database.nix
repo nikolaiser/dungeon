@@ -19,7 +19,7 @@ in
         d = {
           user = config.systemd.services.postgresql.serviceConfig.User;
           group = config.systemd.services.postgresql.serviceConfig.Group;
-          mode = "0770";
+          mode = "0700";
         };
       };
     };

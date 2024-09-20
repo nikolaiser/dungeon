@@ -186,6 +186,7 @@
               hostId = "d4cf0337";
             };
             smart.enable = true;
+            zfs.enable = true;
           }
         ];
 
