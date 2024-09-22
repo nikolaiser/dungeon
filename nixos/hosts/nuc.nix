@@ -35,16 +35,15 @@
   networking = {
     useDHCP = lib.mkDefault false;
 
-                defaultGateway = {
-                address = "10.10.0.1";
-                interface = "enp1s0";
-              };
+    defaultGateway = {
+      address = "10.10.0.1";
+      interface = "enp1s0";
+    };
     nameservers = [ "10.10.0.1" ];
   };
 
   # no bootloader for netboot 
   system.build.installBootLoader = lib.mkDefault "${pkgs.coreutils}/bin/true";
-
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

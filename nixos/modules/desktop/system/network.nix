@@ -14,10 +14,5 @@
 
   environment.etc.hosts.mode = "0644"; # make it writable for kubefwd
 
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
 
 }
