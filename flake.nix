@@ -190,6 +190,56 @@
           }
         ];
 
+        sina = mkx86_64ServerSystem [
+          "${inputs.nixpkgs}/nixos/modules/installer/netboot/netboot.nix"
+          ./nixos/hosts/nuc.nix
+          {
+            networking = {
+              hostName = "sina";
+              interfaces.enp1s0.ipv4.addresses = [
+                {
+                  address = "10.10.0.51";
+                  prefixLength = 16;
+                }
+              ];
+            };
+          }
+        ];
+
+        maria = mkx86_64ServerSystem [
+          "${inputs.nixpkgs}/nixos/modules/installer/netboot/netboot.nix"
+          ./nixos/hosts/nuc.nix
+          {
+            networking = {
+              hostName = "maria";
+              interfaces.enp1s0.ipv4.addresses = [
+                {
+                  address = "10.10.0.52";
+                  prefixLength = 16;
+                }
+              ];
+            };
+
+          }
+        ];
+
+        rose = mkx86_64ServerSystem [
+          "${inputs.nixpkgs}/nixos/modules/installer/netboot/netboot.nix"
+          ./nixos/hosts/nuc.nix
+          {
+            networking = {
+              hostName = "rose";
+              interfaces.enp1s0.ipv4.addresses = [
+                {
+                  address = "10.10.0.53";
+                  prefixLength = 16;
+                }
+              ];
+            };
+
+          }
+        ];
+
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];

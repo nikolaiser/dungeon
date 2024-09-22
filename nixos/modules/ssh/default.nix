@@ -20,6 +20,15 @@ in
 
     nix.trustedUsers = [ "@wheel" ];
 
+    # disable docs on servers to speed up builds
+    # environment.noXlibs = mkDefault true;
+    documentation.enable = lib.mkDefault false;
+    documentation.doc.enable = lib.mkDefault false;
+    documentation.info.enable = lib.mkDefault false;
+    documentation.man.enable = lib.mkDefault false;
+    documentation.nixos.enable = lib.mkDefault false;
+    programs.command-not-found.enable = lib.mkDefault false;
+
   };
 
 }

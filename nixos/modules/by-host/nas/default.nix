@@ -28,6 +28,7 @@ args@{
       (import ./database.nix args)
       (import ./nginx.nix args)
       (import ./vaultwarden.nix args)
+      (import ./pixiecore args)
     ]
   );
 

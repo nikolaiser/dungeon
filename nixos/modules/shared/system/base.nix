@@ -28,4 +28,6 @@ in
   };
 
   networking.firewall.enable = true;
+
+  system.switch.enableNg = true;
 }
