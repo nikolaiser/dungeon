@@ -22,25 +22,105 @@
     "rtsx_pci_sdmmc"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "br_netfilter"
+    "ip_conntrack"
+    "ip_vs"
+    "ip_vs_rr"
+    "ip_vs_wrr"
+    "ip_vs_sh"
+    "overlay"
+    "iptable_raw"
+    "xt_socket"
+  ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "tmpfs";
-    fsType = "tmpfs";
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.bridge.bridge-nf-call-iptables" = 1;
+  };
+
+  boot.supportedFilesystems = [ "nfs" ];
+
+  fileSystems = {
+    "/" = {
+      device = "tmpfs";
+      fsType = "tmpfs";
+    };
+
+    "/var/lib/rancher/k3s" = {
+      device = "10.10.163.211:/${config.networking.hostName}/var/lib/rancher/k3s";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+      ];
+    };
+    "/var/lib/kubelet" = {
+      device = "10.10.163.211:/${config.networking.hostName}/var/lib/kubelet";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "nolock"
+      ];
+    };
+    "/etc/rancher" = {
+      device = "10.10.163.211:/${config.networking.hostName}/etc/rancher";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+        "nolock"
+      ];
+    };
+
   };
 
   swapDevices = [ ];
 
   networking = {
+    useNetworkd = true;
     useDHCP = lib.mkDefault false;
 
     defaultGateway = {
       address = "10.10.0.1";
       interface = "enp1s0";
     };
+
+    firewall.enable = true;
+
     nameservers = [ "10.10.0.1" ];
   };
+
+  systemd.network = {
+    enable = true;
+    networks."40-enp1s0".networkConfig.MulticastDNS = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    ethtool
+    gitMinimal
+    iproute
+    iptables
+    k3s
+    openssh
+    socat
+    thin-provisioning-tools
+    utillinux
+    bash
+    curl
+    util-linux
+    gnugrep
+    gawk
+    nfs-utils
+    ethtool
+    conntrack-tools
+    cri-tools
+    kubectl
+    kubernetes
+  ];
 
   # no bootloader for netboot 
   system.build.installBootLoader = lib.mkDefault "${pkgs.coreutils}/bin/true";

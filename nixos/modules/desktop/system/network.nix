@@ -14,5 +14,4 @@
 
   environment.etc.hosts.mode = "0644"; # make it writable for kubefwd
 
-
 }

@@ -203,6 +203,11 @@
                 }
               ];
             };
+            k3s = {
+              enable = true;
+              init = true;
+              ip = "10.10.0.51";
+            };
           }
         ];
 
@@ -218,6 +223,11 @@
                   prefixLength = 16;
                 }
               ];
+            };
+            k3s = {
+              enable = true;
+              init = false;
+              ip = "10.10.0.52";
             };
 
           }
@@ -235,6 +245,11 @@
                   prefixLength = 16;
                 }
               ];
+            };
+            k3s = {
+              enable = true;
+              init = false;
+              ip = "10.10.0.53";
             };
 
           }
