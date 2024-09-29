@@ -39,6 +39,8 @@ in
 
     programs.gamemode.enable = true;
 
+    home-manager.users.${config.username}.imports = [ ./home ];
+
   };
 
 }

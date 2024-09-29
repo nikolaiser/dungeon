@@ -24,8 +24,6 @@ in
     pavucontrol
     gnupg # gpg
     vlc
-    prusa-slicer
-    orca-slicer
     brave
     via
     vial

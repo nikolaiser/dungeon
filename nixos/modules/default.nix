@@ -1,15 +1,16 @@
 {
   imports = [
     ./by-host
+    ./cad
     ./desktop
     ./gaming
     ./gpu
+    ./k3s
+    ./kodi
     ./shared
     ./smart
-    ./systemd-boot
     ./ssh
+    ./systemd-boot
     ./zfs
-    ./kodi
-    ./k3s
   ];
 }

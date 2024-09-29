@@ -45,6 +45,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zwift = {
+      url = "https://raw.githubusercontent.com/netbrain/zwift/master/zwift.sh";
+      flake = false;
+    };
+
   };
 
   outputs =
@@ -156,6 +161,7 @@
             #zfs.enable = true;
             gaming.enable = true;
             #networking.hostId = "bda049b5";
+            cad.enable = true;
           }
         ];
 
@@ -229,6 +235,17 @@
               init = false;
               ip = "10.10.0.52";
             };
+
+            #TODO: remove
+            fileSystems."/var/log/journal" = {
+              device = "/dev/disk/by-uuid/84486f4f-987c-4a90-bd99-037ba77054df";
+              fsType = "ext4";
+            };
+
+            boot.initrd.availableKernelModules = [
+              "usb_storage"
+              "sd_mod"
+            ];
 
           }
         ];

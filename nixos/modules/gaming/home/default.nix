@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./zwift.nix
+  ];
+}

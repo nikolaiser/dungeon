@@ -9,6 +9,10 @@
 let
   mainMod = "SUPER";
   secondaryMod = "SUPER_SHIFT";
+
+  changeLayout =
+    index:
+    ''hyprctl devices -j | jq -r ".keyboards | .[] | .name" | rg -vP "^(video-|power-|sleep-|yubico-|integrated-camera|intel-hid-event)" | xargs -I {} hyprctl switchxkblayout "{}" "${index}"'';
 in
 {
   systemd.user.sessionVariables = {
@@ -33,7 +37,7 @@ in
         "DP-1,3840x2160@120,0x0,1"
         "DP-3,3840x2160@120,0x0,1"
         "eDP-1,1920x1200@60,3840x1538,1"
-        "HDMI-A-1,disable"
+        #"HDMI-A-1,disable"
         ",preferred,auto,auto"
       ];
 
@@ -48,6 +52,7 @@ in
         touchpad.natural_scroll = "true";
 
         sensitivity = "0";
+        numlock_by_default = "false";
       };
 
       general = {
@@ -89,7 +94,7 @@ in
 
       bind = [
         "${secondaryMod}, RETURN, exec, ${lib.exe pkgs.foot}"
-        "${secondaryMod}, Q, killactive"
+        "${secondaryMod}, L, killactive"
         "${mainMod}, J, exec, ${lib.exe pkgs.fuzzel}"
         "${mainMod}, N, togglesplit"
 
@@ -103,6 +108,16 @@ in
         "${mainMod}, 8, workspace, 8"
         "${mainMod}, 9, workspace, 9"
         "${mainMod}, 0, workspace, 10"
+
+        "${mainMod}, Left, movefocus, l"
+        "${mainMod}, Right, movefocus, r"
+        "${mainMod}, Up, movefocus, u"
+        "${mainMod}, Down, movefocus, d"
+
+        "${secondaryMod}, Left, movewindow, l"
+        "${secondaryMod}, Right, movewindow, r"
+        "${secondaryMod}, Up, movewindow, u"
+        "${secondaryMod}, Down, movewindow, d"
 
         "${secondaryMod}, 1, movetoworkspace, 1"
         "${secondaryMod}, 2, movetoworkspace, 2"
@@ -121,6 +136,11 @@ in
         ", xF86AudioPlay, exec, ${lib.exe pkgs.playerctl} play-pause"
         ", xF86AudioNext, exec, ${lib.exe pkgs.playerctl} next"
         ", code:198, exec, ${pkgs.alsa-utils}/bin/amixer set Capture toggle"
+
+        # Change to en
+        "SUPER_ALT, 0, exec, ${changeLayout "0"}"
+        # Change to ru
+        "SUPER_ALT, 1, exec, ${changeLayout "1"}"
       ];
 
       bindm = [

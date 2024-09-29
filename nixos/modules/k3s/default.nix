@@ -8,13 +8,13 @@
 let
   cfg = config.k3s;
   allFlags = nodeIp: [
-    "--flannel-backend=none"
-    "--disable-kube-proxy"
+    #"--flannel-backend=none"
+    #"--disable-kube-proxy"
     "--disable=traefik"
     "--disable=servicelb"
     "--disable=local-storage"
-    "--disable-network-policy"
-    "--egress-selector-mode=disabled"
+    #"--disable-network-policy"
+    #"--egress-selector-mode=disabled"
     "--write-kubeconfig-mode 644"
     "--tls-san 10.10.0.50"
     "--tls-san 10.10.0.51"
@@ -24,6 +24,7 @@ let
     "--service-cidr 10.45.0.0/16"
     "--cluster-dns 10.45.0.10"
     "--snapshotter=native"
+    "--node-label bgp=enabled"
     "--node-ip ${nodeIp} --node-external-ip ${nodeIp}"
   ];
 
@@ -79,27 +80,7 @@ in
     # cilium writes its own config to /etc/cni/net.d, so we need to make sure it's writable/empty/whatever
     environment.etc."cni/net.d".enable = false;
 
-    networking.firewall = {
-      allowedTCPPorts = [
-        6443 # k3s: required so that pods can reach the API server (running on port 6443 by default)
-        2379 # k3s, etcd clients: required if using a "High Availability Embedded etcd" configuration
-        2380 # k3s, etcd peers: required if using a "High Availability Embedded etcd" configuration
-        10250
-        197 # BGP
-        3784 # BFD
-      ];
-      allowedUDPPorts = [
-        51820
-        51821
-        8472
-        3784 # BFD
-      ];
-
-      #extraCommands = ''
-      #  iptables -A INPUT -i cni+ -j ACCEPT
-      #'';
-      trustedInterfaces = [ "cni+" ];
-    };
+    networking.firewall.enable = lib.mkForce false;
 
   };
 

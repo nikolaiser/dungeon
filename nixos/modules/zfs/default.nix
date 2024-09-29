@@ -6,5 +6,6 @@
   config = lib.mkIf config.zfs.enable {
     boot.kernelParams = [ "nohibernate" ];
     boot.supportedFilesystems = [ "zfs" ];
+    services.zfs.autoScrub.enable = true;
   };
 }

@@ -20,6 +20,7 @@
     "ahci"
     "usbhid"
     "rtsx_pci_sdmmc"
+    "iscsi_tcp"
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [
@@ -33,12 +34,18 @@
     "overlay"
     "iptable_raw"
     "xt_socket"
+    "iscsi_tcp"
   ];
   boot.extraModulePackages = [ ];
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
     "net.bridge.bridge-nf-call-iptables" = 1;
+  };
+
+  services.openiscsi = {
+    discoverPortal = "10.10.163.211";
+    enableAutoLoginOut = true;
   };
 
   boot.supportedFilesystems = [ "nfs" ];
@@ -49,30 +56,49 @@
       fsType = "tmpfs";
     };
 
-    "/var/lib/rancher/k3s" = {
-      device = "10.10.163.211:/${config.networking.hostName}/var/lib/rancher/k3s";
-      fsType = "nfs";
+    "/mnt/iscsi" = {
+      device = "/dev/disk/by-path/ip-10.10.163.211:3260-iscsi-iqn.2000-05.edu.example.iscsi:${config.networking.hostName}-target-lun-0";
+      fsType = "ext4";
       options = [
-        "x-systemd.automount"
-        "noauto"
+        "_netdev"
+        "nofail"
+      ];
+    };
+
+    "/var/lib/rancher/k3s" = {
+      device = "/mnt/iscsi/var-lib-rancher-k3s";
+      depends = [
+        "/mnt/iscsi"
+      ];
+      fsType = "none";
+      options = [
+        "bind"
+        "_netdev"
+        "nofail"
       ];
     };
     "/var/lib/kubelet" = {
-      device = "10.10.163.211:/${config.networking.hostName}/var/lib/kubelet";
-      fsType = "nfs";
+      device = "/mnt/iscsi/var-lib-kubelet";
+      depends = [
+        "/mnt/iscsi"
+      ];
+      fsType = "none";
       options = [
-        "x-systemd.automount"
-        "noauto"
-        "nolock"
+        "bind"
+        "_netdev"
+        "nofail"
       ];
     };
     "/etc/rancher" = {
-      device = "10.10.163.211:/${config.networking.hostName}/etc/rancher";
-      fsType = "nfs";
+      device = "/mnt/iscsi/etc-rancher";
+      depends = [
+        "/mnt/iscsi"
+      ];
+      fsType = "none";
       options = [
-        "x-systemd.automount"
-        "noauto"
-        "nolock"
+        "bind"
+        "_netdev"
+        "nofail"
       ];
     };
 

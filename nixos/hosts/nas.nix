@@ -180,6 +180,8 @@ in
     ];
   };
 
+  networking.firewall.allowedTCPPorts = [ 5201 ];
+
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.avahi = {

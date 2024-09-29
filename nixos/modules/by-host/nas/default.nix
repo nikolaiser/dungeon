@@ -29,7 +29,10 @@ args@{
       (import ./nginx.nix args)
       (import ./vaultwarden.nix args)
       (import ./pixiecore args)
-      (import ./nfs.nix args)
+      (import ./nfs.nix)
+      (import ./iscsi.nix args)
+      (import ./automation.nix args)
+      (import ./proxy.nix args)
     ]
   );
 

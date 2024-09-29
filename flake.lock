@@ -592,11 +592,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1727036289,
-        "narHash": "sha256-ry4x471BdYjXg9MS0dvJKER4XcQgtQUiWymKNCbiXfs=",
+        "lastModified": 1727466579,
+        "narHash": "sha256-BiQFTaIQAB6uBfxAHGoUgq5+99vefEL8b/eEo4mazrA=",
         "owner": "nikolaiser",
         "repo": "dungeon-private",
-        "rev": "9b6ce6008f037c0a9488be8074aeb17601069058",
+        "rev": "468e1e4c9d396cb213b709b90b0e37e8f750e181",
         "type": "github"
       },
       "original": {
@@ -619,7 +619,8 @@
         "nixpkgs-stable": "nixpkgs-stable_2",
         "private": "private",
         "stylix": "stylix",
-        "vim-tmux-navigator-sturdy": "vim-tmux-navigator-sturdy"
+        "vim-tmux-navigator-sturdy": "vim-tmux-navigator-sturdy",
+        "zwift": "zwift"
       }
     },
     "stylix": {
@@ -726,6 +727,18 @@
         "owner": "nikolaiser",
         "repo": "vim-tmux-navigator-sturdy",
         "type": "github"
+      }
+    },
+    "zwift": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-CccqKke+Abk5yOK9ZNWf81Sbg2H0a3U1GmevNLe/B9o=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/netbrain/zwift/master/zwift.sh"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/netbrain/zwift/master/zwift.sh"
       }
     }
   },
