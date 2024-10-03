@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
 
@@ -9,6 +9,8 @@
       name = "iqn.2000-05.edu.example.iscsi:${config.networking.hostName}";
     };
   };
+
+  environment.etc."target/saveconfig.json".enable = lib.mkForce false;
 
   networking.firewall.allowedTCPPorts = [ 3260 ];
 

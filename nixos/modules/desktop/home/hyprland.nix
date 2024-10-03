@@ -13,6 +13,14 @@ let
   changeLayout =
     index:
     ''hyprctl devices -j | jq -r ".keyboards | .[] | .name" | rg -vP "^(video-|power-|sleep-|yubico-|integrated-camera|intel-hid-event)" | xargs -I {} hyprctl switchxkblayout "{}" "${index}"'';
+
+  syncClipboard =
+    pkgs.writeShellScript "sync-clipboard" # bash
+      ''
+        echo -n "$(wl-paste -n)" | ${lib.exe pkgs.xclip} -selection clipboard && \
+          ${lib.exe pkgs.libnotify} --urgency=low -t 2000 'Hyprland' 'Synced Wayland clipboard with X11' || \
+          ${lib.exe pkgs.libnotify} --urgency=critical -t 2000 'Hyprland' 'Clipboard sync failed'
+      '';
 in
 {
   systemd.user.sessionVariables = {
@@ -129,6 +137,8 @@ in
         "${secondaryMod}, 8, movetoworkspace, 8"
         "${secondaryMod}, 9, movetoworkspace, 9"
         "${secondaryMod}, 0, movetoworkspace, 10"
+
+        "${secondaryMod}, V, exec, ${syncClipboard}"
 
         "${mainMod}, S, exec, ${lib.exe pkgs.grim} -g \"$(${lib.exe pkgs.slurp})\" - | ${lib.exe pkgs.swappy} -f -"
 

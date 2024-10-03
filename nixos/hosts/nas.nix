@@ -161,6 +161,11 @@ in
     fsType = "zfs";
   };
 
+  # fileSystems."/hddStorage" = {
+  #   device = "hdd/hddStorage";
+  #   fsType = "zfs";
+  # };
+
   boot.loader.grub = {
     enable = true;
     zfsSupport = true;

@@ -69,7 +69,7 @@ in
 
         # act like vim
         setw -g mode-keys vi
-        bind-key C-k display-popup -E "tms"
+        bind-key C-m display-popup -E "${lib.exe pkgs.tmux-sessionizer}"
 
         set -g default-terminal "tmux-256color"
         set -ag terminal-overrides ",xterm-256color:RGB"

@@ -49,6 +49,7 @@ in
       yubikey-manager-qt
       yubioath-flutter
       wl-clipboard
+      xclip
       inputs.agenix.packages.${system}.default
       ladybird
     ];
