@@ -27,6 +27,7 @@ in
 
     starship = {
       enable = true;
+      
     };
 
     fish = {
@@ -54,6 +55,7 @@ in
       };
     };
 
+
     tmux = {
       enable = true;
       clock24 = true;
@@ -68,8 +70,8 @@ in
         set -g prefix C-s
 
         # act like vim
-        setw -g mode-keys vi
-        bind-key C-m display-popup -E "${lib.exe pkgs.tmux-sessionizer}"
+        #setw -g mode-keys vi
+        bind-key m display-popup -E "${lib.exe pkgs.tmux-sessionizer}"
 
         set -g default-terminal "tmux-256color"
         set -ag terminal-overrides ",xterm-256color:RGB"

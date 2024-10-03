@@ -69,6 +69,9 @@
             inherit overlays system;
             config.allowUnfree = true;
             config.allowUnfreePredicate = (pkg: true);
+            # config.permittedInsecurePackages = [
+            #     "python3.12-django-3.2.25"
+            #   ];
           };
 
           inherit (pkgs) lib;
