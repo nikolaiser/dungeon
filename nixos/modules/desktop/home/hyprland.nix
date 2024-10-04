@@ -12,7 +12,8 @@ let
 
   changeLayout =
     index:
-    /* bash */ ''hyprctl devices -j | jq -r ".keyboards | .[] | .name" | rg -vP "^(video-|power-|sleep-|yubico-|integrated-camera|intel-hid-event)" | xargs -I {} hyprctl switchxkblayout "{}" "${index}"'';
+    # bash
+    ''hyprctl devices -j | jq -r ".keyboards | .[] | .name" | rg -vP "^(video-|power-|sleep-|yubico-|integrated-camera|intel-hid-event)" | xargs -I {} hyprctl switchxkblayout "{}" "${index}"'';
 
   syncClipboard =
     pkgs.writeShellScript "sync-clipboard" # bash

@@ -43,58 +43,59 @@
       }
     ];
 
-    style = /* css */ ''
-      /** ********** Fonts ********** **/
-      * {
-          font-family: "Iosevka Nerd Font", sans-serif;
-          font-size: 14px;
-          font-weight: bold;
-      }
+    style = # css
+      ''
+        /** ********** Fonts ********** **/
+        * {
+            font-family: "Iosevka Nerd Font", sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+        }
 
-      /** ********** Main Window ********** **/
-      window {
-        background-color: #1E1E2E;
-      }
+        /** ********** Main Window ********** **/
+        window {
+          background-color: #1E1E2E;
+        }
 
-      /** ********** Buttons ********** **/
-      button {
-        background-color: #242434;
-          color: #FFFFFF;
-        border: 2px solid #282838;
-        border-radius: 20px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: 35%;
-      }
+        /** ********** Buttons ********** **/
+        button {
+          background-color: #242434;
+            color: #FFFFFF;
+          border: 2px solid #282838;
+          border-radius: 20px;
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 35%;
+        }
 
-      button:focus, button:active, button:hover {
-        background-color: #89B4FA;
-        outline-style: none;
-      }
+        button:focus, button:active, button:hover {
+          background-color: #89B4FA;
+          outline-style: none;
+        }
 
-      /** ********** Icons ********** **/
-      #lock {
-          background-image: image(url("${./icons/lock.png}"));
-      }
+        /** ********** Icons ********** **/
+        #lock {
+            background-image: image(url("${./icons/lock.png}"));
+        }
 
-      #logout {
-          background-image: image(url("${./icons/logout.png}"));
-      }
+        #logout {
+            background-image: image(url("${./icons/logout.png}"));
+        }
 
-      #suspend {
-          background-image: image(url("${./icons/suspend.png}"));
-      }
+        #suspend {
+            background-image: image(url("${./icons/suspend.png}"));
+        }
 
-      #hibernate {
-          background-image: image(url("${./icons/hibernate.png}"));
-      }
+        #hibernate {
+            background-image: image(url("${./icons/hibernate.png}"));
+        }
 
-      #shutdown {
-          background-image: image(url("${./icons/shutdown.png}"));
-      }
+        #shutdown {
+            background-image: image(url("${./icons/shutdown.png}"));
+        }
 
-      #reboot {
-          background-image: image(url("${./icons/reboot.png}"));
-      }'';
+        #reboot {
+            background-image: image(url("${./icons/reboot.png}"));
+        }'';
   };
 }

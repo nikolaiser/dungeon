@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "nix" },
-  callback = function()
+  callback = function(event)
     require("otter").activate(nil, true, true, nil)
   end
 })

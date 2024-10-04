@@ -147,6 +147,12 @@ return {
         fish_lsp = {
           mason = false,
         },
+        html = {
+          mason = false
+        },
+        cssls = {
+          mason = false
+        }
       },
     },
   },
@@ -156,6 +162,11 @@ return {
       'nvim-treesitter/nvim-treesitter',
       "neovim/nvim-lspconfig",
       "hrsh7th/nvim-cmp"
+    },
+    opts = {
+      buffers = {
+        set_filetype = true,
+      },
     },
   }
 }

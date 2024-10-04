@@ -51,6 +51,7 @@
   background-clip: padding-box;
 }
 
+
 /* Window */
 window#waybar {
   background: transparent;
@@ -64,6 +65,7 @@ window#waybar.hidden {
 #workspaces * {
   font-size: 13px;
 }
+
 #workspaces button label {
   font-weight: bolder;
   transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
@@ -105,28 +107,23 @@ window#waybar.hidden {
   padding-bottom: 3px;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
+  background: linear-gradient(52deg,
+      rgba(139, 213, 202, 1) 0%,
+      rgba(138, 173, 244, 1) 30%,
+      rgba(183, 189, 248, 1) 48%,
+      rgba(198, 160, 246, 1) 77%,
+      rgba(238, 153, 160, 1) 100%);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
   /*border-radius: 12px;*/
 }
 
-#workspaces button:hover {
-}
+#workspaces button:hover {}
 
-#workspaces button.focused:hover {
-}
+#workspaces button.focused:hover {}
 
-#workspaces button.focused:hover label {
-}
+#workspaces button.focused:hover label {}
 
 /* Individual Modules */
 #cpu {
@@ -137,40 +134,30 @@ window#waybar.hidden {
   transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.68);
 }
 
-#custom-notifications {
-}
+#custom-notifications {}
 
-#custom-weather {
-}
+#custom-weather {}
 
-#custom-updates {
-}
+#custom-updates {}
 
-#custom-wf-recorder {
-}
+#custom-wf-recorder {}
 
-#custom-gpu-temp {
-}
+#custom-gpu-temp {}
 
-#custom-gpu-usage {
-}
+#custom-gpu-usage {}
 
-#custom-power-menu {
-}
+#custom-power-menu {}
 
-#temperature {
-}
+#temperature {}
 
 #window {
   background: #b7bdf8;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
+  background: linear-gradient(52deg,
+      rgba(139, 213, 202, 1) 0%,
+      rgba(138, 173, 244, 1) 30%,
+      rgba(183, 189, 248, 1) 48%,
+      rgba(198, 160, 246, 1) 77%,
+      rgba(238, 153, 160, 1) 100%);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
@@ -179,19 +166,16 @@ window#waybar.hidden {
   border: none;
 }
 
-#temperature.critical {
-}
+#temperature.critical {}
 
 #custom-music {
   background: #b7bdf8;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
+  background: linear-gradient(52deg,
+      rgba(139, 213, 202, 1) 0%,
+      rgba(138, 173, 244, 1) 30%,
+      rgba(183, 189, 248, 1) 48%,
+      rgba(198, 160, 246, 1) 77%,
+      rgba(238, 153, 160, 1) 100%);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
@@ -200,46 +184,33 @@ window#waybar.hidden {
   border: none;
 }
 
-#custom-fans {
-}
+#custom-fans {}
 
-#clock {
-}
+#clock {}
 
-#idle_inhibitor {
-}
+#idle_inhibitor {}
 
-#idle_inhibitor.activated {
-}
+#idle_inhibitor.activated {}
 
-#language {
-}
+#language {}
 
-#custom-power-menu {
-}
+#custom-power-menu {}
 
-#pulseaudio {
-}
+#pulseaudio {}
 
-#pulseaudio.muted {
-}
+#pulseaudio.muted {}
 
 
-#wireplumber {
-}
+#wireplumber {}
 
-#wireplumber.muted {
-}
+#wireplumber.muted {}
 
-#backlight {
-}
+#backlight {}
 
-#battery {
-}
+#battery {}
 
 #battery.charging,
-#battery.plugged {
-}
+#battery.plugged {}
 
 #battery.critical:not(.charging) {
   animation-name: blink;
@@ -249,11 +220,9 @@ window#waybar.hidden {
   animation-direction: alternate;
 }
 
-#network {
-}
+#network {}
 
-#network.disconnected {
-}
+#network.disconnected {}
 
 #custom-notifications {
   padding-right: 10px;
@@ -261,14 +230,12 @@ window#waybar.hidden {
 
 #clock.cl2 {
   background: #b7bdf8;
-  background: linear-gradient(
-    52deg,
-    rgba(139, 213, 202, 1) 0%,
-    rgba(138, 173, 244, 1) 30%,
-    rgba(183, 189, 248, 1) 48%,
-    rgba(198, 160, 246, 1) 77%,
-    rgba(238, 153, 160, 1) 100%
-  );
+  background: linear-gradient(52deg,
+      rgba(139, 213, 202, 1) 0%,
+      rgba(138, 173, 244, 1) 30%,
+      rgba(183, 189, 248, 1) 48%,
+      rgba(198, 160, 246, 1) 77%,
+      rgba(238, 153, 160, 1) 100%);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.377);
@@ -279,17 +246,18 @@ window#waybar.hidden {
 
 /* Animation Keyframes */
 @keyframes blink {
-  to {
-  }
+  to {}
 }
 
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

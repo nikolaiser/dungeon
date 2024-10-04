@@ -25,8 +25,7 @@ let
       helm-ls
       coursier
       marksman
-      # TODO: go back to unstable
-      pkgs-master.vscode-langservers-extracted
+      vscode-langservers-extracted
       typos-lsp
       nodePackages.bash-language-server
       zig
@@ -41,6 +40,7 @@ let
       efm-langserver
       curl
       docker-compose-language-service
+      sqlfluff
     ]
   );
 

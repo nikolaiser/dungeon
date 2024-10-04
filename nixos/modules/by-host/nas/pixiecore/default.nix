@@ -12,20 +12,22 @@ let
     "88:ae:dd:0d:8a:0c" = inputs.self.nixosConfigurations.rose;
   };
 
-  mkPixiecoreConfig = mac: host: ''
-    {
-        "kernel": "file://${host.config.system.build.kernel}/bzImage",
-        "initrd": [ "file://${host.config.system.build.netbootRamdisk}/initrd" ],
+  mkPixiecoreConfig =
+    mac: host: # json
+    ''
+      {
+          "kernel": "file://${host.config.system.build.kernel}/bzImage",
+          "initrd": [ "file://${host.config.system.build.netbootRamdisk}/initrd" ],
 
-        "cmdline": "${
-          builtins.concatStringsSep " " (
-            builtins.concatLists [
-              [
-                "init=${host.config.system.build.toplevel}/init"
+          "cmdline": "${
+            builtins.concatStringsSep " " (
+              builtins.concatLists [
+                [
+                  "init=${host.config.system.build.toplevel}/init"
+                ]
               ]
-            ]
-          )
-        }"
+            )
+          }"
       }'';
 
   hostConfigs = pkgs.writeText "host-configs.json" (

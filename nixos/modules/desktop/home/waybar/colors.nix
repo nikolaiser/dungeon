@@ -1,4 +1,5 @@
-place: ''
+place: # css
+''
   window .modules-${place} #workspaces button {
       background-color: @base07;
       color: @base00;
