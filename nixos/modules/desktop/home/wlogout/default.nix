@@ -43,7 +43,7 @@
       }
     ];
 
-    style = ''
+    style = /* css */ ''
       /** ********** Fonts ********** **/
       * {
           font-family: "Iosevka Nerd Font", sans-serif;

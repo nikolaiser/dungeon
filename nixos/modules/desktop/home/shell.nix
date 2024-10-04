@@ -21,6 +21,8 @@ in
     atuin = {
       enable = true;
       enableFishIntegration = true;
+      enableBashIntegration = true;
+      enableNushellIntegration = true;
     };
 
     direnv.enable = true;
@@ -32,8 +34,7 @@ in
 
     fish = {
       enable = true;
-      interactiveShellInit = ''
-
+      interactiveShellInit = /* fish */ ''
         if status is-interactive
          and not set -q TMUX
           exec tmux new-session -A -s main
@@ -55,6 +56,44 @@ in
       };
     };
 
+    bash = {
+      enable = true;
+      enableCompletion = true;
+      enableVteIntegration = true;
+    };
+
+    nushell = {
+      enable = true;
+      configFile.text = /* nu */ ''
+        def start_tmux [] {
+          if 'TMUX' not-in ($env | columns) {
+            tmux new-session -A -s main
+          }
+        }
+
+        start_tmux
+      '';
+
+      extraConfig = /* nu */ ''
+        let carapace_completer = { |spans|
+          carapace $spans.0 nushell $spans | from json
+        }
+        $env.config = {
+          show_banner: false,
+          completions: {
+            case_sensitive: false
+            quick: true
+            partial: true
+            algorithm: "fuzzy"
+            external: {
+              enable: true
+              max_results: 100
+              completer: $carapace_completer
+            }
+          }
+        }
+      '';
+    };
 
     tmux = {
       enable = true;
@@ -66,7 +105,7 @@ in
         yank
       ];
 
-      extraConfig = ''
+      extraConfig = /* tmux */ ''
         set -g prefix C-s
 
         # act like vim

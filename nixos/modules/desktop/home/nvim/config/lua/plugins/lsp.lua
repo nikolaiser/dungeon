@@ -98,6 +98,9 @@ return {
         taplo = {
           mason = false,
         },
+        nushell = {
+          mason = false,
+        },
         bashls = {
           mason = false,
         },
@@ -141,7 +144,18 @@ return {
         docker_compose_language_service = {
           mason = false
         },
+        fish_lsp = {
+          mason = false,
+        },
       },
     },
   },
+  {
+    "jmbuhr/otter.nvim",
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      "neovim/nvim-lspconfig",
+      "hrsh7th/nvim-cmp"
+    },
+  }
 }

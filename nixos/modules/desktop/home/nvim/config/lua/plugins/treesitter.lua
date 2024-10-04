@@ -1,6 +1,12 @@
 return { {
   "nvim-treesitter/nvim-treesitter",
-  opts = function(_, opts)
-    require("nvim-treesitter.install").prefer_git = true
-  end
+  opts = {
+    prefer_git = true,
+    ensure_installed = { "fish", "tmux", "bash" },
+  },
+  dependencies = {
+    -- NOTE: additional parser
+    { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+  },
+  build = ":TSUpdate",
 } }
