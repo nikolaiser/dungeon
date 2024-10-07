@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  pkgs-master,
   config,
   ...
 }:
@@ -44,42 +43,6 @@ let
     ]
   );
 
-  parsers = pkgs.symlinkJoin {
-    name = "nvim-ts-parsers";
-    paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
-      c
-      lua
-      vim
-      vimdoc
-      query
-      python
-      bash
-      markdown
-      markdown_inline
-      bash
-      go
-      java
-      javascript
-      json
-      scala
-      lua
-      markdown
-      markdown_inline
-      nix
-      python
-      regex
-      rust
-      starlark
-      yaml
-      html
-      css
-      sql
-      zig
-      terraform
-      scss
-      helm
-    ];
-  };
 
   preInit = ''
     -- Globals
@@ -113,14 +76,8 @@ let
         ];
     };
 
-  neovim-package = (pkgs.neovim-unwrapped.override { treesitter-parsers = { }; }).overrideAttrs (oa: {
-    preConfigure =
-      oa.preConfigure
-      + ''
-        cp -f ${parsers}/parser/* $out/lib/nvim/parser/
-      '';
-    treesitter-parsers = { };
-  });
+  neovim-package = pkgs.neovim-unwrapped;
+
   nvim-wrapped = pkgs.wrapNeovimUnstable neovim-package nvimConfig;
 in
 {
