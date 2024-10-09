@@ -43,7 +43,6 @@ let
     ]
   );
 
-
   preInit = ''
     -- Globals
     vim.g.is_nix_package = 1

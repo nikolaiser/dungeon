@@ -119,6 +119,8 @@
               };
               nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
               systemd.tmpfiles.rules = [ "d /var/tmp/agenix-rekey 1777 root root" ];
+
+              system.stateVersion = "24.11";
             }
           ];
         };
