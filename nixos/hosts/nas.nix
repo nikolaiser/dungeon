@@ -52,6 +52,7 @@ in
   ];
 
   boot.initrd.kernelModules = [ ];
+  boot.initrd.postDeviceCommands = "sleep 5; zpool import -a; zfs load-key -a";
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 

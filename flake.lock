@@ -544,11 +544,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1728500412,
-        "narHash": "sha256-OtVgeQ8NSU5/G/URLnPSbbJ/eQgaFW3qGiMaAQeRlCY=",
+        "lastModified": 1728672117,
+        "narHash": "sha256-DpzRhOwG1Ro/G1mkEjn50Fsk3xdcxIV+wCMCNph3HnQ=",
         "owner": "nikolaiser",
         "repo": "dungeon-private",
-        "rev": "60554040cf73af3044730ed4e1d964d8a0fc31dc",
+        "rev": "e26c26ec6854b8e35eb34c40aa958943992301d0",
         "type": "github"
       },
       "original": {
