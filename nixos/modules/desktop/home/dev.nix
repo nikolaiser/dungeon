@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, system, ... }:
 
 {
 
@@ -48,6 +48,8 @@
       just
       nixos-generators
       nixos-anywhere
+      inputs.kent.packages.${system}.default
+      nix-output-monitor
     ];
 
 }

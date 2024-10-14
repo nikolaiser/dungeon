@@ -50,6 +50,11 @@
       flake = false;
     };
 
+    kent = {
+      url = "github:nikolaiser/kent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =

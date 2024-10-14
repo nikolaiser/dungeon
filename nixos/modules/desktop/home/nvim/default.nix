@@ -40,6 +40,7 @@ let
       curl
       docker-compose-language-service
       sqlfluff
+      taplo
     ]
   );
 
