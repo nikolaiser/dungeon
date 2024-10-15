@@ -2,7 +2,7 @@ return { {
   "nvim-treesitter/nvim-treesitter",
   opts = {
     prefer_git = true,
-    ensure_installed = { "fish", "tmux", "bash", "scala" },
+    ensure_installed = { "fish", "tmux", "bash", "scala", "nix" },
   },
   dependencies = {
     -- NOTE: additional parser

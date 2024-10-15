@@ -26,13 +26,13 @@ in
 
     fonts = {
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Serif";
+        package = pkgs.iosevka-bin.override { variant = "Etoile"; };
+        name = "Iosevka Etoile";
       };
 
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "DejaVu Sans";
+        package = pkgs.iosevka-bin.override { variant = "Aile"; };
+        name = "Iosevka Aile";
       };
 
       monospace = {
