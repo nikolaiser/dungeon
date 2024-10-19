@@ -33,7 +33,7 @@
       pciutils
       cargo
       postgresql_16
-      pulumi
+      pulumi-bin
       robo3t
       rustfmt
       (sbt.override { jre = pkgs.temurin-bin-21; })

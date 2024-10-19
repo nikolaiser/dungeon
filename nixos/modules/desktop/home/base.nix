@@ -51,7 +51,7 @@ in
       wl-clipboard
       xclip
       inputs.agenix.packages.${system}.default
-      ladybird
+      #ladybird
     ];
 
     sessionVariables = {

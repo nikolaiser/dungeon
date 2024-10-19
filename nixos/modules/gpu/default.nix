@@ -18,7 +18,8 @@ let
 
     hardware.graphics = {
       extraPackages = with pkgs; [
-        amdvlk
+        # TODO: maybe reenable
+        #amdvlk
         vaapiVdpau
         libvdpau-va-gl
       ];
