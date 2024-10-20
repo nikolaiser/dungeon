@@ -16,22 +16,22 @@ let
       videoDrivers = [ "modesetting" ];
     };
 
-    hardware.graphics = {
-      extraPackages = with pkgs; [
-        # TODO: maybe reenable
-        #amdvlk
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-
-      extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
-
-      #driSupport = true;
-      #driSupport32Bit = true;
+    hardware = {
+      amdgpu = {
+        opencl.enable = true;
+        amdvlk = {
+          enable = true;
+          support32Bit.enable = true;
+        };
+      };
+      graphics = {
+        extraPackages = with pkgs; [
+          vaapiVdpau
+          libvdpau-va-gl
+        ];
+      };
     };
-
     systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
-
   };
 
   intelIrisConfig = {
