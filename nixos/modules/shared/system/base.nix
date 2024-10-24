@@ -25,6 +25,7 @@ in
       "nix-command"
       "flakes"
     ];
+    nix-path = "nixpkgs=flake:nixpkgs";
   };
 
   networking.firewall.enable = true;

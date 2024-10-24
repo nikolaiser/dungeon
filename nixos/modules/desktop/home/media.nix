@@ -24,7 +24,6 @@ in
     pavucontrol
     gnupg # gpg
     vlc
-    brave
     via
     vial
     graphviz-nox
