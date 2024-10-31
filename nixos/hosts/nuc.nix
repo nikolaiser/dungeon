@@ -128,7 +128,7 @@
   environment.systemPackages = with pkgs; [
     ethtool
     gitMinimal
-    iproute
+    iproute2
     iptables
     k3s
     openssh

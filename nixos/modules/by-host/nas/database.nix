@@ -4,13 +4,21 @@ let
   postgresqlDataDir = "/nvmeStorage/db/postgres";
 in
 {
-  services.postgresql = {
+  services = { 
+    postgresql = {
     enable = true;
     dataDir = postgresqlDataDir;
     enableTCPIP = true;
     authentication = "host all all 10.10.0.1/16 md5";
     package = pkgs.postgresql_15;
   };
+    postgresqlBackup = {
+      enable = true;
+      location = "/pgbackup";
+      backupAll = true;
+      compression = "zstd";
+    }; 
+  }; 
 
   networking.firewall.allowedTCPPorts = [ 5432 ];
 
