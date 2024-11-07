@@ -41,7 +41,7 @@ in
           "$git_branch"
           "$git_commit"
           "$git_state"
-          "$git_state"
+          "$git_status"
           "$nix_shell"
           "$cmd_duration"
 
