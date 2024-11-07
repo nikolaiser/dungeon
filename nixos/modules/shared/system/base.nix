@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 let
   stateVersion = "24.11";
 in
@@ -20,12 +25,15 @@ in
   system.stateVersion = stateVersion;
   home-manager.users.${config.username}.home.stateVersion = stateVersion;
 
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    nix-path = "nixpkgs=flake:nixpkgs";
+  nix = {
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      nix-path = "nixpkgs=flake:nixpkgs";
+    };
   };
 
   networking.firewall.enable = true;

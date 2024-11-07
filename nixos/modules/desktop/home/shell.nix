@@ -11,12 +11,6 @@ let
     src = inputs.vim-tmux-navigator-sturdy;
   });
 
-  bar = # lua
-    ''
-      local a = 5
-
-
-    '';
 in
 {
 
@@ -32,11 +26,32 @@ in
       enableNushellIntegration = true;
     };
 
-    direnv.enable = true;
+    direnv = {
+      enable = true;
+      config = {
+        global.hide_env_diff = true;
+      };
+    };
 
     starship = {
       enable = true;
+      settings = {
+        format = lib.concatStrings [
+          "$directory"
+          "$git_branch"
+          "$git_commit"
+          "$git_state"
+          "$git_state"
+          "$nix_shell"
+          "$cmd_duration"
 
+          "$line_break"
+          "$character"
+        ];
+        git_branch = {
+          only_attached = true;
+        };
+      };
     };
 
     fish = {
@@ -47,6 +62,12 @@ in
            and not set -q TMUX
             exec tmux new-session -A -s main
           end
+        '';
+
+      shellInit = # fish
+        ''
+          set -g fish_key_bindings fish_default_key_bindings
+          set fish_greeting  # disable greeting
         '';
 
       shellAliases = {
@@ -111,7 +132,6 @@ in
 
       plugins = with pkgs.tmuxPlugins; [
         vim-tmux-navigator-sturdy
-        dracula
         yank
       ];
 
@@ -134,14 +154,8 @@ in
           set -ga update-environment TERM
           set -ga update-environment TERM_PROGRAM
 
-          set -g @dracula-plugins "battery time"
-          set -g @dracula-show-powerline true
-          set -g @dracula-show-flags true
-          set -g @dracula-show-location false
-          set -g @dracula-show-fahrenheit false
-          set -g @dracula-show-left-icon session
-          set -g status-position top
-          run-shell ${pkgs.tmuxPlugins.dracula}/share/tmux-plugins/dracula/dracula.tmux
+          set-option -g status-position top
+          set -g status-left-length 20
         '';
     };
   };

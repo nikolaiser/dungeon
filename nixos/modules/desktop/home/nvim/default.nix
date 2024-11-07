@@ -27,7 +27,7 @@ let
       vscode-langservers-extracted
       typos-lsp
       nodePackages.bash-language-server
-      zig
+      gcc
       metalsPackage
       markdownlint-cli2
       nodejs_22
@@ -41,6 +41,8 @@ let
       docker-compose-language-service
       sqlfluff
       taplo
+      tree-sitter
+      nixfmt-rfc-style
     ]
   );
 
