@@ -10,7 +10,7 @@ let
   binPath = lib.makeBinPath (
     with pkgs;
     [
-      basedpyright
+      pyright
       git
       deadnix
       ripgrep

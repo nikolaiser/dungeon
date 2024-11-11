@@ -83,5 +83,24 @@ return {
         desc = "Metals commands",
       },
     },
+  },
+  {
+    "rgroli/other.nvim",
+    opts = {
+      mappings = {
+        {
+          pattern = "^(.*)/main/(.*)%.scala$",
+          target = "%1/test/%2Spec.scala",
+          context = "test",
+        },
+        {
+          pattern = "^(.*)%.scala$",
+          target = "%1Live.scala",
+          context = "live",
+        },
+
+      }
+    }
   }
+
 }

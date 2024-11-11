@@ -9,10 +9,19 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        basedpyright = {
+        pyright = {
 
         }
       }
     }
+  },
+  {
+    "rgroli/other.nvim",
+    opts = {
+      mappings = {
+        "python",
+      }
+    }
   }
+
 }
