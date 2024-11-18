@@ -62,8 +62,8 @@ return {
         n_lines = 500,
         custom_textobjects = {
           o = ai.gen_spec.treesitter({ -- code block
-            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
-            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+            a = { "@block.outer", "@conditional.outer", "@loop.outer", "@assignment.outer" },
+            i = { "@block.inner", "@conditional.inner", "@loop.inner", "@assignment.inner" },
           }),
           f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
           c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),       -- class
@@ -112,6 +112,7 @@ return {
         replace = "gsr",        -- Replace surrounding
         update_n_lines = "gsn", -- Update `n_lines`
       },
+      n_lines = 100,
     },
   },
   {

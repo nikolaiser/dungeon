@@ -32,6 +32,7 @@ in
     networkmanagerapplet # networkmanager applet
     libsForQt5.plasma-pa
     slides
+    drawing
   ];
 
   services.mpris-proxy.enable = true;

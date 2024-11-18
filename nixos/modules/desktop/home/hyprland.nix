@@ -105,7 +105,7 @@ in
         "${secondaryMod}, RETURN, exec, ${lib.exe pkgs.foot}"
         "${secondaryMod}, L, killactive"
         "${mainMod}, J, exec, ${lib.exe pkgs.fuzzel}"
-        "${mainMod}, N, togglesplit"
+        "${mainMod}, F, togglesplit"
 
         "${mainMod}, 1, workspace, 1"
         "${mainMod}, 2, workspace, 2"

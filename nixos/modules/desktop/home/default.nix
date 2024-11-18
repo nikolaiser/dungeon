@@ -15,5 +15,6 @@ args:
     ./media.nix
     ./shell.nix
     ./nvim
+    ./rnote.nix
   ];
 }

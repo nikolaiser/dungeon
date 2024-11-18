@@ -10,8 +10,13 @@
     udev.packages = with pkgs; [
       via
       vial
+      wacomtablet
     ];
   };
+
+  hardware.opentabletdriver.enable = true;
+
+  environment.systemPackages = [ pkgs.wacomtablet ];
 
   hardware.keyboard.qmk.enable = true;
 }
