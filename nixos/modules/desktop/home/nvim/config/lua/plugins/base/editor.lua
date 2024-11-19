@@ -65,9 +65,10 @@ return {
             a = { "@block.outer", "@conditional.outer", "@loop.outer", "@assignment.outer" },
             i = { "@block.inner", "@conditional.inner", "@loop.inner", "@assignment.inner" },
           }),
+
           f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
           c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),       -- class
-          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },           -- tags
+          t = ai.gen_spec.treesitter({ a = "@type", i = "@type" }),
           d = { "%f[%d]%d+" },                                                          -- digits
           e = {                                                                         -- Word with case
             { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
@@ -169,6 +170,15 @@ return {
       end
 
     }
-  }
+  },
+  {
+    "echasnovski/mini.splitjoin",
+    opts =
+    {
+      mappings = {
+        toggle = '<leader>cj',
+      },
+    },
+  },
 
 }

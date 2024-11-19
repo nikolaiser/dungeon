@@ -30,3 +30,5 @@
 (var_definition
   value: (_)? @function.inner) @function.outer
 
+(type_identifier) @type
+
