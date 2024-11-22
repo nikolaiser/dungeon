@@ -140,7 +140,7 @@ in
           set -g prefix C-s
 
           # act like vim
-          #setw -g mode-keys vi
+          setw -g mode-keys vi
           bind-key m display-popup -E "${lib.exe pkgs.tmux-sessionizer}"
 
           set -g default-terminal "tmux-256color"

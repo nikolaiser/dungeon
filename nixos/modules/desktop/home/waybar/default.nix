@@ -52,10 +52,10 @@ with config.stylix.fonts;
         modules-center = [
           "clock"
           "pulseaudio"
-          "pulseaudio#microphone"
+          # "pulseaudio#microphone"
         ];
         modules-right = [
-          "network"
+          # "network"
           "battery"
           "tray"
           "hyprland/language"

@@ -7,7 +7,6 @@ local map = vim.keymap.set
 
 map({ "i", "x", "n", "s" }, "<C-t>", "<cmd>w<cr><esc>", { desc = "Save File" })
 
-
 -- Clear search with <esc>
 map({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
 

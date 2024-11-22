@@ -44,7 +44,7 @@ place: # css
   }
   .modules-${place} #clock
   .modules-${place} #hyprland.language {
-      background-color: @base03;
+      background-color: @base0F;
       color: @base00;
   }
   .modules-${place} #backlight {

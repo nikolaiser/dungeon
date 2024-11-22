@@ -4,7 +4,6 @@ let
     pkgs.nerdfonts.override {
       fonts = [
         "Iosevka"
-        "JetBrainsMono"
       ];
     }
   );
@@ -47,6 +46,7 @@ in
 
       sizes = {
         desktop = 16;
+        applications = 14;
       };
 
     };

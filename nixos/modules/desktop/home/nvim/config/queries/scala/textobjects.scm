@@ -30,5 +30,10 @@
 (var_definition
   value: (_)? @function.inner) @function.outer
 
-(type_identifier) @type
+(generic_type 
+  type: (type_identifier) 
+  type_arguments: (_)?) @type.outer
+
+
+(type_identifier) @type.inner
 

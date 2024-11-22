@@ -78,9 +78,6 @@ in
           size = "3";
           passes = "1";
         };
-        drop_shadow = "true";
-        shadow_range = "4";
-        shadow_render_power = "3";
       };
 
       animations = {
@@ -146,6 +143,8 @@ in
         ", xF86AudioPrev, exec, ${lib.exe pkgs.playerctl} previous"
         ", xF86AudioPlay, exec, ${lib.exe pkgs.playerctl} play-pause"
         ", xF86AudioNext, exec, ${lib.exe pkgs.playerctl} next"
+        ", xF86AudioRaiseVolume, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ +5%"
+        ", xF86AudioLowerVolume, exec, ${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ -5%"
         ", code:198, exec, ${pkgs.alsa-utils}/bin/amixer set Capture toggle"
 
         # Change to en
@@ -169,7 +168,7 @@ in
     fuzzel.enable = true;
   };
 
-  services.mako = {
+  services.swaync = {
     enable = true;
   };
 }

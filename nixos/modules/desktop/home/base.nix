@@ -40,12 +40,6 @@ in
       age
       libargon2
       wireguard-tools
-      (nerdfonts.override {
-        fonts = [
-          "Iosevka"
-          "JetBrainsMono"
-        ];
-      })
       yubikey-manager-qt
       yubioath-flutter
       wl-clipboard

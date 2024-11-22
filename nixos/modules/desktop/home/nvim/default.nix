@@ -44,6 +44,8 @@ let
       taplo
       tree-sitter
       nixfmt-rfc-style
+      scalafmt
+      stylua
     ]
   );
 
