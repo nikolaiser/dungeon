@@ -15,6 +15,8 @@
 (parameter
   name: (identifier) @parameter.inner) @parameter.outer
 
+(arguments (_) @parameter.inner) @parameter.outer
+
 (class_parameter
   name: (identifier) @parameter.inner) @parameter.outer
 
@@ -22,7 +24,6 @@
   body: (_) @conditional.inner) @conditional.outer
 
 (comment) @comment.outer
-
 
 (val_definition
   value: (_)? @function.inner) @function.outer

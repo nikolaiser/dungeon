@@ -54,6 +54,12 @@ return {
 			end,
 		},
 		{
+			"<leader>cs",
+			function()
+				require("telescope.builtin").lsp_dynamic_workspace_symbols()
+			end,
+		},
+		{
 			"gd",
 			function()
 				require("telescope.builtin").lsp_definitions()

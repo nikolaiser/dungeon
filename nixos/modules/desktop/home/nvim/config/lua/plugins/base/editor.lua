@@ -109,21 +109,9 @@ return {
 	{
 		"echasnovski/mini.surround",
 		opts = {
-			mappings = {
-				-- add = "gsa", -- Add surrounding in Normal and Visual modes
-				-- delete = "gsd", -- Delete surrounding
-				-- find = "gsf", -- Find surrounding (to the right)
-				-- find_left = "gsF", -- Find surrounding (to the left)
-				-- highlight = "gsh", -- Highlight surrounding
-				-- replace = "gsr", -- Replace surrounding
-				-- update_n_lines = "gsn", -- Update `n_lines`
-			},
+			mappings = {},
 			n_lines = 100,
 		},
-	},
-	{
-		"echasnovski/mini.bracketed",
-		opts = {},
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -193,5 +181,47 @@ return {
 	{
 		"echasnovski/mini.operators",
 		opts = {},
+	},
+	{
+		"johmsalas/text-case.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+		config = function()
+			require("textcase").setup({})
+			require("telescope").load_extension("textcase")
+		end,
+		keys = {
+			"ga", -- Default invocation prefix
+			{ "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
+		},
+		cmd = {
+			-- NOTE: The Subs command name can be customized via the option "substitude_command_name"
+			"Subs",
+			"TextCaseOpenTelescope",
+			"TextCaseOpenTelescopeQuickChange",
+			"TextCaseOpenTelescopeLSPChange",
+			"TextCaseStartReplacingCommand",
+		},
+		-- If you want to use the interactive feature of the `Subs` command right away, text-case.nvim
+		-- has to be loaded on startup. Otherwise, the interactive feature of the `Subs` will only be
+		-- available after the first executing of it or after a keymap of text-case.nvim has been used.
+		lazy = false,
+	},
+	{
+		"ColinKennedy/cursor-text-objects.nvim",
+		config = function()
+			vim.keymap.set(
+				{ "o", "x" },
+				"[",
+				"<Plug>(cursor-text-objects-up)",
+				{ desc = "Run from your current cursor to the end of the text-object." }
+			)
+			vim.keymap.set(
+				{ "o", "x" },
+				"]",
+				"<Plug>(cursor-text-objects-down)",
+				{ desc = "Run from your current cursor to the end of the text-object." }
+			)
+		end,
+		version = "v1.*",
 	},
 }

@@ -3,16 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		dependencies = {
-			{
-				"nvim-treesitter/nvim-treesitter-textobjects",
-				init = function()
-					-- disable rtp plugin, as we only need its queries for mini.ai
-					-- In case other textobject modules are enabled, we will load them
-					-- once nvim-treesitter is loaded
-					require("lazy.core.loader").disable_rtp_plugin("nvim-treesitter-textobjects")
-					load_textobjects = true
-				end,
-			},
+			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		init = function(plugin)
 			-- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -36,10 +27,58 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
+			textobjects = {
+				move = {
+					enable = true,
+					goto_next_start = {
+						["]f"] = "@function.outer",
+						["]c"] = "@class.outer",
+						["]a"] = "@parameter.inner",
+					},
+					goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+					goto_previous_start = {
+						["[f"] = "@function.outer",
+						["[c"] = "@class.outer",
+						["[a"] = "@parameter.inner",
+					},
+					goto_previous_end = {
+						["[F"] = "@function.outer",
+						["[C"] = "@class.outer",
+						["[A"] = "@parameter.inner",
+					},
+				},
+			},
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.configs").setup(opts)
 		end,
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		event = "VeryLazy",
+		enabled = true,
+		config = function()
+			-- When in diff mode, we want to use the default
+			-- vim text objects c & C instead of the treesitter ones.
+			local move = require("nvim-treesitter.textobjects.move") ---@type table<string,fun(...)>
+			local configs = require("nvim-treesitter.configs")
+			for name, fn in pairs(move) do
+				if name:find("goto") == 1 then
+					move[name] = function(q, ...)
+						if vim.wo.diff then
+							local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
+							for key, query in pairs(config or {}) do
+								if q == query and key:find("[%]%[][cC]") then
+									vim.cmd("normal! " .. key)
+									return
+								end
+							end
+						end
+						return fn(q, ...)
+					end
+				end
+			end
+		end,
 	},
 }

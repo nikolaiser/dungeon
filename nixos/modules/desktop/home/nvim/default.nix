@@ -46,6 +46,8 @@ let
       nixfmt-rfc-style
       scalafmt
       stylua
+      protols
+      ltex-ls
     ]
   );
 
