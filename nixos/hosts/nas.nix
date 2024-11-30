@@ -52,9 +52,18 @@ in
   ];
 
   boot.initrd.kernelModules = [ ];
-  boot.initrd.postDeviceCommands = "sleep 5; zpool import -a; zfs load-key -a";
+  boot.initrd.postResumeCommands = "sleep 5; zpool import -a; zfs load-key -a";
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.supportedFilesystems = {
+    zfs = lib.mkForce true;
+  };
+  boot.kernelParams = [
+    "amd_pstate=guided"
+    "pcie_aspm=force"
+  ];
+
+  powerManagement.cpuFreqGovernor = "powersave";
 
   disko.devices = {
     disk = {

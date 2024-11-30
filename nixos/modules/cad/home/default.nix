@@ -1,9 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 {
   home.packages = with pkgs; [
     freecad-wayland
     prusa-slicer
-    orca-slicer
+    pkgs-stable.orca-slicer
   ];
 }

@@ -60,7 +60,8 @@ return {
 				-- showImplicitArguments = true,
 				-- showImplicitConversionsAndClasses = true,
 				-- showInferredType = true,
-				defaultBspToBuildTool = true,
+				-- defaultBspToBuildTool = true,
+				serverProperties = { "-Dmetals.enable-best-effort=true" },
 				excludedPackages = {},
 				fallbackScalaVersion = "3.3.3",
 			}

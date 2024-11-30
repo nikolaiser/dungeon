@@ -10,6 +10,7 @@ let
   binPath = lib.makeBinPath (
     with pkgs;
     [
+      bloop
       pyright
       git
       deadnix

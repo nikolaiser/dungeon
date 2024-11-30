@@ -8,6 +8,9 @@
       locations."/" = {
         proxyPass = "http://10.10.163.207:80";
         proxyWebsockets = true;
+        extraConfig = ''
+          client_max_body_size 900M;
+        '';
       };
     };
   };

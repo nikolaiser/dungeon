@@ -43,6 +43,11 @@
     "net.bridge.bridge-nf-call-iptables" = 1;
   };
 
+  boot.kernelParams = [
+    "intel_pstate=active"
+    "pcie_aspm=force"
+  ];
+
   services.openiscsi = {
     discoverPortal = "10.10.163.211";
     enableAutoLoginOut = true;

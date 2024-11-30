@@ -1,7 +1,15 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = {},
+	opts = {
+		defaults = {
+			mappings = {
+				i = {
+					["<C-Space>"] = require("telescope.actions").to_fuzzy_refine,
+				},
+			},
+		},
+	},
 	keys = {
 		-- Basic
 		{
@@ -54,7 +62,7 @@ return {
 			end,
 		},
 		{
-			"<leader>cs",
+			"<leader>ss",
 			function()
 				require("telescope.builtin").lsp_dynamic_workspace_symbols()
 			end,

@@ -21,6 +21,11 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  boot.kernelParams = [
+    "amd_pstate=guided"
+    "pcie_aspm=force"
+  ];
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/757efbad-bc97-4a8f-a81a-7bc2c62335b0";
     fsType = "ext4";

@@ -43,11 +43,11 @@ in
     settings = {
 
       monitor = [
-        "DP-1,3840x2160@144,0x0,1"
-        "DP-3,3840x2160@144,0x0,1"
-        "eDP-1,1920x1200@60,3840x1538,1"
-        #"HDMI-A-1,disable"
-        ",preferred,auto,auto"
+        "DP-1,3840x2160@144,0x0,1, vrr, 1, bitdepth, 10"
+        "DP-3,3840x2160@144,0x0,1, vrr, 1, bitdepth, 10"
+        "DP-4,3840x2160@144,0x0,1, vrr, 1, bitdepth, 10"
+        "eDP-1,1920x1200@60,3840x1538,1, vrr, 1, bitdepth, 10"
+        ",preferred,auto,auto, vrr, 0"
       ];
 
       env = "XCURSOR_SIZE,24";
