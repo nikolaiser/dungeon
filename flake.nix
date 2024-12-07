@@ -5,6 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nixpkgs-freecad-qt6.url = "github:ppenguin/nixpkgs/try-freecad-qt6";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -95,6 +96,13 @@
 
               config.allowUnfree = true;
             };
+
+            pkgs-freecad = import inputs.nixpkgs-freecad-qt6 {
+              inherit overlays system;
+
+              config.allowUnfree = true;
+            };
+
           };
 
         in

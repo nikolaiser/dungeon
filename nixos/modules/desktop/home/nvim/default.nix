@@ -49,6 +49,8 @@ let
       stylua
       protols
       ltex-ls
+      zls
+      execline
     ]
   );
 
