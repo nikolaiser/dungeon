@@ -10,10 +10,18 @@
     enable = true;
 
     extraPortals = with pkgs; [
-      xdg-desktop-portal-kde
-      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
     ];
+    config = {
+      common = {
+        default = "hyprland";
+      };
+    };
   };
+
+  environment.systemPackages = with pkgs; [
+    xdg-desktop-portal-hyprland
+  ];
 
   services = {
 

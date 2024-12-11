@@ -30,6 +30,7 @@ in
     "MOZ_WEBRENDER" = "1";
     "WLR_NO_HARDWARE_CURSORS" = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = "1";
+    "NIXOS_XDG_OPEN_USE_PORTAL" = "1";
   };
 
   wayland.windowManager.hyprland = {
@@ -43,10 +44,10 @@ in
     settings = {
 
       monitor = [
-        "DP-1,3840x2160@144,0x0,1, bitdepth, 10"
-        "DP-3,3840x2160@144,0x0,1, bitdepth, 10"
-        "DP-4,3840x2160@144,0x0,1, bitdepth, 10"
-        "eDP-1,1920x1200@60,3840x1538,1, vrr, 1, bitdepth, 10"
+        "DP-1,3840x2160@144,0x0,1"
+        "DP-3,3840x2160@144,0x0,1"
+        "DP-4,3840x2160@144,0x0,1"
+        "eDP-1,1920x1200@60,3840x1538,1, vrr, 1"
         ",preferred,auto,auto, vrr, 0"
       ];
 
