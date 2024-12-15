@@ -21,6 +21,7 @@
     "usbhid"
     "rtsx_pci_sdmmc"
     "iscsi_tcp"
+    "mlx4_en" # Add mlx4_en to load Mellanox driver early
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [
@@ -35,6 +36,7 @@
     "iptable_raw"
     "xt_socket"
     "iscsi_tcp"
+    "netconsole"
   ];
   boot.extraModulePackages = [ ];
 
@@ -158,4 +160,45 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  services.journald.extraConfig = ''
+    ForwardToSyslog=yes
+  '';
+
+  services.rsyslogd = {
+    enable = true;
+    extraConfig = ''
+      # Set the hostname explicitly
+      $PreserveFQDN on
+      $LocalHostName ${config.networking.hostName}
+
+      *.* @10.10.163.211:514
+    '';
+  };
+
+  systemd.services.syslog.after = [ "network-online.target" ];
+
+  # systemd service to initialize netconsole after network is ready
+  # systemd.services.netconsole = {
+  #   description = "Netconsole Setup";
+  #   after = [ "network-online.target" ]; # Ensure enp1s0 is ready
+  #   wants = [ "network-online.target" ];
+  #   wantedBy = [ "multi-user.target" ];
+  #
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart =
+  #       let
+  #         startNetconsole = pkgs.writeShellScriptBin "startNetconsole" ''
+  #           ${pkgs.util-linux}/bin/dmesg -n 8
+  #           ${pkgs.kmod}/bin/modprobe -r netconsole || true
+  #           ${pkgs.kmod}/bin/modprobe netconsole netconsole=@/enp1s0,6666@10.10.163.211/
+  #         '';
+  #       in
+  #       "${startNetconsole}/bin/startNetconsole";
+  #     RemainAfterExit = true;
+  #   };
+  #   path = [ ];
+  # };
+
 }

@@ -34,6 +34,7 @@ args@{
       (import ./proxy.nix args)
       (import ./seafile.nix args)
       (import ./vaultwarden.nix args)
+      (import ./monitoring.nix args)
     ]
   );
 

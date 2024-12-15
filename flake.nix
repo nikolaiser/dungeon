@@ -254,17 +254,6 @@
               ip = "10.10.0.52";
             };
 
-            #TODO: remove
-            fileSystems."/var/log/journal" = {
-              device = "/dev/disk/by-uuid/84486f4f-987c-4a90-bd99-037ba77054df";
-              fsType = "ext4";
-            };
-
-            boot.initrd.availableKernelModules = [
-              "usb_storage"
-              "sd_mod"
-            ];
-
           }
         ];
 
@@ -297,7 +286,7 @@
       };
       agenix-rekey = inputs.agenix-rekey.configure {
         userFlake = inputs.private;
-        nodes = self.nixosConfigurations;
+        nixosConfigurations = self.nixosConfigurations;
       };
 
     };
