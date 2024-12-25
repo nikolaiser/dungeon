@@ -14,7 +14,10 @@ in
   };
 
   programs.fish.enable = true;
-  environment.systemPackages = with pkgs; [ git ];
+  environment.systemPackages = with pkgs; [
+    git
+    powertop
+  ];
 
   services.fwupd.enable = true;
 
@@ -39,5 +42,6 @@ in
   networking.firewall.enable = true;
 
   system.switch.enableNg = true;
+  powerManagement.powertop.enable = true;
 
 }

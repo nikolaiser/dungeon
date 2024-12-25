@@ -39,6 +39,10 @@
     "netconsole"
   ];
   boot.extraModulePackages = [ ];
+  boot.blacklistedKernelModules = [
+    "i2c_i801"
+    "snd_hda_intel"
+  ];
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
@@ -46,9 +50,25 @@
   };
 
   boot.kernelParams = [
-    "intel_pstate=active"
-    "pcie_aspm=force"
+    # "intel_pstate=active"
+    # "intel_pstate=disable"
+    # "intel_pstate=passive"
+    # "pcie_aspm=force"
+    # https://community.intel.com/t5/Processors/Frequent-crashes-on-i5-11500/td-p/1280709?profile.language=ja
+    # "processor.max_cstate=0"
+    # "intel_idle.max_cstate=0"
+    # "idle=poll"
+    "irqpoll" # Reassign unhandled IRQs
+    "pci=noacpi" # Disable ACPI for PCI routing
+    "acpi_enforce_resources=lax" # Relax ACPI resource conflicts
+
   ];
+
+  # powerManagement.cpuFreqGovernor = "performance";
+
+  boot.postBootCommands = ''
+    echo 1 > /sys/devices/system/cpu/intel_pstate/no_turbo
+  '';
 
   services.openiscsi = {
     discoverPortal = "10.10.163.211";
@@ -159,7 +179,8 @@
   system.build.installBootLoader = lib.mkDefault "${pkgs.coreutils}/bin/true";
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault true;
 
   services.journald.extraConfig = ''
     ForwardToSyslog=yes
@@ -179,26 +200,25 @@
   systemd.services.syslog.after = [ "network-online.target" ];
 
   # systemd service to initialize netconsole after network is ready
-  # systemd.services.netconsole = {
-  #   description = "Netconsole Setup";
-  #   after = [ "network-online.target" ]; # Ensure enp1s0 is ready
-  #   wants = [ "network-online.target" ];
-  #   wantedBy = [ "multi-user.target" ];
-  #
-  #   serviceConfig = {
-  #     Type = "oneshot";
-  #     ExecStart =
-  #       let
-  #         startNetconsole = pkgs.writeShellScriptBin "startNetconsole" ''
-  #           ${pkgs.util-linux}/bin/dmesg -n 8
-  #           ${pkgs.kmod}/bin/modprobe -r netconsole || true
-  #           ${pkgs.kmod}/bin/modprobe netconsole netconsole=@/enp1s0,6666@10.10.163.211/
-  #         '';
-  #       in
-  #       "${startNetconsole}/bin/startNetconsole";
-  #     RemainAfterExit = true;
-  #   };
-  #   path = [ ];
-  # };
+  systemd.services.netconsole = {
+    description = "Netconsole Setup";
+    after = [ "network-online.target" ]; # Ensure enp1s0 is ready
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart =
+        let
+          startNetconsole = pkgs.writeShellScriptBin "startNetconsole" ''
+            ${pkgs.util-linux}/bin/dmesg -n 8
+            ${pkgs.kmod}/bin/modprobe -r netconsole || true
+            ${pkgs.kmod}/bin/modprobe netconsole netconsole=@/enp1s0,6666@10.10.163.211/
+          '';
+        in
+        "${startNetconsole}/bin/startNetconsole";
+      RemainAfterExit = true;
+    };
+  };
 
 }

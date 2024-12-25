@@ -19,6 +19,7 @@ in
 
   home.packages = with pkgs; [
     pcmanfm
+    nautilus
     qimgv # image viewer
     evince # document viewer
     pavucontrol

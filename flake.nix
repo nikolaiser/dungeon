@@ -215,6 +215,8 @@
         ];
 
         sina = mkx86_64ServerSystem [
+          inputs.nixos-hardware.nixosModules.common-cpu-intel
+          "${inputs.nixos-hardware}/common/gpu/intel/tiger-lake"
           "${inputs.nixpkgs}/nixos/modules/installer/netboot/netboot.nix"
           ./nixos/hosts/nuc.nix
           {
@@ -236,6 +238,8 @@
         ];
 
         maria = mkx86_64ServerSystem [
+          inputs.nixos-hardware.nixosModules.common-cpu-intel
+          "${inputs.nixos-hardware}/common/gpu/intel/tiger-lake"
           "${inputs.nixpkgs}/nixos/modules/installer/netboot/netboot.nix"
           ./nixos/hosts/nuc.nix
           {
@@ -258,6 +262,8 @@
         ];
 
         rose = mkx86_64ServerSystem [
+          inputs.nixos-hardware.nixosModules.common-cpu-intel
+          "${inputs.nixos-hardware}/common/gpu/intel/tiger-lake"
           "${inputs.nixpkgs}/nixos/modules/installer/netboot/netboot.nix"
           ./nixos/hosts/nuc.nix
           {

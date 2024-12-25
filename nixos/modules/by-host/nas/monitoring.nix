@@ -8,7 +8,7 @@
     wantedBy = [ "multi-user.target" ];
     after = [ "network.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.netcat}/bin/nc -ul 6666";
+      ExecStart = "${pkgs.socat}/bin/socat -u UDP-LISTEN:6666,fork -";
       Restart = "always";
       User = "root";
     };
