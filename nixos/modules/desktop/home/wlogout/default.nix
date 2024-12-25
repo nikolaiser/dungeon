@@ -47,7 +47,7 @@
       ''
         /** ********** Fonts ********** **/
         * {
-            font-family: "Iosevka Nerd Font", sans-serif;
+            font-family: "IosevkaTerm Nerd Font", sans-serif;
             font-size: 14px;
             font-weight: bold;
         }

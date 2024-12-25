@@ -19,7 +19,7 @@
       dyff
       gh
       hubble
-      jetbrains.idea-community
+      #jetbrains.idea-community
       kconf
       kubectl
       kubectx
