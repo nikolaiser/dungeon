@@ -1,17 +1,11 @@
 { pkgs, ... }:
 let
-  nerdfonts = (
-    pkgs.nerdfonts.override {
-      fonts = [
-        "Iosevka"
-      ];
-    }
-  );
+  iosevka = pkgs.nerd-fonts.iosevka-term;
 in
 
 {
 
-  fonts.packages = [ nerdfonts ];
+  fonts.packages = [ iosevka ];
 
   stylix = {
     enable = true;
@@ -35,8 +29,8 @@ in
       };
 
       monospace = {
-        package = nerdfonts;
-        name = "Iosevka Nerd Font";
+        package = iosevka;
+        name = "IosevkaTerm Nerd Font";
       };
 
       emoji = {
