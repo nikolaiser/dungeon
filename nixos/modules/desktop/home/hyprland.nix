@@ -35,6 +35,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     systemd = {
       enable = true;
       variables = [ "--all" ];
@@ -44,12 +45,18 @@ in
     settings = {
 
       monitor = [
-        "DP-1,3840x2160@144,0x0,1"
-        "DP-3,3840x2160@144,0x0,1"
-        "DP-4,3840x2160@144,0x0,1"
-        "eDP-1,1920x1200@60,3840x1538,1, vrr, 1"
+        "DP-1,3840x2160@144,0x0,1, vrr, 1"
+        "DP-3,3840x2160@144,0x0,1, vrr, 1"
+        "DP-4,3840x2160@144,0x0,1, vrr, 1"
+        "HDMI-A-1,3840x2160@30,auto,auto, vrr, 0"
+        "eDP-1,1920x1200@60,3840x1538,1"
         ",preferred,auto,auto, vrr, 0"
       ];
+
+      cursor = {
+        no_hardware_cursors = "true";
+        no_break_fs_vrr = "true";
+      };
 
       env = "XCURSOR_SIZE,24";
 
@@ -160,6 +167,15 @@ in
       ];
 
       #windowrule = [ "tile, ^(VisualVM.*)$" ];
+
+      misc = {
+        vrr = "1";
+        middle_click_paste = "false";
+      };
+
+      xwayland = {
+        force_zero_scaling = "true";
+      };
 
     };
   };

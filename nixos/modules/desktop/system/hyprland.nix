@@ -9,8 +9,8 @@
   xdg.portal = {
     enable = true;
 
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
+    extraPortals = [
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
     ];
     config = {
       common = {
@@ -19,8 +19,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    xdg-desktop-portal-hyprland
+  environment.systemPackages = [
+    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
   ];
 
   services = {
@@ -49,6 +49,15 @@
 
   programs.hyprland = {
     enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+  };
+
+  nix.settings = {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
   security.polkit.enable = true;
