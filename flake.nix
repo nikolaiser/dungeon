@@ -68,7 +68,7 @@
         let
 
           overlays = [
-            (import ./nixos/overlays inputs)
+            (import ./nixos/overlays)
             inputs.agenix-rekey.overlays.default
           ];
 
@@ -116,6 +116,7 @@
             ;
           modules = modules ++ [
             ./nixos/modules
+            ./nixos/by-host
             inputs.private.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix

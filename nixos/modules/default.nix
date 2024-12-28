@@ -1,6 +1,5 @@
 {
   imports = [
-    ./by-host
     ./cad
     ./desktop
     ./gaming
