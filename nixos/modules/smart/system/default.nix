@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -24,23 +23,20 @@ let
   '';
 in
 {
-  options.smart.enable = lib.mkEnableOption "Enable smart monitoring";
 
-  config = lib.mkIf config.smart.enable {
-    services.smartd = {
-      enable = true;
-      autodetect = true;
-      notifications.systembus-notify.enable = true;
-    };
-
-    systemd.services.forwardToTelegram = {
-      serviceConfig = {
-        ExecStart = "${forwardToTelegram}/bin/forward-to-telegram";
-        Restart = "always";
-        EnvironmentFile = config.age.secrets."telegram-notifications.env".path;
-      };
-      wantedBy = [ "multi-user.target" ];
-    };
-
+  services.smartd = {
+    enable = true;
+    autodetect = true;
+    notifications.systembus-notify.enable = true;
   };
+
+  systemd.services.forwardToTelegram = {
+    serviceConfig = {
+      ExecStart = "${forwardToTelegram}/bin/forward-to-telegram";
+      Restart = "always";
+      EnvironmentFile = config.age.secrets."telegram-notifications.env".path;
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
 }

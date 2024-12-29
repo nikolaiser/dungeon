@@ -1,3 +1,5 @@
+_:
+
 {
   home.file.".profile".text = # bash
     ''

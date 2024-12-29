@@ -34,10 +34,10 @@ with config.stylix.fonts;
             border-color: @base0D;
         }
       ''
-      + (builtins.readFile ./style.css)
-      + (import ./colors.nix "left")
-      + (import ./colors.nix "center")
-      + (import ./colors.nix "right");
+      + (builtins.readFile ./waybar/style.css)
+      + (import ./waybar/colors.nix "left")
+      + (import ./waybar/colors.nix "center")
+      + (import ./waybar/colors.nix "right");
 
     settings = {
       "bar" = {

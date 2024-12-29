@@ -68,7 +68,7 @@
         let
 
           overlays = [
-            (import ./nixos/overlays)
+            (import ./nixos/overlays inputs)
             inputs.agenix-rekey.overlays.default
           ];
 
@@ -115,7 +115,7 @@
             specialArgs
             ;
           modules = modules ++ [
-            ./nixos/modules
+              (args@{lib, pkgs, ...}: { imports = lib.importAllModules ./nixos/modules  args;}) 
             ./nixos/by-host
             inputs.private.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
@@ -137,6 +137,9 @@
 
               system.stateVersion = "24.11";
             }
+            {
+              shared.enable = true;
+            }
           ];
         };
 
@@ -148,7 +151,6 @@
 
             {
               desktop.enable = true;
-              gpu.enable = true;
               systemd-boot.enable = true;
               username = "nikolaiser";
             }
@@ -177,7 +179,7 @@
         home-desktop = mkDesktopSystem [
           ./nixos/hosts/home-desktop.nix
           {
-            gpu.model = "amd";
+            amdgpu.enable = true;
             #zfs.enable = true;
             gaming.enable = true;
             #networking.hostId = "bda049b5";
@@ -188,7 +190,7 @@
         work-thinkpad = mkDesktopSystem [
           ./nixos/hosts/work-thinkpad.nix
           {
-            gpu.model = "intel-iris";
+            intelIrisGpu.enable = true;
             networking.hostName = "ri-t-0929";
           }
         ];

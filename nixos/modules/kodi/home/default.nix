@@ -1,8 +1,6 @@
 {
   osConfig,
   config,
-  pkgs,
-  lib,
   ...
 }:
 

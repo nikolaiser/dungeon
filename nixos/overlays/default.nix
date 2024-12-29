@@ -1,5 +1,4 @@
-{ inputs, ... }:
-final: prev:
+inputs: final: prev:
 
 rec {
 
@@ -9,7 +8,7 @@ rec {
 
   mylib = import ../lib { inherit (prev) lib; };
 
-  lib = prev.lib.extend (_: _: { inherit (mylib) exe; });
+  lib = prev.lib.extend (_: _: { inherit (mylib) exe importAllModules; });
 
   makeModulesClosure = x: prev.makeModulesClosure (x // { allowMissing = true; });
 
