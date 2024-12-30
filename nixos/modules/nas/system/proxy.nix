@@ -2,9 +2,9 @@
 
 {
   services.nginx.virtualHosts = {
-    "qidi.${config.baseDomain.private}" = {
+    "qidi.${config.nas.baseDomain.private}" = {
       forceSSL = true;
-      useACMEHost = "${config.baseDomain.private}";
+      useACMEHost = "${config.nas.baseDomain.private}";
       locations."/" = {
         proxyPass = "http://10.10.163.207:80";
         proxyWebsockets = true;

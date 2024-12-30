@@ -5,9 +5,8 @@ return {
 		dependencies = { "echasnovski/mini.icons" },
 		config = function(opts)
 			-- calling `setup` is optional for customization
-			require("fzf-lua").setup(opts)
+			require("fzf-lua").setup({ "telescope" })
 		end,
-		opts = {},
 
 		keys = {
 			-- Basic

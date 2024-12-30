@@ -20,8 +20,8 @@
     defaults = {
       email = "mail@nikolaiser.com";
     };
-    certs."${config.baseDomain.private}" = {
-      domain = "*.${config.baseDomain.private}";
+    certs."${config.nas.baseDomain.private}" = {
+      domain = "*.${config.nas.baseDomain.private}";
       dnsProvider = "cloudflare";
       dnsPropagationCheck = true;
       environmentFile = config.age.secrets."acmeCloudflare.env".path;

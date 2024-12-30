@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  seafileUrl = "seafile.${config.baseDomain.public}";
+  seafileUrl = "seafile.${config.nas.baseDomain.public}";
 in
 {
   services = {

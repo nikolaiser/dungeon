@@ -55,7 +55,7 @@ in
       Restart = "always";
       RestartSec = 10;
 
-      ExecStart = "${lib.exe pkgs.scala-cli} --server=false ${./api.scala} -- -f ${hostConfigs}";
+      ExecStart = "${lib.exe pkgs.scala-cli} --server=false ${./pixiecore/api.scala} -- -f ${hostConfigs}";
 
     };
   };

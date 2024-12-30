@@ -8,7 +8,7 @@
       environmentFile = config.age.secrets."vaultwarden.env".path;
     };
 
-    nginx.virtualHosts."bitwarden.${config.baseDomain.public}" = {
+    nginx.virtualHosts."bitwarden.${config.nas.baseDomain.public}" = {
       forceSSL = true;
       sslCertificate = config.age.secrets."cloudflare-fullchain.pem".path;
       sslCertificateKey = config.age.secrets."cloudflare-privkey.pem".path;

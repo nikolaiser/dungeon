@@ -121,7 +121,6 @@
                 imports = lib.importAllModules ./nixos/modules args;
               }
             )
-            ./nixos/by-host
             inputs.private.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
@@ -221,6 +220,7 @@
             };
             smart.enable = true;
             zfs.enable = true;
+            nas.enable = true;
           }
         ];
 
