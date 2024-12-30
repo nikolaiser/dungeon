@@ -15,8 +15,8 @@ in
 
 {
   home = {
-    username = osConfig.username;
-    homeDirectory = "/home/${osConfig.username}";
+    username = osConfig.shared.username;
+    homeDirectory = "/home/${osConfig.shared.username}";
 
     packages = with pkgs; [
       firefox
@@ -58,7 +58,7 @@ in
 
   xdg = {
     enable = true;
-    configHome = "/home/${osConfig.username}/.config";
+    configHome = "/home/${osConfig.shared.username}/.config";
   };
 
   nixpkgs.config = {

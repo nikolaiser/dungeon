@@ -2,7 +2,7 @@
 
 {
 
-  users.users.${config.username}.extraGroups = [
+  users.users.${config.shared.username}.extraGroups = [
     "networkmanager"
     "dialout"
     "gamemode"

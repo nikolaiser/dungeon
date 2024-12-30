@@ -2,9 +2,9 @@
 
 {
 
-  users.users.${config.username} = {
+  users.users.${config.shared.username} = {
     isNormalUser = true;
-    home = "/home/${config.username}";
+    home = "/home/${config.shared.username}";
     extraGroups = [
       "wheel"
       "docker"

@@ -115,7 +115,12 @@
             specialArgs
             ;
           modules = modules ++ [
-              (args@{lib, pkgs, ...}: { imports = lib.importAllModules ./nixos/modules  args;}) 
+            (
+              args@{ lib, pkgs, ... }:
+              {
+                imports = lib.importAllModules ./nixos/modules args;
+              }
+            )
             ./nixos/by-host
             inputs.private.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
@@ -139,6 +144,7 @@
             }
             {
               shared.enable = true;
+              shell.enable = true;
             }
           ];
         };
@@ -152,7 +158,8 @@
             {
               desktop.enable = true;
               systemd-boot.enable = true;
-              username = "nikolaiser";
+              nvimFull.enable = true;
+              shared.username = "nikolaiser";
             }
           ]
         );
@@ -164,7 +171,7 @@
           ++ [
             {
               ssh.enable = true;
-              username = "ops";
+              shared.username = "ops";
             }
           ]
         );
@@ -208,7 +215,6 @@
           ./nixos/hosts/nas.nix
           inputs.disko.nixosModules.disko
           {
-            gpu.model = "amd";
             networking = {
               hostName = "nas";
               hostId = "d4cf0337";

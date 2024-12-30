@@ -94,7 +94,7 @@ in
   home.packages = [ nvim-wrapped ];
 
   xdg.configFile.nvim = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/nixos/modules/desktop/home/nvim/config";
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/nixos/modules/nvimFull/home/config";
     recursive = true;
   };
 }

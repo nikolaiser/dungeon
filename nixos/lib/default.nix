@@ -35,23 +35,24 @@ rec {
       systemModuleFiles = builtins.filter (file: file != "options.nix") allSystemFiles;
 
       optionsPresent = builtins.elem "options.nix" allSystemFiles;
-      options = if optionsPresent then (import "${path}/system/options.nix" args) else { };
+      otherOptions = if optionsPresent then (import "${path}/system/options.nix" args) else { };
+      allOptions."${name}" = {
+        enable = lib.mkEnableOption "Enable module ${name}";
+      } // otherOptions;
 
       systemModules = lib.map (file: (import "${path}/system/${file}" args)) systemModuleFiles;
       homeFiles = if homePresent then (getRegularFiles "${path}/home") else [ ];
       homeModules = lib.map (file: "${path}/home/${file}") homeFiles;
     in
     {
-      options = options // {
-        "${name}".enable = lib.mkEnableOption "Enable module ${name}";
-      };
+      options = allOptions;
 
       config = lib.mkIf args.config."${name}".enable (
         lib.mkMerge (
           systemModules
           ++ [
             {
-              home-manager.users.${args.config.username}.imports = homeModules;
+              home-manager.users.${args.config.shared.username}.imports = homeModules;
             }
           ]
         )

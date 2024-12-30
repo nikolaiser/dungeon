@@ -26,7 +26,7 @@ in
   virtualisation.docker.enable = true;
 
   system.stateVersion = stateVersion;
-  home-manager.users.${config.username}.home.stateVersion = stateVersion;
+  home-manager.users.${config.shared.username}.home.stateVersion = stateVersion;
 
   nix = {
     nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
