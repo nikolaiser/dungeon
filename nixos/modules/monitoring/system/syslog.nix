@@ -14,22 +14,24 @@
     };
   };
 
-  services.rsyslogd = {
-    enable = true;
-    extraConfig = ''
-      # Listen for logs on UDP port 514
-      $ModLoad imudp
-      $UDPServerRun 514
+  services = {
+    rsyslogd = {
+      enable = true;
+      extraConfig = ''
+        # Listen for logs on UDP port 514
+        $ModLoad imudp
+        $UDPServerRun 514
 
-      # Listen for logs on TCP port 514
-      $ModLoad imtcp
-      $InputTCPServerRun 514
+        # Listen for logs on TCP port 514
+        $ModLoad imtcp
+        $InputTCPServerRun 514
 
-      # Store remote logs in a separate directory
-      $template RemoteLogs,"/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log"
-      *.* ?RemoteLogs
-      & ~  # Stop further processing for remote logs
-    '';
+        # Store remote logs in a separate directory
+        $template RemoteLogs,"/var/log/remote/%HOSTNAME%/%PROGRAMNAME%.log"
+        *.* ?RemoteLogs
+        & ~  # Stop further processing for remote logs
+      '';
+    };
   };
 
   # Ensure log directory exists

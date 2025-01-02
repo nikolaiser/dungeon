@@ -221,4 +221,6 @@
     };
   };
 
+  nodeExporter.enable = true;
+
 }

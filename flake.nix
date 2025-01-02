@@ -221,6 +221,8 @@
             smart.enable = true;
             zfs.enable = true;
             nas.enable = true;
+            monitoring.enable = true;
+            nodeExporter.enable = true;
           }
         ];
 

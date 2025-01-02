@@ -10,13 +10,15 @@
     udev.packages = with pkgs; [
       via
       vial
-      wacomtablet
     ];
   };
 
   hardware.opentabletdriver.enable = true;
 
-  environment.systemPackages = [ pkgs.wacomtablet ];
+  boot.blacklistedKernelModules = [
+    "wacom"
+    "hid_uclogic"
+  ];
 
   hardware.keyboard.qmk.enable = true;
 
