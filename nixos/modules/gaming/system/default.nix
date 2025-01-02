@@ -15,6 +15,10 @@ _: {
         appId = "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/23.08";
         origin = "flathub";
       }
+      {
+        appId = "com.valvesoftware.Steam.CompatibilityTool.Proton-GE";
+        origin = "flathub";
+      }
     ];
 
     overrides = {
