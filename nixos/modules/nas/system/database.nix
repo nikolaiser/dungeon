@@ -18,6 +18,12 @@ in
       backupAll = true;
       compression = "zstd";
     };
+    redis.servers = {
+      outline = {
+        enable = true;
+        port = 6380;
+      };
+    };
   };
 
   networking.firewall.allowedTCPPorts = [ 5432 ];
