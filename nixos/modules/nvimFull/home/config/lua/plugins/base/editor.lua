@@ -206,22 +206,4 @@ return {
 		-- available after the first executing of it or after a keymap of text-case.nvim has been used.
 		lazy = false,
 	},
-	{
-		"ColinKennedy/cursor-text-objects.nvim",
-		config = function()
-			vim.keymap.set(
-				{ "o", "x" },
-				"[",
-				"<Plug>(cursor-text-objects-up)",
-				{ desc = "Run from your current cursor to the end of the text-object." }
-			)
-			vim.keymap.set(
-				{ "o", "x" },
-				"]",
-				"<Plug>(cursor-text-objects-down)",
-				{ desc = "Run from your current cursor to the end of the text-object." }
-			)
-		end,
-		version = "v1.*",
-	},
 }

@@ -26,7 +26,9 @@
       kubeswitch
       kubefwd
       kubelogin-oidc
-      kubernetes-helm
+      (pkgs.wrapHelm pkgs.kubernetes-helm {
+        plugins = with pkgs.kubernetes-helmPlugins; [ helm-secrets ];
+      })
       lua
       manix # nix documentation search
       mongodb-tools

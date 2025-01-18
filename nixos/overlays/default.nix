@@ -2,7 +2,7 @@ inputs: final: prev:
 
 rec {
 
-  kubernetes-helm = final.wrapHelm final.kubernetes-helm {
+  helm-with-plugins = final.wrapHelm final.kubernetes-helm {
     plugins = with final.kubernetes-helmPlugins; [ helm-secrets ];
   };
 

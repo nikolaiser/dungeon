@@ -25,7 +25,7 @@ return {
 			accept = {
 				-- experimental auto-brackets support
 				auto_brackets = {
-					enabled = true,
+					enabled = false,
 				},
 			},
 			menu = {

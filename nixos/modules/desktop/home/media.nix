@@ -34,6 +34,7 @@ in
     libsForQt5.plasma-pa
     slides
     drawing
+    libreoffice-qt6-fresh
   ];
 
   services.mpris-proxy.enable = true;
