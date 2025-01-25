@@ -24,6 +24,12 @@ return {
 							new_config.settings.yaml.schemas or {},
 							require("schemastore").yaml.schemas()
 						)
+
+						-- Add a custom schema for the Gateway API "HTTPRoute"
+						new_config.settings.yaml.schemas["https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/main/config/crd/standard/gateway.networking.k8s.io_httproutes.yaml"] =
+							{
+								"*./templates/*.yaml",
+							}
 					end,
 					settings = {
 						redhat = { telemetry = { enabled = false } },
