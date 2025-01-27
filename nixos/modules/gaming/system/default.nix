@@ -1,4 +1,5 @@
-_: {
+{ pkgs, ... }:
+{
   services.flatpak = {
     enable = true;
 
@@ -31,6 +32,19 @@ _: {
     };
 
   };
+
+  environment.systemPackages = with pkgs; [
+    (prismlauncher.override {
+      # Add binary required by some mod
+      additionalPrograms = [ ];
+
+      # Change Java runtimes available to Prism Launcher
+      jdks = [
+        graalvm-ce
+        jdk17
+      ];
+    })
+  ];
 
   programs.gamemode.enable = true;
 }
