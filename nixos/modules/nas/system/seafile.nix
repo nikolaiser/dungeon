@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs-stable, ... }:
 
 let
   seafileUrl = "seafile.${config.nas.baseDomain.public}";
@@ -6,6 +6,7 @@ in
 {
   services = {
     seafile = {
+      seahubPackage = pkgs-stable.seahub;
       enable = true;
       adminEmail = "mail@nikolaiser.com";
       dataDir = "/seafile";

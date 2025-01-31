@@ -179,7 +179,7 @@
   system.build.installBootLoader = lib.mkDefault "${pkgs.coreutils}/bin/true";
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault true;
 
   services.journald.extraConfig = ''

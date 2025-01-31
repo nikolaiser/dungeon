@@ -40,7 +40,6 @@ let
 
 in
 {
-  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   boot.initrd.availableKernelModules = [
     "nvme"
@@ -53,7 +52,7 @@ in
   ];
 
   boot.initrd.kernelModules = [ ];
-  boot.initrd.postResumeCommands = "sleep 5; zpool import -a; zfs load-key -a";
+  boot.initrd.postMountCommands = "sleep 5; zpool import -a; zfs load-key -a";
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = {
