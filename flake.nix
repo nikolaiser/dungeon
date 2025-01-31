@@ -234,12 +234,20 @@
           {
             networking = {
               hostName = "sina";
-              interfaces.enp1s0.ipv4.addresses = [
-                {
-                  address = "10.10.0.51";
-                  prefixLength = 16;
-                }
-              ];
+              interfaces = {
+                enp1s0.ipv4.addresses = [
+                  {
+                    address = "10.10.0.51";
+                    prefixLength = 16;
+                  }
+                ];
+                iscsi.ipv4.addresses = [
+                  {
+                    address = "10.15.0.51";
+                    prefixLength = 24;
+                  }
+                ];
+              };
             };
             k3s = {
               enable = true;
@@ -257,12 +265,20 @@
           {
             networking = {
               hostName = "maria";
-              interfaces.enp1s0.ipv4.addresses = [
-                {
-                  address = "10.10.0.52";
-                  prefixLength = 16;
-                }
-              ];
+              interfaces = {
+                enp1s0.ipv4.addresses = [
+                  {
+                    address = "10.10.0.52";
+                    prefixLength = 16;
+                  }
+                ];
+                iscsi.ipv4.addresses = [
+                  {
+                    address = "10.15.0.52";
+                    prefixLength = 24;
+                  }
+                ];
+              };
             };
             k3s = {
               enable = true;
@@ -281,12 +297,20 @@
           {
             networking = {
               hostName = "rose";
-              interfaces.enp1s0.ipv4.addresses = [
-                {
-                  address = "10.10.0.53";
-                  prefixLength = 16;
-                }
-              ];
+              interfaces = {
+                enp1s0.ipv4.addresses = [
+                  {
+                    address = "10.10.0.53";
+                    prefixLength = 16;
+                  }
+                ];
+                iscsi.ipv4.addresses = [
+                  {
+                    address = "10.15.0.53";
+                    prefixLength = 24;
+                  }
+                ];
+              };
             };
             k3s = {
               enable = true;

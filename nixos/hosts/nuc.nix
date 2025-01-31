@@ -71,7 +71,7 @@
   '';
 
   services.openiscsi = {
-    discoverPortal = "10.10.163.211";
+    discoverPortal = "10.15.0.211";
     enableAutoLoginOut = true;
   };
 
@@ -84,7 +84,7 @@
     };
 
     "/mnt/iscsi" = {
-      device = "/dev/disk/by-path/ip-10.10.163.211:3260-iscsi-iqn.2000-05.edu.example.iscsi:${config.networking.hostName}-target-lun-0";
+      device = "/dev/disk/by-path/ip-10.15.0.211:3260-iscsi-iqn.2000-05.edu.example.iscsi:${config.networking.hostName}-target-lun-0";
       fsType = "ext4";
       options = [
         "_netdev"
@@ -140,6 +140,11 @@
     defaultGateway = {
       address = "10.10.0.1";
       interface = "enp1s0";
+    };
+
+    vlans."iscsi" = {
+      interface = "enp1s0";
+      id = 100;
     };
 
     firewall.enable = true;

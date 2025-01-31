@@ -2,6 +2,23 @@
 
 {
 
+  networking = {
+
+    vlans."iscsi" = {
+      interface = "enp65s0";
+      id = 100;
+    };
+
+    interfaces.iscsi.ipv4 = {
+      addresses = [
+        {
+          address = "10.15.0.211";
+          prefixLength = 24;
+        }
+      ];
+    };
+  };
+
   services = {
     target.enable = true;
     openiscsi = {
