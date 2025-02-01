@@ -241,6 +241,12 @@
                     prefixLength = 16;
                   }
                 ];
+                triangle.ipv4.addresses = [
+                  {
+                    address = "10.1.0.51";
+                    prefixLength = 24;
+                  }
+                ];
                 iscsi.ipv4.addresses = [
                   {
                     address = "10.15.0.51";
@@ -270,6 +276,12 @@
                   {
                     address = "10.10.0.52";
                     prefixLength = 16;
+                  }
+                ];
+                triangle.ipv4.addresses = [
+                  {
+                    address = "10.1.0.52";
+                    prefixLength = 24;
                   }
                 ];
                 iscsi.ipv4.addresses = [
@@ -302,6 +314,12 @@
                   {
                     address = "10.10.0.53";
                     prefixLength = 16;
+                  }
+                ];
+                triangle.ipv4.addresses = [
+                  {
+                    address = "10.1.0.53";
+                    prefixLength = 24;
                   }
                 ];
                 iscsi.ipv4.addresses = [

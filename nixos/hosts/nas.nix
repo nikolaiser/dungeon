@@ -52,7 +52,7 @@ in
   ];
 
   boot.initrd.kernelModules = [ ];
-  boot.initrd.postMountCommands = "sleep 5; zpool import -a; zfs load-key -a";
+  boot.initrd.postMountCommands = "zpool import -a; zfs mount -a; zfs load-key -a;zfs mount -a";
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = {

@@ -17,6 +17,7 @@
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "thunderbolt"
+    "thunderbolt-net"
     "ahci"
     "usbhid"
     "rtsx_pci_sdmmc"
@@ -37,6 +38,8 @@
     "xt_socket"
     "iscsi_tcp"
     "netconsole"
+    "thunderbolt"
+    "thunderbolt-net"
   ];
   boot.extraModulePackages = [ ];
   boot.blacklistedKernelModules = [
@@ -76,6 +79,18 @@
   };
 
   boot.supportedFilesystems = [ "nfs" ];
+
+  systemd.services."ping-nas" = {
+    description = "Check connectivity to nas";
+    after = [ "network-online.target" ];
+    wantedBy = [ "iscsi.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c \"while ! ${pkgs.iputils}/bin/ping -c 1 10.15.0.211; do echo 'Waiting for 10.15.0.211...'; sleep 5; done\"";
+    };
+  };
+
+  systemd.services.iscsi.after = [ "ping-nas.service" ];
 
   fileSystems = {
     "/" = {
@@ -133,6 +148,7 @@
 
   swapDevices = [ ];
 
+  services.hardware.bolt.enable = true;
   networking = {
     useNetworkd = true;
     useDHCP = lib.mkDefault false;
@@ -147,6 +163,11 @@
       id = 100;
     };
 
+    bridges.triangle.interfaces = [
+      "thunderbolt0"
+      "thunderbolt1"
+    ];
+
     firewall.enable = true;
 
     nameservers = [ "10.10.0.1" ];
@@ -154,7 +175,21 @@
 
   systemd.network = {
     enable = true;
-    networks."40-enp1s0".networkConfig.MulticastDNS = true;
+    networks."40-triangle" = {
+      networkConfig.MulticastDNS = true;
+      linkConfig.RequiredForOnline = "no";
+    };
+    netdevs."20-triangle" = {
+      netdevConfig = {
+        Kind = "bridge";
+        Name = "triangle";
+      };
+      extraConfig = ''
+        [Bridge]
+        STP=true
+      '';
+    };
+
   };
 
   environment.systemPackages = with pkgs; [
