@@ -30,10 +30,30 @@
         frontend.port = 8072;
       };
     };
+
+    home-assistant = {
+      enable = true;
+      config = null;
+      configDir = "/nvmeStorage/homeassistant";
+      extraPackages =
+        python3Packages: with python3Packages; [
+          pyatv
+          paho-mqtt
+        ];
+
+    };
+
+    nginx.virtualHosts = {
+      "homeassistant.${config.nas.baseDomain.private}" = {
+        forceSSL = true;
+        useACMEHost = "${config.nas.baseDomain.private}";
+        locations."/" = {
+          proxyPass = "http://127.0.0.1:8123";
+          proxyWebsockets = true;
+        };
+      };
+    };
+
   };
 
-  networking.firewall.allowedTCPPorts = [
-    1883
-    8072
-  ];
 }
