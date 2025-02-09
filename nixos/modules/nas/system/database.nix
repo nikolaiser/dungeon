@@ -9,7 +9,7 @@ in
       enable = true;
       dataDir = postgresqlDataDir;
       enableTCPIP = true;
-      authentication = "host all all 10.10.0.1/16 md5";
+      authentication = "host all all 10.0.0.1/8 md5";
       package = pkgs.postgresql_15;
     };
     postgresqlBackup = {
