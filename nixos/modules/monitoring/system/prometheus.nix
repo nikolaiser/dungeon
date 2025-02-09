@@ -20,9 +20,6 @@ in
     enable = true;
     scrapeConfigs = [
       (nodeExporterConfig "127.0.0.1" "nas")
-      (nodeExporterConfig "10.10.0.51" "sina")
-      (nodeExporterConfig "10.10.0.52" "maria")
-      (nodeExporterConfig "10.10.0.53" "rose")
     ];
   };
 
