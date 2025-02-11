@@ -39,12 +39,36 @@
   # networking.interfaces.wwp0s20f0u2.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   boot.initrd.luks.devices.luksroot = {
     device = "/dev/disk/by-uuid/aedd0d6e-3c63-4a38-927f-8f67119eee78";
     preLVM = true;
     allowDiscards = true;
+  };
+
+  services.tlp = {
+    enable = true;
+    settings = {
+
+      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+
+      CPU_BOOST_ON_AC = 1;
+      CPU_BOOST_ON_BAT = 1;
+
+      CPU_HWP_DYN_BOOST_ON_AC = 1;
+      CPU_HWP_DYN_BOOST_ON_BAT = 1;
+
+      PLATFORM_PROFILE_ON_AC = "performance";
+      PLATFORM_PROFILE_ON_BAT = "performance";
+
+      INTEL_GPU_MIN_FREQ_ON_AC = 900;
+      INTEL_GPU_MAX_FREQ_ON_AC = 1400;
+      INTEL_GPU_MIN_FREQ_ON_BAT = 500;
+      INTEL_GPU_MAX_FREQ_ON_BAT = 1400;
+
+    };
   };
 }

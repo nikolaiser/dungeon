@@ -194,10 +194,15 @@
         ];
 
         work-thinkpad = mkDesktopSystem [
+          "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
           ./nixos/hosts/work-thinkpad.nix
           {
-            intelIrisGpu.enable = true;
             networking.hostName = "ri-t-0929";
+            hardware.intelgpu = {
+              driver = "xe";
+              loadInInitrd = true;
+              enableHybridCodec = true;
+            };
           }
         ];
 

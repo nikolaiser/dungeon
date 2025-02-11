@@ -28,7 +28,7 @@ in
     "NIXOS_OZONE_WL" = "1"; # for any ozone-based browser & electron apps to run on wayland
     "MOZ_ENABLE_WAYLAND" = "1"; # for firefox to run on wayland
     "MOZ_WEBRENDER" = "1";
-    "WLR_NO_HARDWARE_CURSORS" = "1";
+    # "WLR_NO_HARDWARE_CURSORS" = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = "1";
     "NIXOS_XDG_OPEN_USE_PORTAL" = "1";
   };
@@ -50,12 +50,12 @@ in
         "DP-4,3840x2160@144,0x0,1, vrr, 1"
         "HDMI-A-1,3840x2160@30,auto,auto, vrr, 0"
         "eDP-1,1920x1200@60,3840x1538,1"
-        ",preferred,auto,auto, vrr, 0"
+        ",preferred,auto,auto"
       ];
 
       cursor = {
-        no_hardware_cursors = "true";
-        no_break_fs_vrr = "true";
+        # no_hardware_cursors = "true";
+        # no_break_fs_vrr = "true";
       };
 
       env = "XCURSOR_SIZE,24";
@@ -82,25 +82,31 @@ in
       decoration = {
         rounding = "10";
         blur = {
-          enabled = "true";
+          enabled = "false";
           size = "3";
           passes = "1";
+        };
+        shadow = {
+          enabled = "false";
         };
       };
 
       animations = {
         enabled = "true";
-        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-        animation = [
-          "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
-          "border, 1, 10, default"
-          "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
-          "workspaces, 1, 6, default"
-        ];
+        # bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        # animation = [
+        #   "windows, 1, 7, myBezier"
+        #   "windowsOut, 1, 7, default, popin 80%"
+        #   "border, 1, 10, default"
+        #   "borderangle, 1, 8, default"
+        #   "fade, 1, 7, default"
+        #   "workspaces, 1, 6, default"
+        # ];
       };
 
+      debug = {
+        overlay = "true";
+      };
       dwindle = {
         pseudotile = "true";
         preserve_split = "true";
@@ -170,6 +176,7 @@ in
 
       misc = {
         vrr = "1";
+        vfr = "true";
         middle_click_paste = "false";
       };
 
