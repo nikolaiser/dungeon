@@ -166,9 +166,15 @@ in
     };
   };
 
-  fileSystems."/nvmeStorage" = {
-    device = "nvme/nvmeStorage";
-    fsType = "zfs";
+  fileSystems = {
+    "/nvmeStorage" = {
+      device = "nvme/nvmeStorage";
+      fsType = "zfs";
+    };
+    "/home/ops/.local/share/atuin" = {
+      device = "/dev/zvol/nvme/atuin";
+      fsType = "ext4";
+    };
   };
 
   # fileSystems."/hddStorage" = {

@@ -2,6 +2,8 @@
 {
   services.flatpak = {
     enable = true;
+    update.onActivation = true;
+    uninstallUnmanaged = true;
 
     packages = [
       {
@@ -13,7 +15,7 @@
         origin = "flathub";
       }
       {
-        appId = "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/23.08";
+        appId = "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08";
         origin = "flathub";
       }
       {

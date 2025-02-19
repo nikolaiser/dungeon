@@ -48,8 +48,8 @@
     };
 
     zwift = {
-      url = "https://raw.githubusercontent.com/netbrain/zwift/master/zwift.sh";
-      flake = false;
+      url = "github:netbrain/zwift";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     kent = {
@@ -127,6 +127,7 @@
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.agenix.nixosModules.default
             inputs.agenix-rekey.nixosModules.default
+            inputs.zwift.nixosModules.zwift
             { home-manager.extraSpecialArgs = specialArgs; }
             {
               age = {

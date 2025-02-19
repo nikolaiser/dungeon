@@ -104,9 +104,9 @@ in
         # ];
       };
 
-      debug = {
-        overlay = "true";
-      };
+      # debug = {
+      #   overlay = "true";
+      # };
       dwindle = {
         pseudotile = "true";
         preserve_split = "true";
