@@ -11,7 +11,7 @@
     with pkgs;
 
     [
-      _1password
+      _1password-cli
       arduino
       argocd
       cilium-cli

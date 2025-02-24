@@ -17,6 +17,9 @@
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "workqueue.power_efficient=N"
+  ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5d3eb2aa-5171-49cf-a65a-203141cce28e";
@@ -52,8 +55,8 @@
     enable = true;
     settings = {
 
-      CPU_ENERGY_PERF_POLICY_ON_AC = "power";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "performance";
 
       CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 1;
@@ -69,6 +72,16 @@
       INTEL_GPU_MIN_FREQ_ON_BAT = 500;
       INTEL_GPU_MAX_FREQ_ON_BAT = 1400;
 
+      CPU_MIN_PERF_ON_AC = 50;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 50;
+      CPU_MAX_PERF_ON_BAT = 100;
+
     };
+  };
+
+  services.scx = {
+    enable = true;
+    scheduler = "scx_bpfland";
   };
 }
