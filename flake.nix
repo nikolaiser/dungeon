@@ -123,11 +123,11 @@
             )
             inputs.private.nixosModules.default
             inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.agenix.nixosModules.default
             inputs.agenix-rekey.nixosModules.default
             inputs.zwift.nixosModules.zwift
+            inputs.stylix.nixosModules.stylix
             { home-manager.extraSpecialArgs = specialArgs; }
             {
               age = {
@@ -154,7 +154,6 @@
         mkNixosSystem "x86_64-linux" (
           modules
           ++ [
-
             {
               desktop.enable = true;
               systemd-boot.enable = true;
@@ -229,6 +228,9 @@
             nas.enable = true;
             monitoring.enable = true;
             nodeExporter.enable = true;
+            # TODO: Remove after https://github.com/danth/stylix/issues/911 is fixed
+            stylix.image = ./nixos/modules/desktop/home/wallpapers/wallhaven-gpvw7q_3840x2160.png;
+
           }
         ];
 
