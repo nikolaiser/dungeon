@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }:
 
@@ -86,7 +87,7 @@ let
         ];
     };
 
-  neovim-package = pkgs.neovim-unwrapped;
+  neovim-package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
   nvim-wrapped = pkgs.wrapNeovimUnstable neovim-package nvimConfig;
 in
