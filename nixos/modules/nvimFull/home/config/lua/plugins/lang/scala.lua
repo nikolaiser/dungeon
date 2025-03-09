@@ -64,6 +64,7 @@ return {
 				serverProperties = { "-Dmetals.enable-best-effort=true" },
 				excludedPackages = {},
 				fallbackScalaVersion = "3.3.3",
+				bloopJvmProperties = { "-Dscala.concurrent.context.maxThreads=4", "-Xmx10g" },
 			}
 
 			local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
@@ -106,7 +107,7 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				scala = { "scalafmt" },
+				scala = {},
 			},
 		},
 	},
