@@ -31,6 +31,10 @@ in
     # "WLR_NO_HARDWARE_CURSORS" = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = "1";
     "NIXOS_XDG_OPEN_USE_PORTAL" = "1";
+    "HYPRCURSOR_THEME" = "${osConfig.stylix.cursor.name}";
+    "HYPRCURSOR_SIZE" = "${toString osConfig.stylix.cursor.size}";
+    "XCURSOR_THEME" = "${osConfig.stylix.cursor.name}";
+    "XCURSOR_SIZE" = "${toString osConfig.stylix.cursor.size}";
   };
 
   wayland.windowManager.hyprland = {

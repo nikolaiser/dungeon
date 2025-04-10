@@ -9,7 +9,7 @@ in
 
   stylix = {
     enable = true;
-    image = ../home/wallpapers/wallhaven-gpvw7q_3840x2160.png;
+    image = ../home/wallpapers/wallhaven-3looxy_3840x2160.png;
 
     targets.fish.enable = false;
 
@@ -43,6 +43,12 @@ in
         applications = 14;
       };
 
+    };
+
+    cursor = {
+      package = pkgs.catppuccin-cursors.macchiatoLavender;
+      name = "catppuccin-macchiato-lavender-cursors";
+      size = 24;
     };
 
   };

@@ -1,7 +1,6 @@
 {
   pkgs,
   pkgs-stable,
-  pkgs-freecad,
   config,
   lib,
   ...
@@ -9,7 +8,7 @@
 
 {
   home.packages = with pkgs; [
-    # pkgs-freecad.freecad-qt6
+    freecad-qt6
     prusa-slicer
     pkgs-stable.orca-slicer
   ];

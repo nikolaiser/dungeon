@@ -40,7 +40,6 @@ in
       age
       libargon2
       wireguard-tools
-      yubikey-manager-qt
       yubioath-flutter
       wl-clipboard
       xclip

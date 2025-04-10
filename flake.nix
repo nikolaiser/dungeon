@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
-    nixpkgs-freecad-qt6.url = "github:ppenguin/nixpkgs/try-freecad-qt6";
     hyprland.url = "github:hyprwm/Hyprland";
 
     home-manager = {
@@ -59,6 +58,7 @@
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
 
   outputs =
@@ -100,12 +100,6 @@
               config.allowUnfree = true;
             };
 
-            pkgs-freecad = import inputs.nixpkgs-freecad-qt6 {
-              inherit overlays system;
-
-              config.allowUnfree = true;
-            };
-
           };
 
         in
@@ -130,6 +124,7 @@
             inputs.agenix-rekey.nixosModules.default
             inputs.zwift.nixosModules.zwift
             inputs.stylix.nixosModules.stylix
+            inputs.proxmox-nixos.nixosModules.proxmox-ve
             { home-manager.extraSpecialArgs = specialArgs; }
             {
               age = {
