@@ -84,4 +84,6 @@
     enable = true;
     scheduler = "scx_bpfland";
   };
+
+  services.hardware.bolt.enable = true;
 }

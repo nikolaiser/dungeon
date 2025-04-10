@@ -58,6 +58,7 @@
       inputs.kent.packages.${system}.default
       nix-output-monitor
       zig
+      visualvm
     ];
 
 }

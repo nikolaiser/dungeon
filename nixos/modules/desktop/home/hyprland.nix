@@ -176,7 +176,7 @@ in
         "${mainMod}, mouse:273, resizewindow"
       ];
 
-      #windowrule = [ "tile, ^(VisualVM.*)$" ];
+      windowrule = [ "tile, ^(VisualVM.*)$" ];
 
       misc = {
         vrr = "1";
