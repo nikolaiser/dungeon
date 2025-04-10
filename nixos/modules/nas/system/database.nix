@@ -1,7 +1,14 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   postgresqlDataDir = "/nvmeStorage/db/postgres";
+  qdrantDataDir = "/nvmeStorage/db/qdrant";
+  qdrantSnapshotDir = "/nvmeStorage/db/qdrant_snapshots";
 in
 {
   services = {
@@ -24,9 +31,32 @@ in
         port = 6380;
       };
     };
+    qdrant = {
+      enable = true;
+      settings = {
+        storage = {
+          storage_path = qdrantDataDir;
+          snapshots_path = qdrantSnapshotDir;
+        };
+        service = {
+          host = "0.0.0.0";
+          http_port = "6333";
+          grpc_port = "6334";
+        };
+        telemetry_disabled = true;
+      };
+    };
   };
 
-  networking.firewall.allowedTCPPorts = [ 5432 ];
+  systemd.services.qdrant.serviceConfig = {
+    DynamicUser = lib.mkForce false;
+  };
+
+  networking.firewall.allowedTCPPorts = [
+    5432
+    6333
+    6334
+  ];
 
   systemd.tmpfiles.settings = {
     "10-postgresql" = {
@@ -35,6 +65,20 @@ in
           user = config.systemd.services.postgresql.serviceConfig.User;
           group = config.systemd.services.postgresql.serviceConfig.Group;
           mode = "0700";
+        };
+      };
+    };
+    "10-qdrantData" = {
+      "${qdrantDataDir}" = {
+        d = {
+          mode = "0777";
+        };
+      };
+    };
+    "10-qdrantSnapshot" = {
+      "${qdrantSnapshotDir}" = {
+        d = {
+          mode = "0777";
         };
       };
     };
