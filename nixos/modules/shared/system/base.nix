@@ -9,7 +9,7 @@ let
 in
 {
   time = {
-    hardwareClockInLocalTime = true;
+    hardwareClockInLocalTime = false;
     timeZone = "Europe/Berlin";
   };
 
