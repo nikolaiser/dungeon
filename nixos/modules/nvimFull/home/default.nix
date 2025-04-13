@@ -52,6 +52,7 @@ let
       ltex-ls
       zls
       execline
+      jdt-language-server
     ]
   );
 
