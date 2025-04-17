@@ -19,7 +19,7 @@
       dyff
       gh
       hubble
-      #jetbrains.idea-community
+      jetbrains.idea-community
       kconf
       kubectl
       kubectx
@@ -59,6 +59,10 @@
       nix-output-monitor
       zig
       visualvm
+      # gradle
+      # (pkgs.writeShellScriptBin "h2Shell" ''
+      #   ${pkgs.temurin-bin-21}/bin/java -cp "${pkgs.h2}/share/java/h2-2.3.232.jar:$H2DRIVERS:$CLASSPATH" org.h2.tools.Shell "$@"
+      # '')
     ];
 
 }

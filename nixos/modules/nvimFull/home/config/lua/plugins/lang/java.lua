@@ -14,7 +14,11 @@ return {
 				pattern = { "java" },
 				callback = function()
 					local config = {
-						cmd = { "jdtls" },
+						cmd = {
+							"jdtls",
+							string.format("--jvm-arg=-javaagent:%s", vim.g.lombok_path),
+							string.format("--jvm-arg=-Xbootclasspath/a:%s", vim.g.lombok_path),
+						},
 						root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
 					}
 
