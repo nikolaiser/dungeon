@@ -2,7 +2,9 @@
   lib,
   pkgs,
   config,
+  osConfig,
   inputs,
+  system,
   ...
 }:
 
@@ -53,14 +55,19 @@ let
       zls
       execline
       jdt-language-server
+      gnumake
     ]
   );
+
+  mcphubPath = inputs.mcphub-nvim.packages."${system}".default;
+  uvxCommand = "${pkgs.uv}/bin/uvx";
 
   preInit = ''
     -- Globals
     vim.g.is_nix_package = 1
     vim.g.metals_binary = "${lib.exe metalsPackage}"
     vim.g.lombok_path = "${pkgs.lombok}/share/java/lombok.jar"
+    vim.g.mcphub_path = "${mcphubPath}"
   '';
 
   nvimConfig =
@@ -84,6 +91,11 @@ let
           binPath
         ]
         ++ [
+          "--set"
+          "SEARXNG_API_URL"
+          "https://searxng.${osConfig.nas.baseDomain.public}/search"
+        ]
+        ++ [
           "--add-flags"
           ''--cmd "luafile ${pkgs.writeText "pre-init.lua" preInit}"''
         ];
@@ -92,12 +104,26 @@ let
   neovim-package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
   nvim-wrapped = pkgs.wrapNeovimUnstable neovim-package nvimConfig;
+
+  mcphubConfig = {
+    mcpServers = {
+      nixos = {
+        command = uvxCommand;
+        args = [ "mcp-nixos" ];
+      };
+    };
+  };
 in
 {
   home.packages = [ nvim-wrapped ];
 
-  xdg.configFile.nvim = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/nixos/modules/nvimFull/home/config";
-    recursive = true;
+  xdg.configFile = {
+    nvim = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/nixos/modules/nvimFull/home/config";
+      recursive = true;
+    };
+    "mcphub/servers.json" = {
+      text = builtins.toJSON mcphubConfig;
+    };
   };
 }

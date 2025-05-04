@@ -59,6 +59,8 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
+
+    mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
   };
 
   outputs =
