@@ -10,7 +10,7 @@
   home.packages = with pkgs; [
     freecad-qt6
     prusa-slicer
-    pkgs-stable.orca-slicer
+    # pkgs-stable.orca-slicer
   ];
 
   # https://github.com/danth/stylix/pull/264

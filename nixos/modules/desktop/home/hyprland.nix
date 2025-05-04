@@ -176,7 +176,17 @@ in
         "${mainMod}, mouse:273, resizewindow"
       ];
 
-      windowrule = [ "tile, ^(VisualVM.*)$" ];
+      #windowrule = [ "tile, ^(VisualVM.*)$" ];
+      windowrule = [
+        "tile, title:^(VisualVM.*)$"
+        "float, title:(HearthstoneOverlay)"
+        "center, title:(HearthstoneOverlay)"
+        # "nofocus, title:(HearthstoneOverlay)"
+        # "noinitialfocus, title:(HearthstoneOverlay)"
+        "noborder, title:(HearthstoneOverlay)"
+        "opacity 0.2, title:(HearthstoneOverlay)"
+        "stayfocused, title:^(Hearthstone)$"
+      ];
 
       misc = {
         vrr = "1";
