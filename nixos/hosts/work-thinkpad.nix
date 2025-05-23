@@ -19,6 +19,9 @@
   boot.extraModulePackages = [ ];
   boot.kernelParams = [
     "workqueue.power_efficient=N"
+    "i915.force_probe=46a6"
+    # "i915.force_probe=!46a6"
+    # "xe.force_probe=46a6"
   ];
 
   fileSystems."/" = {
@@ -51,6 +54,11 @@
     allowDiscards = true;
   };
 
+  hardware.cpu.x86.msr = {
+    enable = true;
+    settings.allow-writes = "on";
+  };
+
   services.tlp = {
     enable = true;
     settings = {
@@ -80,10 +88,10 @@
     };
   };
 
-  services.scx = {
-    enable = true;
-    scheduler = "scx_bpfland";
-  };
+  # services.scx = {
+  #   enable = true;
+  #   scheduler = "scx_bpfland";
+  # };
 
   services.hardware.bolt.enable = true;
 }

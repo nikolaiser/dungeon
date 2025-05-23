@@ -101,7 +101,8 @@ let
         ];
     };
 
-  neovim-package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  # neovim-package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  neovim-package = pkgs.neovim-unwrapped;
 
   nvim-wrapped = pkgs.wrapNeovimUnstable neovim-package nvimConfig;
 
