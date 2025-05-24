@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -139,7 +139,7 @@
               nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
               systemd.tmpfiles.rules = [ "d /var/tmp/agenix-rekey 1777 root root" ];
 
-              system.stateVersion = "24.11";
+              system.stateVersion = "25.05";
             }
             {
               shared.enable = true;
