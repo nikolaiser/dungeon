@@ -2,6 +2,7 @@
   config,
   lib,
   modulesPath,
+  pkgs,
   ...
 }:
 {
@@ -23,6 +24,7 @@
     # "i915.force_probe=!46a6"
     # "xe.force_probe=46a6"
   ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5d3eb2aa-5171-49cf-a65a-203141cce28e";
