@@ -14,7 +14,7 @@ let
 in
 {
 
-  stylix.targets.fish.enable = false;
+  # stylix.targets.fish.enable = false;
   # stylix.targets.tmux.enable = false;
 
   programs = {

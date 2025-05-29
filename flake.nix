@@ -185,10 +185,11 @@
           ./nixos/hosts/home-desktop.nix
           {
             amdgpu.enable = true;
-            #zfs.enable = true;
+            zfs.enable = true;
             gaming.enable = true;
-            #networking.hostId = "bda049b5";
+            networking.hostId = "bda049b5";
             cad.enable = true;
+            smart.enable = true;
           }
         ];
 

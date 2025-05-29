@@ -20,6 +20,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.zfs.extraPools = [ "root" ];
 
   boot.kernelParams = [
     "amd_pstate=guided"
@@ -27,17 +28,37 @@
   ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/757efbad-bc97-4a8f-a81a-7bc2c62335b0";
-    fsType = "ext4";
+    device = "root/root";
+    fsType = "zfs";
+  };
+
+  fileSystems."/var" = {
+    device = "root/var";
+    fsType = "zfs";
+  };
+
+  fileSystems."/nix" = {
+    device = "root/nix";
+    fsType = "zfs";
+  };
+
+  fileSystems."/home" = {
+    device = "root/home";
+    fsType = "zfs";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/492B-63FF";
+    device = "/dev/disk/by-uuid/F10A-6075";
     fsType = "vfat";
     options = [
       "fmask=0022"
       "dmask=0022"
     ];
+  };
+
+  fileSystems."/home/nikolaiser/.local/share/atuin" = {
+    device = "/dev/zvol/root/atuin";
+    fsType = "ext4";
   };
 
   swapDevices = [ ];
@@ -53,7 +74,7 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   services.avahi = {
     enable = true;

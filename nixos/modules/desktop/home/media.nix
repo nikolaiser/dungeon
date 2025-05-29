@@ -35,6 +35,7 @@ in
     slides
     drawing
     libreoffice-qt6-fresh
+    marp-cli
   ];
 
   services.mpris-proxy.enable = true;
