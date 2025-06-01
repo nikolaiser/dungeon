@@ -1,26 +1,32 @@
 { config, ... }:
 let
-  nodeExporterConfig = ip: name: {
-    job_name = name;
+  exporterConfig = ip: node: name: port: {
+    job_name = "${name}-${node}";
     static_configs = [
       {
         targets = [
-          "${ip}:${builtins.toString config.services.prometheus.exporters.node.port}"
+          "${ip}:${port}"
         ];
         labels = {
-          host = name;
+          host = node;
         };
       }
     ];
   };
+
+  localExporterConfig = exporterConfig "127.0.0.1" "nas";
 in
 {
 
   services.prometheus = {
     enable = true;
     scrapeConfigs = [
-      (nodeExporterConfig "127.0.0.1" "nas")
+      (localExporterConfig "node" (builtins.toString config.services.prometheus.exporters.node.port))
+      (localExporterConfig "zfs" (builtins.toString config.services.prometheus.exporters.zfs.port))
     ];
+    exporters = {
+      zfs.enable = true;
+    };
   };
 
   services.nginx.virtualHosts."prometheus.${config.nas.baseDomain.private}" = {
