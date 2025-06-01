@@ -123,3 +123,15 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --     require("conform").format({ bufnr = args.buf })
 --   end,
 -- })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "scheme",
+	callback = function(ev)
+		vim.lsp.start({
+			name = "steel-language-server",
+			cmd = { "steel-language-server" },
+
+			root_dir = vim.fs.root(ev.buf, {}),
+		})
+	end,
+})

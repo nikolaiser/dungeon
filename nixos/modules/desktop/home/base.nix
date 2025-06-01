@@ -7,12 +7,6 @@
   ...
 }:
 
-let
-
-  themeFile = config.lib.stylix.colors { templateRepo = config.lib.stylix.templates.base16-vim; };
-
-in
-
 {
   home = {
     username = osConfig.shared.username;
@@ -22,29 +16,16 @@ in
       firefox
       ungoogled-chromium
       xdg-utils
-      bat # cat alternative
-      bottom # alternative to htop
-      eza # better ls
-      fd # better find
       fzf
       jq
-      micro # nano alternative
-      procs # ps replacement
       ripgrep
-      dig
       util-linux
-      neofetch
       unzip
-      gron # make json greppable
-      #delta # syntax highlighting for git, diff and grep
       age
       libargon2
-      wireguard-tools
-      yubioath-flutter
       wl-clipboard
       xclip
       inputs.agenix.packages.${system}.default
-      #ladybird
     ];
 
     sessionVariables = {

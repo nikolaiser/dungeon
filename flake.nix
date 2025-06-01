@@ -61,6 +61,15 @@
     proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
 
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
+
+    helix = {
+      url = "github:clo4/helix/helix-cogs-steel-language-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    steel = {
+      url = "github:mattwparas/steel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -190,6 +199,7 @@
             networking.hostId = "bda049b5";
             cad.enable = true;
             smart.enable = true;
+            helix.enable = true;
           }
         ];
 

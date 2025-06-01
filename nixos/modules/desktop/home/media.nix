@@ -18,21 +18,12 @@ in
 {
 
   home.packages = with pkgs; [
-    pcmanfm
     nautilus
-    qimgv # image viewer
-    evince # document viewer
     pavucontrol
-    gnupg # gpg
-    vlc
-    via
     vial
-    graphviz-nox
-    zgrviewer
     playerctl
     networkmanagerapplet # networkmanager applet
     libsForQt5.plasma-pa
-    slides
     drawing
     libreoffice-qt6-fresh
     marp-cli

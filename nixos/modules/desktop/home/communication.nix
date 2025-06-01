@@ -5,6 +5,5 @@
     discord
     slack
     telegram-desktop
-    webcord
   ];
 }
