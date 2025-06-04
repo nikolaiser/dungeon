@@ -18,6 +18,11 @@ in
       enableTCPIP = true;
       authentication = "host all all 10.0.0.1/8 md5";
       package = pkgs.postgresql_15;
+      extensions =
+        ps: with ps; [
+          pgvectorscale
+          pgvector
+        ];
     };
     postgresqlBackup = {
       enable = true;

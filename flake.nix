@@ -81,7 +81,7 @@
         let
 
           overlays = [
-            (import ./nixos/overlays inputs)
+            (import ./overlays inputs)
             inputs.agenix-rekey.overlays.default
           ];
 
@@ -125,7 +125,7 @@
             (
               args@{ lib, pkgs, ... }:
               {
-                imports = lib.importAllModules ./nixos/modules args;
+                imports = lib.importAllModules ./modules args;
               }
             )
             inputs.private.nixosModules.default
@@ -191,7 +191,7 @@
 
       nixosConfigurations = {
         home-desktop = mkDesktopSystem [
-          ./nixos/hosts/home-desktop.nix
+          ./hosts/home-desktop.nix
           {
             amdgpu.enable = true;
             zfs.enable = true;
@@ -205,7 +205,7 @@
 
         work-thinkpad = mkDesktopSystem [
           "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
-          ./nixos/hosts/work-thinkpad.nix
+          ./hosts/work-thinkpad.nix
           {
             networking.hostName = "ri-t-0929";
             hardware.intelgpu = {
@@ -218,7 +218,7 @@
 
         iskra = mkArmServerSystem [
           inputs.nixos-hardware.nixosModules.raspberry-pi-4
-          ./nixos/hosts/iskra.nix
+          ./hosts/iskra.nix
           {
             networking.hostName = "iskra";
             kodi.enable = true;
@@ -226,7 +226,7 @@
         ];
 
         nas = mkx86_64ServerSystem [
-          ./nixos/hosts/nas.nix
+          ./hosts/nas.nix
           inputs.disko.nixosModules.disko
           {
             networking = {
@@ -239,7 +239,7 @@
             monitoring.enable = true;
             nodeExporter.enable = true;
             # TODO: Remove after https://github.com/danth/stylix/issues/911 is fixed
-            stylix.image = ./nixos/modules/desktop/home/wallpapers/wallhaven-gpvw7q_3840x2160.png;
+            stylix.image = ./modules/desktop/home/wallpapers/wallhaven-gpvw7q_3840x2160.png;
 
           }
         ];
