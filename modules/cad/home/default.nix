@@ -1,6 +1,7 @@
 {
   pkgs,
   pkgs-stable,
+  pkgs-prusa-slicer,
   config,
   lib,
   ...
@@ -21,7 +22,7 @@
       "FreeCAD/Mod/Stylix/package.xml".text = import ./freecad/package.nix config;
     };
     configFile.PrusaSlicer = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/nixos/modules/cad/home/prusa-slicer";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/modules/cad/home/prusa-slicer";
       recursive = true;
     };
 

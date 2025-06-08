@@ -9,4 +9,6 @@
     pinentryPackage = pkgs.pinentry-qt;
   };
 
+  services.gnome-keyring.enable = true;
+
 }

@@ -18,7 +18,7 @@
 
   xdg.configFile = {
     helix = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/nixos/modules/helix/home/config";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/modules/helix/home/config";
       recursive = true;
     };
   };

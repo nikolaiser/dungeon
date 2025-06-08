@@ -1258,6 +1258,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-prusa-slicer": {
+      "locked": {
+        "lastModified": 1735931376,
+        "narHash": "sha256-lV3PuEwjgKfQGpqHngdt/P4uFOSUjRLsvXpBz7jQNYo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1bd956fed27498ed808a365074eec752a69f5066",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1bd956fed27498ed808a365074eec752a69f5066",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1749086602,
@@ -1529,6 +1545,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-prusa-slicer": "nixpkgs-prusa-slicer",
         "nixpkgs-stable": "nixpkgs-stable",
         "private": "private",
         "proxmox-nixos": "proxmox-nixos",

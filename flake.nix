@@ -70,6 +70,7 @@
       url = "github:mattwparas/steel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -89,9 +90,6 @@
             inherit overlays system;
             config.allowUnfree = true;
             config.allowUnfreePredicate = (pkg: true);
-            # config.permittedInsecurePackages = [
-            #     "python3.12-django-3.2.25"
-            #   ];
           };
 
           inherit (pkgs) lib;
@@ -106,6 +104,12 @@
             };
 
             pkgs-master = import inputs.nixpkgs-master {
+              inherit overlays system;
+
+              config.allowUnfree = true;
+            };
+
+            pkgs-prusa-slicer = import inputs.nixpkgs-prusa-slicer {
               inherit overlays system;
 
               config.allowUnfree = true;
@@ -245,7 +249,7 @@
         ];
 
         baseImagex86_64 = mkx86_64ServerSystem [
-          "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          "${inputs.nixpkgs}/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];
 
       };
