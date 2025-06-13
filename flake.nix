@@ -249,7 +249,7 @@
         ];
 
         baseImagex86_64 = mkx86_64ServerSystem [
-          "${inputs.nixpkgs}/modules/installer/cd-dvd/installation-cd-minimal.nix"
+          "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];
 
       };

@@ -1258,22 +1258,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-prusa-slicer": {
-      "locked": {
-        "lastModified": 1735931376,
-        "narHash": "sha256-lV3PuEwjgKfQGpqHngdt/P4uFOSUjRLsvXpBz7jQNYo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1bd956fed27498ed808a365074eec752a69f5066",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "1bd956fed27498ed808a365074eec752a69f5066",
-        "type": "github"
-      }
-    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1749086602,
@@ -1495,11 +1479,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749327699,
-        "narHash": "sha256-bTTXvfB9wPLUlwFRo+ECgbvIasCDwuf0jMaq/CrDEF0=",
+        "lastModified": 1749465500,
+        "narHash": "sha256-MHPerpaPkx3TXgCqGCrA/45BOFqsdcJfDxRYkpmZk+Y=",
         "owner": "nikolaiser",
         "repo": "dungeon-private",
-        "rev": "b11ac751d19fb6c483aa8239edae2e6a86891a28",
+        "rev": "5517819a44eb3a9669172b8a0e388396af7f9003",
         "type": "github"
       },
       "original": {
@@ -1545,7 +1529,6 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-master": "nixpkgs-master",
-        "nixpkgs-prusa-slicer": "nixpkgs-prusa-slicer",
         "nixpkgs-stable": "nixpkgs-stable",
         "private": "private",
         "proxmox-nixos": "proxmox-nixos",
