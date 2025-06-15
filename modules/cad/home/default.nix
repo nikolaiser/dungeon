@@ -1,7 +1,6 @@
 {
   pkgs,
   pkgs-stable,
-  pkgs-prusa-slicer,
   config,
   lib,
   ...

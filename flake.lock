@@ -1063,6 +1063,22 @@
         "type": "github"
       }
     },
+    "immich-main": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1749999873,
+        "narHash": "sha256-+3nDUoUAgSKV/Oj6aQvcX0S1spZNqqA0WeArNjKGhqw=",
+        "owner": "immich-app",
+        "repo": "immich",
+        "rev": "189442e9c4f2894b21cad7aa5a3474f0cec05c04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "immich-app",
+        "repo": "immich",
+        "type": "github"
+      }
+    },
     "kent": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -1304,6 +1320,22 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-vectorchord": {
+      "locked": {
+        "lastModified": 1748793612,
+        "narHash": "sha256-PqJvukgDQpW+7DVetgdwsVllcwRAc+l2QwhxwMb4tWg=",
+        "owner": "diogotcorreia",
+        "repo": "nixpkgs",
+        "rev": "bae2afabee84e90f7084a8362981ac57cce8c3fc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "diogotcorreia",
+        "ref": "postgres-vectorchord",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1749143949,
@@ -1479,11 +1511,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749465500,
-        "narHash": "sha256-MHPerpaPkx3TXgCqGCrA/45BOFqsdcJfDxRYkpmZk+Y=",
+        "lastModified": 1750011349,
+        "narHash": "sha256-AM9d0hjSkB3q8g5C8T8qHX8cvoKOv1DPfblnjKbhWjw=",
         "owner": "nikolaiser",
         "repo": "dungeon-private",
-        "rev": "5517819a44eb3a9669172b8a0e388396af7f9003",
+        "rev": "c11c6e8268ff3d5381ffab64e43a1dec21e4d83f",
         "type": "github"
       },
       "original": {
@@ -1521,6 +1553,7 @@
         "helix": "helix",
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
+        "immich-main": "immich-main",
         "kent": "kent",
         "mcphub-nvim": "mcphub-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
@@ -1530,6 +1563,7 @@
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs-vectorchord": "nixpkgs-vectorchord",
         "private": "private",
         "proxmox-nixos": "proxmox-nixos",
         "steel": "steel",

@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-vectorchord,
   config,
   lib,
   ...
@@ -22,6 +23,7 @@ in
         ps: with ps; [
           pgvectorscale
           pgvector
+          pkgs-vectorchord.postgresqlPackages.vectorchord
         ];
     };
     postgresqlBackup = {

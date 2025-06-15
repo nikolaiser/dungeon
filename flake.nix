@@ -71,6 +71,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixpkgs-vectorchord.url = "github:diogotcorreia/nixpkgs/postgres-vectorchord";
+
   };
 
   outputs =
@@ -109,7 +111,7 @@
               config.allowUnfree = true;
             };
 
-            pkgs-prusa-slicer = import inputs.nixpkgs-prusa-slicer {
+            pkgs-vectorchord = import inputs.nixpkgs-vectorchord {
               inherit overlays system;
 
               config.allowUnfree = true;

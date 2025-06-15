@@ -53,7 +53,11 @@ in
 
   boot.initrd.kernelModules = [ ];
   boot.initrd.postMountCommands = "zpool import -a; zfs mount -a; zfs load-key -a;zfs mount -a";
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "vfio"
+    "vfio_pci"
+  ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = {
     zfs = lib.mkForce true;
