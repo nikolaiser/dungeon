@@ -8,6 +8,7 @@
 
 let
   postgresqlDataDir = "/nvmeStorage/db/postgres";
+  postgresql17DataDir = "/nvmeStorage/db/postgres17";
   qdrantDataDir = "/nvmeStorage/db/qdrant";
   qdrantSnapshotDir = "/nvmeStorage/db/qdrant_snapshots";
 in
@@ -15,16 +16,18 @@ in
   services = {
     postgresql = {
       enable = true;
-      dataDir = postgresqlDataDir;
+      dataDir = postgresql17DataDir;
       enableTCPIP = true;
       authentication = "host all all 10.0.0.1/8 md5";
-      package = pkgs.postgresql_15;
+      package = pkgs.postgresql_17;
       extensions =
         ps: with ps; [
           pgvectorscale
           pgvector
           pkgs-vectorchord.postgresqlPackages.vectorchord
         ];
+
+      settings.shared_preload_libraries = [ "vchord" ];
     };
     postgresqlBackup = {
       enable = true;
@@ -68,6 +71,15 @@ in
   systemd.tmpfiles.settings = {
     "10-postgresql" = {
       "${postgresqlDataDir}" = {
+        d = {
+          user = config.systemd.services.postgresql.serviceConfig.User;
+          group = config.systemd.services.postgresql.serviceConfig.Group;
+          mode = "0700";
+        };
+      };
+    };
+    "10-postgresql17" = {
+      "${postgresql17DataDir}" = {
         d = {
           user = config.systemd.services.postgresql.serviceConfig.User;
           group = config.systemd.services.postgresql.serviceConfig.Group;

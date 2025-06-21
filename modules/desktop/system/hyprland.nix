@@ -30,19 +30,9 @@
 
     displayManager = {
       defaultSession = "hyprland";
-    };
-    xserver = {
-      enable = true;
-      desktopManager = {
-        xterm.enable = false;
-      };
-
-      displayManager = {
-        lightdm.enable = false;
-        gdm = {
-          enable = true;
-          wayland = true;
-        };
+      gdm = {
+        enable = true;
+        wayland = true;
       };
     };
   };

@@ -47,7 +47,7 @@ in
       restartcontainers = {
         serviceConfig = {
           Type = "oneshot";
-          ExecStart = "sudo ${pkgs.podman}/bin/podman restrt --all";
+          ExecStart = "${pkgs.podman}/bin/podman restart --all";
         };
       };
     };

@@ -21,6 +21,7 @@ in
     nautilus
     pavucontrol
     vial
+    via
     playerctl
     networkmanagerapplet # networkmanager applet
     libsForQt5.plasma-pa
