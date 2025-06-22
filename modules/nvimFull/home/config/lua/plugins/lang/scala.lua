@@ -57,10 +57,10 @@ return {
 
 			metals_config.settings = {
 				metalsBinaryPath = vim.g.metals_binary,
-				-- showImplicitArguments = true,
-				-- showImplicitConversionsAndClasses = true,
+				showImplicitArguments = true,
+				showImplicitConversionsAndClasses = true,
 				-- showInferredType = true,
-				-- defaultBspToBuildTool = true,
+				defaultBspToBuildTool = true,
 				serverProperties = { "-Dmetals.enable-best-effort=true" },
 				excludedPackages = {},
 				fallbackScalaVersion = "3.3.3",
@@ -71,6 +71,7 @@ return {
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = self.ft,
 				callback = function()
+					vim.lsp.inlay_hint.enable(true)
 					require("metals").initialize_or_attach(metals_config)
 				end,
 				group = nvim_metals_group,

@@ -1,12 +1,43 @@
+local grep_opts = {
+	"rg",
+	"--vimgrep",
+	"--hidden",
+	"--follow",
+	"--glob",
+	'"!**/.git/*"',
+	"--column",
+	"--line-number",
+	"--no-heading",
+	"--color=always",
+	"--smart-case",
+	"--max-columns=4096",
+	"-e",
+}
+
 return {
 	{
 		"ibhagwan/fzf-lua",
 		-- optional for icon support
 		dependencies = { "echasnovski/mini.icons" },
-		config = function(opts)
-			-- calling `setup` is optional for customization
-			require("fzf-lua").setup({ "telescope" })
-		end,
+		opts = {
+			"telescope",
+			grep = {
+				cwd_prompt = false,
+				cmd = table.concat(grep_opts, " "),
+				hidden = true,
+				follow = true,
+			},
+			files = {
+				cwd_prompt = false,
+				git_icons = true,
+				hidden = true,
+				follow = true,
+			},
+		},
+		-- config = function(opts)
+		-- 	-- calling `setup` is optional for customization
+		-- 	require("fzf-lua").setup(opts)
+		-- end,
 
 		keys = {
 			-- Basic

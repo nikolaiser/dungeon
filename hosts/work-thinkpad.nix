@@ -61,6 +61,12 @@
     settings.allow-writes = "on";
   };
 
+  hardware.graphics = {
+    extraPackages = with pkgs; [
+      vpl-gpu-rt
+    ];
+  };
+
   services.tlp = {
     enable = true;
     settings = {

@@ -215,7 +215,7 @@
           {
             networking.hostName = "ri-t-0929";
             hardware.intelgpu = {
-              driver = "xe";
+              # driver = "xe";
               loadInInitrd = true;
               enableHybridCodec = true;
             };
