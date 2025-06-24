@@ -37,12 +37,11 @@ in
       ];
       nix-path = "nixpkgs=flake:nixpkgs";
     };
-    package = pkgs.nixVersions.git;
+    package = pkgs.nixVersions.nix_2_29;
   };
 
   networking.firewall.enable = true;
 
-  system.switch.enableNg = true;
   powerManagement.powertop.enable = true;
 
   nix.settings = {
