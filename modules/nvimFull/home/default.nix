@@ -56,6 +56,7 @@ let
       execline
       jdt-language-server
       gnumake
+      schemat
     ]
   );
 

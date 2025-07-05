@@ -16,10 +16,7 @@ in
   programs.fish.enable = true;
   environment.systemPackages = with pkgs; [
     git
-    powertop
   ];
-
-  services.fwupd.enable = true;
 
   hardware.enableAllFirmware = true;
 
@@ -41,8 +38,6 @@ in
   };
 
   networking.firewall.enable = true;
-
-  powerManagement.powertop.enable = true;
 
   nix.settings = {
     substituters = [ "https://nix-community.cachix.org" ];

@@ -63,15 +63,14 @@
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
 
     helix = {
-      url = "github:clo4/helix/helix-cogs-steel-language-server";
+      # url = "github:nikolaiser/helix/lsp-method-calls";
+      url = "git+file:///home/nikolaiser/Documents/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     steel = {
       url = "github:mattwparas/steel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs-vectorchord.url = "github:diogotcorreia/nixpkgs/postgres-vectorchord";
 
   };
 
@@ -106,12 +105,6 @@
             };
 
             pkgs-master = import inputs.nixpkgs-master {
-              inherit overlays system;
-
-              config.allowUnfree = true;
-            };
-
-            pkgs-vectorchord = import inputs.nixpkgs-vectorchord {
               inherit overlays system;
 
               config.allowUnfree = true;

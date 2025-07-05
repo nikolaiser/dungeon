@@ -65,7 +65,6 @@ in
 
   home-manager = {
     users."kodi".imports = [ ../home ];
-    backupFileExtension = "backup";
   };
 
 }
