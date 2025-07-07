@@ -17,7 +17,6 @@ in
   services = {
     immich = {
       enable = true;
-      package = pkgs-master.immich;
       database.enable = false;
       mediaLocation = immichMediaDir;
       redis.enable = true;

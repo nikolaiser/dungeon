@@ -63,8 +63,8 @@
     mcphub-nvim.url = "github:ravitemer/mcphub.nvim";
 
     helix = {
-      # url = "github:nikolaiser/helix/lsp-method-calls";
-      url = "git+file:///home/nikolaiser/Documents/helix";
+      url = "github:nikolaiser/helix/lsp-method-calls";
+      # url = "git+file:///home/nikolaiser/Documents/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     steel = {
