@@ -608,11 +608,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1751233568,
-        "narHash": "sha256-AScTPcPgWocGM+jjKZ1k4UOGuuHBqlLT73rb9U3OHJk=",
+        "lastModified": 1752419848,
+        "narHash": "sha256-59U/aMl5BcnD5+oSFwne/QVy2BKGE44vwcu2Fl46+zM=",
         "owner": "nikolaiser",
         "repo": "helix",
-        "rev": "e712f560e24eac2d1f2300689337568a52e7745b",
+        "rev": "0c46d55bf7b359d9ba427a0c55f2690b615aa92a",
         "type": "github"
       },
       "original": {
@@ -1753,11 +1753,11 @@
     "vim-tmux-navigator-sturdy": {
       "flake": false,
       "locked": {
-        "lastModified": 1723212288,
-        "narHash": "sha256-G5bDspfgDU3Hhzygi34N2x9C8aA70FGYEnv30+hRuOc=",
+        "lastModified": 1752434344,
+        "narHash": "sha256-Wbnd/Q0tzuLTWiDUw3xcjdL4xFedLdd+dul+92pT5k8=",
         "owner": "nikolaiser",
         "repo": "vim-tmux-navigator-sturdy",
-        "rev": "474e5d4848df2076584495b6805151aaef365130",
+        "rev": "682f2d7d97f92338be004a1acff22cecc9b67002",
         "type": "github"
       },
       "original": {

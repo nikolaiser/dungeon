@@ -13,7 +13,7 @@
                 items
                 fuzzy-matched-items
                 selected-index
-                result-sender
+                callback
                 ))
 
 (define (get-selected-index state) (unbox (Picker-selected-index state)))
@@ -80,7 +80,8 @@
   (cond [(helix.components.key-event-escape? event) helix.components.event-result/close]
     [(helix.components.key-event-enter? event) (begin 
                                                  (define result (list-ref (unbox (Picker-fuzzy-matched-items state) ) selected-index))
-                                                 (channel->send (Picker-result-sender state) result) 
+                                                 (define callback (Picker-callback state))
+                                                 (callback result) 
                                                   
                                                  helix.components.event-result/close)]
     [else (begin
@@ -100,19 +101,11 @@
 
 ;;@doc
 ;; Shows all of the projects in a picker where selecting a project sets the working directory to that projects directory.
-(define (select-item items)
-  (define result-channels (make-channels))
-  (define result-sender (list-ref result-channels 0))
-  (define result-receiver (list-ref result-channels 1))
-
-
-  (define picker-state (Picker (box "") (box 0) items (box items) (box 0) result-sender) )
+(define (select-item items callback)
+  (define picker-state (Picker (box "") (box 0) items (box items) (box 0) callback) )
   (helix.misc.push-component! (helix.components.new-component!
                     "Picker"
                     picker-state 
                     render-picker
                     (hash "handle_event" handle-picker-event "cursor" get-picker-cursor-position)))
-
-  (define selected-item (channel->recv result-receiver))
-  selected-item
   )

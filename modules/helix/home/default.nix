@@ -3,21 +3,34 @@
   pkgs,
   system,
   config,
+  lib,
   ...
 }:
 
 let
   metalsPackage = (pkgs.metals.override { jre = pkgs.temurin-bin-21; });
+  binPath = lib.makeBinPath (
+    with pkgs;
+    [
+      metalsPackage
+      inputs.steel.packages.${system}.default
+      nil
+      nixd
+      schemat
+      tmux
+    ]
+  );
+  helixWrapped = pkgs.writeShellScriptBin "hx" ''
+    export PATH=${binPath}
+    export STEEL_HOME=${config.xdg.dataHome}/steel
+    export STEEL_LSP_HOME=${config.xdg.dataHome}/steel/steel-language-server
+    exec ${inputs.helix.packages.${system}.default}/bin/hx "$@"
+  '';
 in
 {
   home.packages = [
-    inputs.helix.packages.${system}.default
-    inputs.steel.packages.${system}.default
-    metalsPackage
+    helixWrapped
   ];
-
-  home.sessionVariables.STEEL_HOME = "${config.xdg.dataHome}/steel";
-  home.sessionVariables.STEEL_LSP_HOME = "${config.xdg.dataHome}/steel/steel-language-server";
 
   xdg.configFile = {
     helix = {

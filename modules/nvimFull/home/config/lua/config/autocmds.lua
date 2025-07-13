@@ -11,13 +11,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	command = "set filetype=yaml.docker-compose",
 })
 
--- vim.api.nvim_create_autocmd({ "FileType" }, {
---   pattern = { "nix" },
---   callback = function(event)
---     require("otter").activate(nil, true, true, nil)
---   end
--- })
---
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "nix" },
+	callback = function(event)
+		require("otter").activate(nil, true, true, nil)
+	end,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "mustache" },
 	callback = function()
