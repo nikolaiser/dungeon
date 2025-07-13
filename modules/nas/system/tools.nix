@@ -3,6 +3,7 @@
 let
   itToolsUrl = "it-tools.${config.nas.baseDomain.private}";
   swaggerEditorUrl = "swagger-editor.${config.nas.baseDomain.private}";
+  stirlingpdfUrl = "pdf.${config.nas.baseDomain.private}";
 in
 {
   virtualisation.oci-containers.containers = {
@@ -15,6 +16,15 @@ in
       image = "swaggerapi/swagger-editor:latest";
       autoStart = true;
       ports = [ "9192:8080" ];
+    };
+    stirling-pdf = {
+      image = "docker.stirlingpdf.com/stirlingtools/stirling-pdf:latest";
+      autoStart = true;
+      ports = [ "9193:8080" ];
+      environment = {
+        LANGS = "en_US";
+        DISABLE_PIXEL = "True";
+      };
     };
   };
 
@@ -32,6 +42,14 @@ in
       useACMEHost = "${config.nas.baseDomain.private}";
       locations."/" = {
         proxyPass = "http://127.0.0.1:9192";
+        proxyWebsockets = true;
+      };
+    };
+    ${stirlingpdfUrl} = {
+      forceSSL = true;
+      useACMEHost = "${config.nas.baseDomain.private}";
+      locations."/" = {
+        proxyPass = "http://localhost:9193";
         proxyWebsockets = true;
       };
     };
