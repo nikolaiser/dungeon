@@ -24,7 +24,7 @@ in
         ps: with ps; [
           pgvectorscale
           pgvector
-          pkgs-master.postgresql17Packages.vectorchord
+          vectorchord
         ];
 
       settings.shared_preload_libraries = [ "vchord" ];

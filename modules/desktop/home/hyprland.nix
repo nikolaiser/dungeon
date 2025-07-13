@@ -179,13 +179,17 @@ in
       #windowrule = [ "tile, ^(VisualVM.*)$" ];
       windowrule = [
         "tile, title:^(VisualVM.*)$"
-        "float, title:(HearthstoneOverlay)"
-        "center, title:(HearthstoneOverlay)"
-        # "nofocus, title:(HearthstoneOverlay)"
+        "noblur, title:(HearthstoneOverlay)"
+        "noshadow, title:(HearthstoneOverlay)"
+        "noanim, title:(HearthstoneOverlay)"
+        "nodim, title:(HearthstoneOverlay)"
+        "nofocus, title:(HearthstoneOverlay)"
+        "opacity 0.5, title:(HearthstoneOverlay)"
+        # "float, title:(HearthstoneOverlay)"
+        # "center, title:(HearthstoneOverlay)"
         # "noinitialfocus, title:(HearthstoneOverlay)"
-        "noborder, title:(HearthstoneOverlay)"
-        "opacity 0.2, title:(HearthstoneOverlay)"
-        "stayfocused, title:^(Hearthstone)$"
+        # "noborder, title:(HearthstoneOverlay)"
+        "tile, title:^(Hearthstone)$"
       ];
 
       misc = {
