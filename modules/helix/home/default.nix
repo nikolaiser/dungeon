@@ -18,10 +18,11 @@ let
       nixd
       schemat
       tmux
+      #bash
     ]
   );
   helixWrapped = pkgs.writeShellScriptBin "hx" ''
-    export PATH=${binPath}
+    export PATH=$PATH:${binPath}
     export STEEL_HOME=${config.xdg.dataHome}/steel
     export STEEL_LSP_HOME=${config.xdg.dataHome}/steel/steel-language-server
     exec ${inputs.helix.packages.${system}.default}/bin/hx "$@"

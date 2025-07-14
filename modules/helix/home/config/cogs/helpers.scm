@@ -4,6 +4,7 @@
 (provide sublist)
 (provide filter)
 (provide map-index)
+(provide exec-tmux-popup)
 
 (define (remove-char str index-to-remove-at)
   (define str-len (string-length str))
@@ -35,3 +36,16 @@
                (define indexVal (unbox index))
                (set-box! index (+ indexVal 1))
                (func indexVal elem)) lst))
+
+
+(define (with-stdout-piped command)
+  (set-piped-stdout! command)
+  command)
+
+(define (exec-tmux-popup prog)
+  (define cmd
+    (string-append
+     "pipe=$(mktemp -u); mkfifo \"$pipe\"; "
+     "tmux display-popup -E \"printf '%s\\n' \\$(" prog ") >$pipe\" & "
+     "read -r answer < \"$pipe\"; rm \"$pipe\"; echo \"$answer\""))
+  (~> (command "bash" `("-c"  ,cmd)) ( with-stdout-piped ) ( spawn-process ) ( Ok->value ) ( wait->stdout ) ( Ok->value )))

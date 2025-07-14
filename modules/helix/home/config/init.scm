@@ -5,6 +5,8 @@
 (require (prefix-in navigator. "cogs/navigator.scm"))
 (require "cogs/keymaps.scm")
 
+(require (prefix-in explorer. "cogs/explorer.scm"))
+
 (helix.register-lsp-call-handler
   "metals"
   "window/showMessageRequest"
@@ -26,4 +28,7 @@
 (keymap (global) (normal (C-up ":navigator.move-up")))
 (keymap (global) (normal (C-left ":navigator.move-left")))
 (keymap (global) (normal (C-right ":navigator.move-right")))
+
+(keymap (global)
+        (normal  (space (e ":explorer.show-explorer"))))
 
