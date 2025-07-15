@@ -33,4 +33,7 @@
   (normal (space (e ":explorer.show-explorer"))))
 
 (keymap (global)
-  (normal (C-t  ":w")))
+  (normal (C-t ":w")))
+
+(keymap (global)
+  (normal (space (q ":qa"))))
