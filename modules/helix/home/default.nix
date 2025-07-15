@@ -18,7 +18,7 @@ let
       nixd
       schemat
       tmux
-      #bash
+      nixfmt-rfc-style
     ]
   );
   helixWrapped = pkgs.writeShellScriptBin "hx" ''

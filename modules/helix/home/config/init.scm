@@ -24,6 +24,11 @@
   (auto-format #true)
   (language-servers '("steel-language-server")))
 
+(helix.define-language "nix"
+  (formatter (command "nixfmt-rfc-style"))
+  (auto-format #true)
+  (language-servers '("nil" "nixd")))
+
 (keymap (global) (normal (C-down ":navigator.move-down")))
 (keymap (global) (normal (C-up ":navigator.move-up")))
 (keymap (global) (normal (C-left ":navigator.move-left")))

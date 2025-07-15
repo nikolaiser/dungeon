@@ -25,12 +25,17 @@
       libargon2
       wl-clipboard
       xclip
-      inputs.agenix.packages.${system}.default
+      # inputs.agenix.packages.${system}.default
     ];
 
     sessionVariables = {
       EDITOR = "hx";
     };
+  };
+
+  programs.gpg.scdaemonSettings = {
+      reader-port = "Yubico Yubi";
+      disable-ccid = true;
   };
 
   systemd.user.startServices = "sd-switch";
