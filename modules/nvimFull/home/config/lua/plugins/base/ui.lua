@@ -3,7 +3,7 @@ return {
 		"EdenEast/nightfox.nvim",
 		lazy = false,
 		config = function()
-			vim.cmd.colorscheme("duskfox")
+			vim.cmd.colorscheme("carbonfox")
 		end,
 	},
 	{

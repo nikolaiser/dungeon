@@ -11,10 +11,10 @@
 
 (define (move hx-jump-fn tmux-dir-str)
   (begin
-  (define view-p (hx.editor.editor-focus))
-  (hx-jump-fn)
-  (define view-n (hx.editor.editor-focus))
-  (if (equal? view-n view-p)
+    (define view-p (hx.editor.editor-focus))
+    (hx-jump-fn)
+    (define view-n (hx.editor.editor-focus))
+    (if (equal? view-n view-p)
       (move-tmux tmux-dir-str))))
 
 (define (move-right)

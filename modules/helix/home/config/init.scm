@@ -30,5 +30,7 @@
 (keymap (global) (normal (C-right ":navigator.move-right")))
 
 (keymap (global)
-        (normal  (space (e ":explorer.show-explorer"))))
+  (normal (space (e ":explorer.show-explorer"))))
 
+(keymap (global)
+  (normal (C-t  ":w")))

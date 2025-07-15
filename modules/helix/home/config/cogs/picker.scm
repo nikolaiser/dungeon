@@ -13,8 +13,7 @@
                 items
                 fuzzy-matched-items
                 selected-index
-                callback
-                ))
+                callback))
 
 (define (get-selected-index state) (unbox (Picker-selected-index state)))
 
@@ -78,12 +77,12 @@
   (define cursor-pos (unbox (Picker-cursor-position-in-search-query state)))
   (define search-query-len (string-length (unbox (Picker-search-query state))))
   (cond [(helix.components.key-event-escape? event) helix.components.event-result/close]
-    [(helix.components.key-event-enter? event) (begin 
-                                                 (define result (list-ref (unbox (Picker-fuzzy-matched-items state) ) selected-index))
-                                                 (define callback (Picker-callback state))
-                                                 (callback result) 
-                                                  
-                                                 helix.components.event-result/close)]
+    [(helix.components.key-event-enter? event) (begin
+                                                (define result (list-ref (unbox (Picker-fuzzy-matched-items state)) selected-index))
+                                                (define callback (Picker-callback state))
+                                                (callback result)
+
+                                                helix.components.event-result/close)]
     [else (begin
            (cond [(helix.components.key-event-up? event) (set-selected-index-wrapping state (- selected-index 1))]
              [(helix.components.key-event-down? event) (set-selected-index-wrapping state (+ selected-index 1))]
@@ -102,10 +101,9 @@
 ;;@doc
 ;; Shows all of the projects in a picker where selecting a project sets the working directory to that projects directory.
 (define (select-item items callback)
-  (define picker-state (Picker (box "") (box 0) items (box items) (box 0) callback) )
+  (define picker-state (Picker (box "") (box 0) items (box items) (box 0) callback))
   (helix.misc.push-component! (helix.components.new-component!
-                    "Picker"
-                    picker-state 
-                    render-picker
-                    (hash "handle_event" handle-picker-event "cursor" get-picker-cursor-position)))
-  )
+                               "Picker"
+                               picker-state
+                               render-picker
+                               (hash "handle_event" handle-picker-event "cursor" get-picker-cursor-position))))

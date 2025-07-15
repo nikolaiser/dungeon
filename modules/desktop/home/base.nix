@@ -29,7 +29,7 @@
     ];
 
     sessionVariables = {
-      EDITOR = "nvim";
+      EDITOR = "hx";
     };
   };
 

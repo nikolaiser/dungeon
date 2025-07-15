@@ -4,7 +4,4 @@
 (require (prefix-in helix. "helix/misc.scm"))
 (require-builtin helix/components)
 
-
-(helix.theme "dracula")
-
-
+(helix.theme "carbonfox")

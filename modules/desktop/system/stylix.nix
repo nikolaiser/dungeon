@@ -13,7 +13,7 @@ in
 
     targets.fish.enable = false;
 
-    base16Scheme = ./theme/duskfox.yaml;
+    base16Scheme = ./theme/carbonfox.yaml;
 
     polarity = "dark";
 
