@@ -9,27 +9,6 @@ in
   services = {
     paperless = {
       enable = true;
-      package = (
-        # TODO: Remove affter https://github.com/NixOS/nixpkgs/pull/42220 is merged
-        pkgs.paperless-ngx.overrideAttrs {
-          disabledTests = [
-            # FileNotFoundError(2, 'No such file or directory'): /build/tmp...
-            "test_script_with_output"
-            "test_script_exit_non_zero"
-            "testDocumentPageCountMigrated"
-            # AssertionError: 10 != 4 (timezone/time issue)
-            # Due to getting local time from modification date in test_consumer.py
-            "testNormalOperation"
-            # Something broken with new Tesseract and inline RTL/LTR overrides?
-            "test_rtl_language_detection"
-            # django.core.exceptions.FieldDoesNotExist: Document has no field named 'transaction_id'
-            "test_convert"
-            # Favicon tests fail due to static file handling in the test environment
-            "test_favicon_view"
-            "test_favicon_view_missing_file"
-          ];
-        }
-      );
       dataDir = paperlessDataDir;
       mediaDir = paperlessMediaDir;
       port = 28981;

@@ -7,9 +7,9 @@
 
 let
   immichUrl = "immich.${config.nas.baseDomain.private}";
-  immichMlDir = "/nvmeStorage/immich-ml";
-  immichHomeDir = "/nvmeStorage/immich/home";
-  immichMediaDir = "/immich";
+  immichMlDir = "/var/lib/immich/ml";
+  immichHomeDir = "/var/lib/immich/home";
+  immichMediaDir = "/var/lib/immich/media";
   cfg = config.services.immich;
 in
 {

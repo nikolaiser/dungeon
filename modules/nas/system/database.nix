@@ -7,10 +7,9 @@
 }:
 
 let
-  postgresqlDataDir = "/nvmeStorage/db/postgres";
-  postgresql17DataDir = "/nvmeStorage/db/postgres17";
-  qdrantDataDir = "/nvmeStorage/db/qdrant";
-  qdrantSnapshotDir = "/nvmeStorage/db/qdrant_snapshots";
+  postgresql17DataDir = "/var/lib/postgresql/17";
+  qdrantDataDir = "/var/lib/qdrant/data";
+  qdrantSnapshotDir = "/var/lib/qdrant/snapshot";
 in
 {
   services = {
@@ -24,7 +23,7 @@ in
         ps: with ps; [
           pgvectorscale
           pgvector
-          vectorchord
+          pkgs-master.postgresql17Packages.vectorchord
         ];
 
       settings.shared_preload_libraries = [ "vchord" ];
@@ -69,15 +68,6 @@ in
   ];
 
   systemd.tmpfiles.settings = {
-    "10-postgresql" = {
-      "${postgresqlDataDir}" = {
-        d = {
-          user = config.systemd.services.postgresql.serviceConfig.User;
-          group = config.systemd.services.postgresql.serviceConfig.Group;
-          mode = "0700";
-        };
-      };
-    };
     "10-postgresql17" = {
       "${postgresql17DataDir}" = {
         d = {

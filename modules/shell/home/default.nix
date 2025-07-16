@@ -6,12 +6,6 @@
   ...
 }:
 
-let
-  vim-tmux-navigator-sturdy = pkgs.tmuxPlugins.vim-tmux-navigator.overrideAttrs (final: {
-    src = inputs.vim-tmux-navigator-sturdy;
-  });
-
-in
 {
 
   # stylix.targets.fish.enable = false;
@@ -26,21 +20,22 @@ in
         git = pkgs.yaziPlugins.git;
       };
       initLua = ''
-          require("git"):setup()
-        '';
+        require("git"):setup()
+      '';
       settings = {
-        plugin.prepend_fetchers = [{
-          id = "git";
-          name = "*";
-          run = "git";
-        }
-        {
-          id = "git";
-          name = "*/";
-          run = "git";
-        }
+        plugin.prepend_fetchers = [
+          {
+            id = "git";
+            name = "*";
+            run = "git";
+          }
+          {
+            id = "git";
+            name = "*/";
+            run = "git";
+          }
         ];
-        
+
       };
     };
 
@@ -118,11 +113,6 @@ in
       enable = true;
       clock24 = true;
 
-      plugins = with pkgs.tmuxPlugins; [
-        vim-tmux-navigator-sturdy
-        # yank
-      ];
-
       extraConfig = # tmux
         ''
           set -g prefix C-s
@@ -144,6 +134,15 @@ in
 
           set-option -g status-position top
           set -g status-left-length 20
+
+
+
+          is_vim_or_hx="ps -o state= -o comm= -t '#{pane_tty}' \
+              | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|l?n?hx?x?|fzf)(diff)?$'"
+          bind-key -n C-Left if-shell "$is_vim_or_hx" "send-keys C-Left" "select-pane -L"
+          bind-key -n C-Down if-shell "$is_vim_or_hx" "send-keys C-Down" "select-pane -D"
+          bind-key -n C-Up if-shell "$is_vim_or_hx" "send-keys C-Up" "select-pane -U"
+          bind-key -n C-Right if-shell "$is_vim_or_hx" "send-keys C-Right" "select-pane -R"
         '';
     };
   };
