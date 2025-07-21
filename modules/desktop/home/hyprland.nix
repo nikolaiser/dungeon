@@ -22,15 +22,55 @@ let
           ${lib.exe pkgs.libnotify} --urgency=low -t 2000 'Hyprland' 'Synced Wayland clipboard with X11' || \
           ${lib.exe pkgs.libnotify} --urgency=critical -t 2000 'Hyprland' 'Clipboard sync failed'
       '';
+
+  portals = [
+    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
+    pkgs.kdePackages.xdg-desktop-portal-kde
+    pkgs.xdg-desktop-portal-termfilechooser
+  ];
 in
 {
+
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = lib.mkForce portals;
+    config = {
+      common = {
+        default = "hyprland";
+        "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
+      };
+      hyprland = {
+        default = "hyprland";
+        "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
+      };
+    };
+    xdgOpenUsePortal = true;
+  };
+
+  xdg.configFile."xdg-desktop-portal-termfilechooser/config" = {
+    force = true;
+    text = ''
+      [filechooser]
+      cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+    '';
+  };
+
   systemd.user.sessionVariables = {
     "NIXOS_OZONE_WL" = "1"; # for any ozone-based browser & electron apps to run on wayland
     "MOZ_ENABLE_WAYLAND" = "1"; # for firefox to run on wayland
     "MOZ_WEBRENDER" = "1";
     # "WLR_NO_HARDWARE_CURSORS" = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = "1";
-    "NIXOS_XDG_OPEN_USE_PORTAL" = "1";
+    "GTK_USE_PORTAL" = "1";
+    "GTK_DEBUG" = "portals";
+    "XDG_CURRENT_DESKTOP" = "Hyprland";
+    "XDG_SESSION_TYPE" = "wayland";
+    "XDG_SESSION_DESKTOP" = "Hyprland";
+    "GDK_BACKEND" = "wayland,x11";
+    "QT_QPA_PLATFORM" = "wayland;xcb";
+    "SDL_VIDEODRIVER" = "wayland";
+    "CLUTTER_BACKEND" = "wayland";
     "HYPRCURSOR_THEME" = "${osConfig.stylix.cursor.name}";
     "HYPRCURSOR_SIZE" = "${toString osConfig.stylix.cursor.size}";
     "XCURSOR_THEME" = "${osConfig.stylix.cursor.name}";
@@ -49,10 +89,10 @@ in
     settings = {
 
       monitor = [
-        "DP-1,3840x2160@144,0x0,1, vrr, 1"
-        "DP-3,3840x2160@144,0x0,1, vrr, 1"
-        "DP-4,3840x2160@144,0x0,1, vrr, 1"
-        "HDMI-A-1,3840x2160@30,auto,auto, vrr, 0"
+        "DP-1,3840x2160@144,0x0,1"
+        "DP-3,3840x2160@144,0x0,1"
+        "DP-4,3840x2160@144,0x0,1"
+        "HDMI-A-1,3840x2160@30,auto,auto"
         "eDP-1,1920x1200@60,3840x1538,1"
         ",preferred,auto,auto"
       ];
@@ -193,16 +233,23 @@ in
       ];
 
       misc = {
-        vrr = "1";
-        vfr = "true";
+        # vrr = "1";
+        # vfr = "true";
         middle_click_paste = "false";
       };
+
+      exec-once = [
+        "systemctl --user start hyprpaper"
+        "systemctl --user start swaync"
+      ];
 
       xwayland = {
         force_zero_scaling = "true";
       };
 
     };
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   programs = {
@@ -210,7 +257,8 @@ in
     fuzzel.enable = true;
   };
 
-  services.swaync = {
-    enable = true;
+  services = {
+    hyprpaper.enable = true;
+    swaync.enable = true;
   };
 }

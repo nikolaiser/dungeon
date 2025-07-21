@@ -23,7 +23,6 @@ in
     vial
     via
     playerctl
-    networkmanagerapplet # networkmanager applet
     libsForQt5.plasma-pa
     drawing
     libreoffice-qt6-fresh

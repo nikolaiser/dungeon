@@ -2,26 +2,11 @@
   pkgs,
   inputs,
   config,
+  lib,
   ...
 }:
 
 {
-  xdg.portal = {
-    enable = true;
-
-    extraPortals = [
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
-    ];
-    config = {
-      common = {
-        default = "hyprland";
-      };
-    };
-  };
-
-  environment.systemPackages = [
-    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
-  ];
 
   services = {
 
@@ -30,9 +15,12 @@
 
     displayManager = {
       defaultSession = "hyprland";
-      gdm = {
+      # gdm = {
+      #   enable = true;
+      #   wayland = true;
+      # };
+      ly = {
         enable = true;
-        wayland = true;
       };
     };
   };

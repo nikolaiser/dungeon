@@ -36,7 +36,6 @@
       login.u2fAuth = true;
       sudo.u2fAuth = true;
       swaylock.u2fAuth = true;
-      gnome-keyring.u2fAuth = true;
     };
   };
 

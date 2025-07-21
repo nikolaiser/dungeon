@@ -112,20 +112,17 @@
     tmux = {
       enable = true;
       clock24 = true;
+      mouse = true;
+      terminal = "tmux-256color";
+      historyLimit = 50000;
+      escapeTime = 10;
+      prefix = "C-s";
 
       extraConfig = # tmux
         ''
-          set -g prefix C-s
-
-          # act like vim
-          setw -g mode-keys vi
           bind-key m display-popup -E "${lib.exe pkgs.tmux-sessionizer}"
 
-          set -g default-terminal "tmux-256color"
           set -ag terminal-overrides ",xterm-256color:RGB"
-
-          set-option -g history-limit 50000
-          set-option -sg escape-time 10
 
           set -g allow-passthrough on
 
@@ -135,7 +132,11 @@
           set-option -g status-position top
           set -g status-left-length 20
 
+          unbind -T copy-mode-vi  MouseDragEnd1Pane
+          bind   -T copy-mode-vi  MouseDragEnd1Pane send -X copy-selection-no-clear
 
+          unbind -T copy-mode     MouseDragEnd1Pane
+          bind   -T copy-mode     MouseDragEnd1Pane send -X copy-selection-no-clear
 
           is_vim_or_hx="ps -o state= -o comm= -t '#{pane_tty}' \
               | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|l?n?hx?x?|fzf)(diff)?$'"

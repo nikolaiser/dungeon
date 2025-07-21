@@ -30,7 +30,7 @@ let
 in
 {
   stylix.targets.helix.enable = lib.mkForce true;
-  
+
   home.packages = [
     helixWrapped
   ];
