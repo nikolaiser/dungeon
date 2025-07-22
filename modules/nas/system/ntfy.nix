@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 
 let
-  ntfyUrl = "ntfy.${config.nas.baseDomain.private}";
+  ntfyUrl = "ntfy.${config.nas.baseDomain.public}";
 in
 {
   services.ntfy-sh = {
@@ -9,14 +9,18 @@ in
     settings = {
       base-url = "https://${ntfyUrl}";
       listen-http = "127.0.0.1:2586";
+      behind-proxy = true;
+      auth-default-access = "deny-all";
     };
   };
   services.nginx.virtualHosts = {
     ${ntfyUrl} = {
       forceSSL = true;
-      useACMEHost = "${config.nas.baseDomain.private}";
+      sslCertificate = config.age.secrets."cloudflare-fullchain.pem".path;
+      sslCertificateKey = config.age.secrets."cloudflare-privkey.pem".path;
       locations."/" = {
         proxyPass = "http://${config.services.ntfy-sh.settings.listen-http}";
+        proxyWebsockets = true;
       };
     };
   };

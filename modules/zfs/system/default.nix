@@ -17,6 +17,12 @@ let
       builtins.attrValues zfsCompatibleKernelPackages
     )
   );
+  zfsNotify = pkgs.writeShellScriptBin "zfs-notify" ''
+    credentials=$(${pkgs.coreutils}/bin/cat ${config.age.secrets."ntfy-credentials".path})
+    content=$(${pkgs.coreutils}/bin/cat)
+    ${pkgs.curl}/bin/curl -d "$content" -u "$credentials" https://ntfy.${config.nas.baseDomain.public}/zfs
+  '';
+
 in
 {
 
@@ -29,5 +35,18 @@ in
     autoScrub.enable = true;
     autoSnapshot.enable = true;
     trim.enable = true;
+
+    zed = {
+      enableMail = true;
+      settings = {
+        ZED_EMAIL_ADDR = [ "void@void" ];
+        ZED_EMAIL_PROG = lib.getExe zfsNotify;
+        ZED_EMAIL_OPTS = "@SUBJECT@ @ADDRESS@";
+
+        ZED_NOTIFY_INTERVAL_SECS = 3600;
+        ZED_NOTIFY_DATA = true;
+        ZED_NOTIFY_VERBOSE = true;
+      };
+    };
   };
 }

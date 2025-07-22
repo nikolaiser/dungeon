@@ -12,4 +12,9 @@
   services.printing.enable = true;
 
   programs.dconf.enable = true;
+
+  programs.ausweisapp = {
+    enable = true;
+    openFirewall = true;
+  };
 }
