@@ -30,6 +30,7 @@
       "privacy.sanitize.sanitizeOnShutdown" = false;
       "middlemouse.paste" = false;
       "general.autoScroll" = true;
+      "browser.toolbars.bookmarks.visibility" = "newtab";
     };
 
     profiles.default = {
