@@ -13,7 +13,6 @@
     homeDirectory = "/home/${osConfig.shared.username}";
 
     packages = with pkgs; [
-      firefox
       ungoogled-chromium
       xdg-utils
       fzf
@@ -33,9 +32,11 @@
     };
   };
 
-  programs.gpg.scdaemonSettings = {
+  programs = {
+    gpg.scdaemonSettings = {
       reader-port = "Yubico Yubi";
       disable-ccid = true;
+    };
   };
 
   systemd.user.startServices = "sd-switch";

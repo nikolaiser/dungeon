@@ -1,44 +1,5 @@
 { lib, pkgs, ... }:
 
-let
-  rootDriveContent = bootMountpoint: {
-    type = "gpt";
-    partitions = {
-      ESP = {
-        size = "1G";
-        type = "EF00";
-        content = {
-          type = "filesystem";
-          format = "vfat";
-          mountpoint = bootMountpoint;
-          mountOptions = [ "nofail" ];
-        };
-      };
-      zfs = {
-        size = "100%";
-        content = {
-          type = "zfs";
-          pool = "root";
-        };
-      };
-    };
-
-  };
-
-  fastStorageDriveContent = {
-    type = "gpt";
-    partitions = {
-      zfs = {
-        size = "100%";
-        content = {
-          type = "zfs";
-          pool = "nvme";
-        };
-      };
-    };
-  };
-
-in
 {
 
   boot.initrd.availableKernelModules = [
@@ -52,7 +13,11 @@ in
   ];
 
   boot.initrd.kernelModules = [ ];
-  boot.initrd.postMountCommands = "zpool import -a; zfs mount -a; zfs load-key -a;zfs mount -a";
+  boot.postBootCommands = ''
+    ${pkgs.zfs}/bin/zpool import hdd
+    ${pkgs.zfs}/bin/zfs load-key -a
+    ${pkgs.zfs}/bin/zfs mount -a
+  '';
   boot.kernelModules = [
     "kvm-amd"
     "vfio"
@@ -62,115 +27,30 @@ in
   boot.supportedFilesystems = {
     zfs = lib.mkForce true;
   };
+  boot.zfs.devNodes = "/dev/disk/by-id";
   boot.kernelParams = [
     "amd_pstate=guided"
     "pcie_aspm=force"
+    "zfs_force=1"
   ];
 
   powerManagement.cpuFreqGovernor = "powersave";
 
-  disko.devices = {
-    disk = {
-      root1 = {
-        type = "disk";
-        device = "/dev/disk/by-id/ata-INTENSO_SSD_1642311001016696";
-        content = rootDriveContent "/boot1";
-      };
-      root2 = {
-        type = "disk";
-        device = "/dev/disk/by-id/ata-INTENSO_SSD_1642311001016674";
-        content = rootDriveContent "/boot2";
-      };
-      nvme1 = {
-        type = "disk";
-        device = "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_YDBKF1HXZ0EA";
-        content = fastStorageDriveContent;
-      };
-      nvme2 = {
-        type = "disk";
-        device = "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_YDBKF184Z0EA";
-        content = fastStorageDriveContent;
-      };
-      nvme3 = {
-        type = "disk";
-        device = "/dev/disk/by-id/nvme-KIOXIA-EXCERIA_PLUS_G3_SSD_YDBKF1H9Z0EA";
-        content = fastStorageDriveContent;
-      };
-    };
-    zpool = {
-      root = {
-        type = "zpool";
-        mode = "mirror";
-        rootFsOptions = {
-          compression = "zstd";
-        };
-
-        datasets = {
-          "local" = {
-            type = "zfs_fs";
-            options.mountpoint = "none";
-          };
-          "local/nix" = {
-            type = "zfs_fs";
-            mountpoint = "/nix";
-            options."com.sun:auto-snapshot" = "false";
-          };
-          "local/root" = {
-            type = "zfs_fs";
-            mountpoint = "/";
-          };
-          "local/home" = {
-            type = "zfs_fs";
-            mountpoint = "/home";
-          };
-        };
-      };
-      # nvme = {
-      #   type = "zpool";
-      #   mode = {
-      #     topology = {
-      #       type = "topology";
-      #       vdev = [
-      #         {
-      #           mode = "raidz1";
-      #           members = [
-      #             "nvme1"
-      #             "nvme2"
-      #             "nvme3"
-      #           ];
-      #         }
-      #       ];
-      #
-      #     };
-      #     options = {
-      #       acltype = "posixacl";
-      #       atime = "off";
-      #       compression = "lz4";
-      #       mountpoint = "none";
-      #       xattr = "sa";
-      #       "com.sun:auto-snapshot" = "true";
-      #       autoexpand = "on";
-      #       ashift = "12";
-      #       "feature@async_destroy"="enabled";
-      #       "feature@empty_bpobj"="enabled";
-      #       "feature@lz4_compress"="enabled";
-      #     };
-      #     datasets = {
-      #       "local" = {
-      #         type = "zfs_fs";
-      #         options.mountpoint = "none";
-      #       };
-      #       "local/nvmeStorage" = {
-      #         type = "zfs_fs";
-      #         mountpoint = "/nvmeStorage";
-      #       };
-      #     };
-      #   };
-      # };
-    };
-  };
-
   fileSystems = {
+
+    "/" = {
+      device = "nvme/root";
+      fsType = "zfs";
+    };
+    "/home" = {
+      device = "nvme/home";
+      fsType = "zfs";
+      neededForBoot = true;
+    };
+    "/nix" = {
+      device = "nvme/nix";
+      fsType = "zfs";
+    };
     "/nvmeStorage" = {
       device = "nvme/nvmeStorage";
       fsType = "zfs";
@@ -179,12 +59,23 @@ in
       device = "/dev/zvol/nvme/atuin";
       fsType = "ext4";
     };
+    "/boot1" = {
+      device = "/dev/disk/by-uuid/3C2A-02AE";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
+    "/boot2" = {
+      device = "/dev/disk/by-uuid/3C5F-136A";
+      fsType = "vfat";
+      options = [
+        "fmask=0022"
+        "dmask=0022"
+      ];
+    };
   };
-
-  # fileSystems."/hddStorage" = {
-  #   device = "hdd/hddStorage";
-  #   fsType = "zfs";
-  # };
 
   boot.loader.grub = {
     enable = true;

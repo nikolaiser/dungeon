@@ -1,7 +1,7 @@
 { pkgs, lib, ... }:
 
 let
-  browser = "firefox.desktop";
+  browser = "librewolf.desktop";
 
   defaultApplications = {
     "default-web-browser" = browser;
@@ -30,13 +30,6 @@ in
   ];
 
   services.mpris-proxy.enable = true;
-
-  xdg.desktopEntries.firefoxWork = {
-    exec = "firefox -P work";
-    genericName = "Firefox (work)";
-    name = "Firefox (work)";
-    type = "Application";
-  };
 
   systemd.user.targets.tray = {
     Unit = {

@@ -5,6 +5,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
 
     home-manager = {
@@ -38,11 +43,6 @@
 
     agenix-rekey = {
       url = "github:oddlama/agenix-rekey";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    disko = {
-      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -85,6 +85,7 @@
           overlays = [
             (import ./overlays inputs)
             inputs.agenix-rekey.overlays.default
+            inputs.nur.overlays.default
           ];
 
           pkgs = import inputs.nixpkgs {
@@ -199,19 +200,7 @@
             cad.enable = true;
             smart.enable = true;
             helix.enable = true;
-          }
-        ];
-
-        work-thinkpad = mkDesktopSystem [
-          "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
-          ./hosts/work-thinkpad.nix
-          {
-            networking.hostName = "ri-t-0929";
-            hardware.intelgpu = {
-              # driver = "xe";
-              loadInInitrd = true;
-              enableHybridCodec = true;
-            };
+            hyprland.enable = true;
           }
         ];
 
@@ -226,7 +215,6 @@
 
         nas = mkx86_64ServerSystem [
           ./hosts/nas.nix
-          inputs.disko.nixosModules.disko
           {
             networking = {
               hostName = "nas";
