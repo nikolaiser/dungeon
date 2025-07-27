@@ -23,38 +23,8 @@ let
           ${lib.exe pkgs.libnotify} --urgency=critical -t 2000 'Hyprland' 'Clipboard sync failed'
       '';
 
-  portals = [
-    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland
-    pkgs.kdePackages.xdg-desktop-portal-kde
-    pkgs.xdg-desktop-portal-termfilechooser
-  ];
 in
 {
-
-  xdg.portal = {
-    enable = true;
-
-    extraPortals = lib.mkForce portals;
-    config = {
-      common = {
-        default = "hyprland";
-        "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
-      };
-      hyprland = {
-        default = "hyprland";
-        "org.freedesktop.impl.portal.FileChooser" = "termfilechooser";
-      };
-    };
-    xdgOpenUsePortal = true;
-  };
-
-  xdg.configFile."xdg-desktop-portal-termfilechooser/config" = {
-    force = true;
-    text = ''
-      [filechooser]
-      cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
-    '';
-  };
 
   systemd.user.sessionVariables = {
     "NIXOS_OZONE_WL" = "1"; # for any ozone-based browser & electron apps to run on wayland
@@ -92,7 +62,7 @@ in
         "DP-1,3840x2160@144,0x0,1"
         "DP-3,3840x2160@144,0x0,1"
         "DP-4,3840x2160@144,0x0,1"
-        "HDMI-A-1,3840x2160@30,auto,auto"
+        # "HDMI-A-1,3840x2160@30,auto,auto"
         "eDP-1,1920x1200@60,3840x1538,1"
         ",preferred,auto,auto"
       ];
