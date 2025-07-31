@@ -5,17 +5,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
 
     nix-ld = {
       url = "github:Mic92/nix-ld";
@@ -76,16 +77,15 @@
   outputs =
     inputs@{ self, nixpkgs, ... }:
     let
+      overlays = [
+        (import ./overlays inputs)
+        inputs.agenix-rekey.overlays.default
+        inputs.nur.overlays.default
+      ];
 
       mkNixosSystem =
         system: modules:
         let
-
-          overlays = [
-            (import ./overlays inputs)
-            inputs.agenix-rekey.overlays.default
-            inputs.nur.overlays.default
-          ];
 
           pkgs = import inputs.nixpkgs {
             inherit overlays system;
@@ -163,6 +163,7 @@
           ++ [
             {
               desktop.enable = true;
+              linuxDesktop.enable = true;
               systemd-boot.enable = true;
               nvimFull.enable = true;
               shared.username = "nikolaiser";
@@ -184,6 +185,51 @@
 
       mkArmServerSystem = mkServerSystem "aarch64-linux";
       mkx86_64ServerSystem = mkServerSystem "x86_64-linux";
+
+      makeHmConfiguration =
+        system: modules:
+        let
+          pkgs = import inputs.nixpkgs {
+            inherit overlays system;
+            config.allowUnfree = true;
+            config.allowUnfreePredicate = (pkg: true);
+          };
+
+          inherit (pkgs) lib;
+
+          extraSpecialArgs = {
+            inherit inputs system;
+
+            pkgs-stable = import inputs.nixpkgs-stable {
+              inherit overlays system;
+
+              config.allowUnfree = true;
+            };
+
+            pkgs-master = import inputs.nixpkgs-master {
+              inherit overlays system;
+
+              config.allowUnfree = true;
+            };
+
+          };
+        in
+        inputs.home-manager.lib.homeManagerConfiguration {
+          inherit pkgs extraSpecialArgs;
+
+          modules = modules ++ [
+            (
+              args@{ lib, pkgs, ... }:
+              {
+                imports = lib.importAllHmModules ./modules args;
+              }
+            )
+            {
+              home.stateVersion = "25.05";
+            }
+            inputs.stylix.homeModules.stylix
+          ];
+        };
 
     in
     {
@@ -235,6 +281,22 @@
         ];
 
       };
+
+      homeConfigurations = {
+        "gyg" = makeHmConfiguration "aarch64-darwin" [
+          {
+            home.username = "nikolai.sergeev";
+            home.homeDirectory = "/Users/nikolai.sergeev";
+          }
+          {
+            desktop.enable = true;
+            nvimFull.enable = true;
+            shared.enable = true;
+            shell.enable = true;
+          }
+        ];
+      };
+
       agenix-rekey = inputs.agenix-rekey.configure {
         userFlake = inputs.private;
         nixosConfigurations = self.nixosConfigurations;

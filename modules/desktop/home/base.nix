@@ -3,17 +3,14 @@
   system,
   inputs,
   config,
-  osConfig,
+  osConfig ? null,
   ...
 }:
 
 {
   home = {
-    username = osConfig.shared.username;
-    homeDirectory = "/home/${osConfig.shared.username}";
 
     packages = with pkgs; [
-      ungoogled-chromium
       xdg-utils
       fzf
       jq
@@ -30,7 +27,16 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
-  };
+  }
+  // (
+    if builtins.isNull osConfig then
+      { }
+    else
+      {
+        username = osConfig.shared.username;
+        homeDirectory = "/home/${osConfig.shared.username}";
+      }
+  );
 
   programs = {
     gpg.scdaemonSettings = {
@@ -44,8 +50,15 @@
 
   xdg = {
     enable = true;
-    configHome = "/home/${osConfig.shared.username}/.config";
-  };
+  }
+  // (
+    if builtins.isNull osConfig then
+      { }
+    else
+      {
+        configHome = "/home/${osConfig.shared.username}/.config";
+      }
+  );
 
   nixpkgs.config = {
     allowUnfree = true;

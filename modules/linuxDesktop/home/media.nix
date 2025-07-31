@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  system,
+  ...
+}:
 
 let
   browser = "librewolf.desktop";
@@ -18,6 +23,7 @@ in
 {
 
   home.packages = with pkgs; [
+    ungoogled-chromium
     nautilus
     pavucontrol
     vial
@@ -31,16 +37,16 @@ in
 
   services.mpris-proxy.enable = true;
 
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = defaultApplications;
+    associations.added = defaultApplications;
+  };
+
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";
       Requires = [ "graphical-session-pre.target" ];
     };
-  };
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = defaultApplications;
-    associations.added = defaultApplications;
   };
 }
