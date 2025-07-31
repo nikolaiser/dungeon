@@ -86,6 +86,12 @@
             icon = "https://nixos.org/logo/nixos-logo-only-hires.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
+          noogle = {
+            urls = [ { template = "https://noogle.dev/q?term=%22{searchTerms}%22"; } ];
+            definedAliases = [ "@noogle" ];
+            icon = "https://noogle.dev/favicon.png";
+            updateInterval = 7 * 24 * 60 * 60 * 1000;
+          };
           homemanager = {
             urls = [ { template = "https://home-manager-options.extranix.com/?query={searchTerms}"; } ];
             definedAliases = [ "@homemanager" ];
@@ -118,6 +124,7 @@
           "grep"
           "nixpkgs"
           "nixos"
+          "noogle"
           "homemanager"
           "archwiki"
           "googlemaps"
