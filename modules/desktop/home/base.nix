@@ -3,17 +3,15 @@
   system,
   inputs,
   config,
-  osConfig,
+  osConfig ? null,
   ...
 }:
 
 {
   home = {
-    username = osConfig.shared.username;
-    homeDirectory = "/home/${osConfig.shared.username}";
 
+    username = osConfig.shared.username;
     packages = with pkgs; [
-      ungoogled-chromium
       xdg-utils
       fzf
       jq
@@ -30,7 +28,18 @@
     sessionVariables = {
       EDITOR = "nvim";
     };
-  };
+  }
+  // (
+    if system == "aarch64-darwin" then
+      {
+        homeDirectory = "/Users/${osConfig.shared.username}";
+
+      }
+    else
+      {
+        homeDirectory = "/home/${osConfig.shared.username}";
+      }
+  );
 
   programs = {
     gpg.scdaemonSettings = {
@@ -44,7 +53,6 @@
 
   xdg = {
     enable = true;
-    configHome = "/home/${osConfig.shared.username}/.config";
   };
 
   nixpkgs.config = {

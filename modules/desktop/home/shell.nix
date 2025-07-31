@@ -6,6 +6,7 @@
 }:
 {
   programs = {
+    alacritty.enable = true;
     fish.interactiveShellInit = # fish
       ''
         if status is-interactive

@@ -8,7 +8,16 @@ rec {
 
   mylib = import ../lib { inherit (prev) lib; };
 
-  lib = prev.lib.extend (_: _: { inherit (mylib) exe importAllModules; });
+  lib = prev.lib.extend (
+    _: _: {
+      inherit (mylib)
+        exe
+        importAllModules
+        importAllHmModules
+        importAllDarwinModules
+        ;
+    }
+  );
 
   makeModulesClosure = x: prev.makeModulesClosure (x // { allowMissing = true; });
 

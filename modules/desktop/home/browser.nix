@@ -3,7 +3,7 @@
   inputs,
   system,
   config,
-  osConfig,
+  osConfig ? null,
   ...
 }:
 
@@ -42,20 +42,12 @@
       };
 
       search = {
-        default = "searxng";
-        privateDefault = "searxng";
+        default = "ddg";
+        privateDefault = "ddg";
 
         force = true;
         engines = {
 
-          searxng = {
-            urls = [
-              { template = "https://searxng.${osConfig.nas.baseDomain.public}/search?q={searchTerms}"; }
-            ];
-            definedAliases = [ "@searxng" ];
-            icon = "https://upload.wikimedia.org/wikipedia/commons/a/a3/SearXNG_logo.svg";
-            updateInterval = 7 * 24 * 60 * 60 * 1000;
-          };
           youtube = {
             urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
             definedAliases = [ "@youtube" ];
@@ -118,7 +110,7 @@
           };
         };
         order = [
-          "searxng"
+          "ddg"
           "youtube"
           "github"
           "grep"

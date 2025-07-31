@@ -24,23 +24,24 @@ rec {
     "${drv}/bin/${mainProg}";
 
   mkNamedModule =
-    name: path: args:
+    type: name: path: args:
     let
       allDirs = getDirs path;
-      systemPresent = builtins.elem "system" allDirs;
+      systemPresent = builtins.elem type allDirs;
       homePresent = builtins.elem "home" allDirs;
 
-      allSystemFiles = if systemPresent then (getRegularFiles "${path}/system") else [ ];
+      allSystemFiles = if systemPresent then (getRegularFiles "${path}/${type}") else [ ];
 
       systemModuleFiles = builtins.filter (file: file != "options.nix") allSystemFiles;
 
       optionsPresent = builtins.elem "options.nix" allSystemFiles;
-      otherOptions = if optionsPresent then (import "${path}/system/options.nix" args) else { };
+      otherOptions = if optionsPresent then (import "${path}/${type}/options.nix" args) else { };
       allOptions."${name}" = {
         enable = lib.mkEnableOption "Enable module ${name}";
-      } // otherOptions;
+      }
+      // otherOptions;
 
-      systemModules = lib.map (file: (import "${path}/system/${file}" args)) systemModuleFiles;
+      systemModules = lib.map (file: (import "${path}/${type}/${file}" args)) systemModuleFiles;
       homeFiles = if homePresent then (getRegularFiles "${path}/home") else [ ];
       homeModules = lib.map (file: "${path}/home/${file}") homeFiles;
     in
@@ -59,12 +60,16 @@ rec {
       );
     };
 
-  importAllModules =
-    path: args:
+  importAll =
+    type: path: args:
     let
       moduleDirs = getDirs path;
-      modules = lib.map (dir: mkNamedModule dir "${path}/${dir}" args) moduleDirs;
+      modules = lib.map (dir: mkNamedModule type dir "${path}/${dir}" args) moduleDirs;
     in
     modules;
+
+  importAllModules = importAll "system";
+
+  importAllDarwinModules = importAll "darwinSystem";
 
 }

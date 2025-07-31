@@ -2,7 +2,7 @@
   lib,
   pkgs,
   config,
-  osConfig,
+  osConfig ? null,
   inputs,
   system,
   ...
@@ -91,11 +91,17 @@ let
           ":"
           binPath
         ]
-        ++ [
-          "--set"
-          "SEARXNG_API_URL"
-          "https://searxng.${osConfig.nas.baseDomain.public}/search"
-        ]
+        # TODO
+        #++ (
+        #if builtins.isNull osConfig then
+        #  [ ]
+        #else
+        #  [
+        #     "--set"
+        #     "SEARXNG_API_URL"
+        #     "https://searxng.${osConfig.nas.baseDomain.public}/search"
+        #   ]
+        #)
         ++ [
           "--add-flags"
           ''--cmd "luafile ${pkgs.writeText "pre-init.lua" preInit}"''

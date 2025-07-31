@@ -2,7 +2,7 @@
   pkgs,
   lib,
   inputs,
-  osConfig,
+  osConfig ? null,
   ...
 }:
 
