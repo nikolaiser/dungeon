@@ -7,19 +7,11 @@
 
     packages = [
       {
-        appId = "com.valvesoftware.Steam";
-        origin = "flathub";
-      }
-      {
         appId = "com.heroicgameslauncher.hgl";
         origin = "flathub";
       }
       {
         appId = "org.freedesktop.Platform.VulkanLayer.MangoHud/x86_64/24.08";
-        origin = "flathub";
-      }
-      {
-        appId = "com.valvesoftware.Steam.CompatibilityTool.Proton-GE";
         origin = "flathub";
       }
       {
@@ -71,5 +63,13 @@
     # })
   ];
 
-  programs.gamemode.enable = true;
+  programs = {
+    steam = {
+      enable = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
+    gamemode.enable = true;
+  };
 }
