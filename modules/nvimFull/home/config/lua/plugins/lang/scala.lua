@@ -79,7 +79,7 @@ return {
 		end,
 		keys = {
 			{
-				"<leader>me",
+				"<leader>cw",
 				function()
 					require("telescope").extensions.metals.commands()
 				end,

@@ -121,7 +121,7 @@ in
 
   xdg.configFile = {
     nvim = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.config/dungeon/modules/nvimFull/home/config";
+      source = config.lib.file.mkOutOfStoreSymlink "${config.xdg.configHome}/dungeon/modules/nvimFull/home/config";
       recursive = true;
     };
     "mcphub/servers.json" = {
