@@ -50,61 +50,100 @@
 
           youtube = {
             urls = [ { template = "https://www.youtube.com/results?search_query={searchTerms}"; } ];
-            definedAliases = [ "@youtube" ];
+            definedAliases = [
+              "@youtube"
+              "@yt"
+            ];
             icon = "https://upload.wikimedia.org/wikipedia/commons/f/fd/YouTube_full-color_icon_%282024%29.svg";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           github = {
             urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
-            definedAliases = [ "@github" ];
+            definedAliases = [
+              "@github"
+              "@gh"
+            ];
             icon = "https://upload.wikimedia.org/wikipedia/commons/c/c2/GitHub_Invertocat_Logo.svg";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           grep = {
             urls = [ { template = "https://grep.app/search?q={searchTerms}"; } ];
-            definedAliases = [ "@grep" ];
+            definedAliases = [
+              "@grep"
+              "@gr"
+            ];
             icon = "https://grep.app/apple-icon.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           nixpkgs = {
             urls = [ { template = "https://search.nixos.org/packages?query={searchTerms}"; } ];
-            definedAliases = [ "@nixpkgs" ];
+            definedAliases = [
+              "@nixpkgs"
+              "@np"
+            ];
             icon = "https://nixos.org/logo/nixos-logo-only-hires.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           nixos = {
             urls = [ { template = "https://search.nixos.org/options?query={searchTerms}"; } ];
-            definedAliases = [ "@nixos" ];
+            definedAliases = [
+              "@nixos"
+              "@no"
+            ];
             icon = "https://nixos.org/logo/nixos-logo-only-hires.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           noogle = {
             urls = [ { template = "https://noogle.dev/q?term=%22{searchTerms}%22"; } ];
-            definedAliases = [ "@noogle" ];
+            definedAliases = [
+              "@noogle"
+              "@nog"
+            ];
             icon = "https://noogle.dev/favicon.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           homemanager = {
             urls = [ { template = "https://home-manager-options.extranix.com/?query={searchTerms}"; } ];
-            definedAliases = [ "@homemanager" ];
+            definedAliases = [
+              "@homemanager"
+              "@hm"
+            ];
+            icon = "https://nixos.org/logo/nixos-logo-only-hires.png";
+            updateInterval = 7 * 24 * 60 * 60 * 1000;
+          };
+          darwin = {
+            urls = [ { template = "https://https://options.nix-darwin.uz/?query={searchTerms}"; } ];
+            definedAliases = [
+              "@darwin"
+              "@nd"
+            ];
             icon = "https://nixos.org/logo/nixos-logo-only-hires.png";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           archwiki = {
             urls = [ { template = "https://wiki.archlinux.org/index.php?search={searchTerms}"; } ];
-            definedAliases = [ "@archwiki" ];
+            definedAliases = [
+              "@archwiki"
+              "@aw"
+            ];
             icon = "https://upload.wikimedia.org/wikipedia/commons/1/13/Arch_Linux_%22Crystal%22_icon.svg";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           googlemaps = {
             urls = [ { template = "https://www.google.com/maps/search/{searchTerms}"; } ];
-            definedAliases = [ "@gmaps" ];
+            definedAliases = [
+              "@gmaps"
+              "@gm"
+            ];
             icon = "https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           reddit = {
             urls = [ { template = "https://www.reddit.com/search/?q={searchTerms}"; } ];
-            definedAliases = [ "@reddit" ];
+            definedAliases = [
+              "@reddit"
+              "@rd"
+            ];
             icon = "https://upload.wikimedia.org/wikipedia/en/b/bd/Reddit_Logo_Icon.svg";
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
@@ -118,6 +157,7 @@
           "nixos"
           "noogle"
           "homemanager"
+          "darwin"
           "archwiki"
           "googlemaps"
           "reddit"

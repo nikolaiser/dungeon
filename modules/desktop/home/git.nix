@@ -39,6 +39,11 @@ in
     ];
     userEmail = "mail@nikolaiser.com";
     userName = "nikolaiser";
+
+    signing = {
+      key = "980B9E9C5686F13A";
+      signByDefault = true;
+    };
   };
 
   programs.scmpuff = {
