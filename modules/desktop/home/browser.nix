@@ -112,7 +112,7 @@
             updateInterval = 7 * 24 * 60 * 60 * 1000;
           };
           darwin = {
-            urls = [ { template = "https://https://options.nix-darwin.uz/?query={searchTerms}"; } ];
+            urls = [ { template = "https://options.nix-darwin.uz/?query={searchTerms}"; } ];
             definedAliases = [
               "@darwin"
               "@nd"
