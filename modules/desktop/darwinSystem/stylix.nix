@@ -40,8 +40,8 @@ in
       };
 
       sizes = {
-        desktop = 16;
-        applications = 14;
+        desktop = 24;
+        applications = 18;
       };
 
     };

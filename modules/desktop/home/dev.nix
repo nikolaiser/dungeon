@@ -27,7 +27,8 @@
       pciutils
       cargo
       postgresql_16
-      (sbt.override { jre = pkgs.temurin-bin-21; })
+      #(sbt.override { jre = pkgs.temurin-bin-21; })
+      (sbt.override { jre = pkgs.temurin-bin-11; })
       scala_3
       scala-cli
       sops
@@ -41,6 +42,13 @@
       nix-output-monitor
       xplr
       lf
+      databricks-cli
+      databricks-sql-cli
     ];
+
+  programs.java = {
+    enable = true;
+    package = pkgs.temurin-bin-11;
+  };
 
 }

@@ -9,6 +9,18 @@
   services.aerospace = {
     enable = true;
     settings = {
+      gaps = {
+        inner = {
+          horizontal = 5;
+          vertical = 5;
+        };
+        outer = {
+          left = 10;
+          right = 10;
+          top = 10;
+          bottom = 10;
+        };
+      };
       mode.main.binding = {
         cmd-1 = "workspace 1";
         cmd-2 = "workspace 2";
@@ -32,12 +44,28 @@
         cmd-shift-9 = "move-node-to-workspace 9 --focus-follows-window";
         cmd-shift-0 = "move-node-to-workspace 10 --focus-follows-window";
 
+        cmd-left = "focus left";
+        cmd-right = "focus right";
+        cmd-up = "focus up";
+        cmd-down = "focus down";
+
+        cmd-shift-left = "move left";
+        cmd-shift-right = "move right";
+        cmd-shift-up = "move up";
+        cmd-shift-down = "move down";
+
         cmd-j = "exec-and-forget open -a \"Raycast\"";
+        cmd-b = "exec-and-forget open -n -a \"Google Chrome\"";
         cmd-shift-enter = "exec-and-forget ${lib.exe pkgs.alacritty}";
         cmd-shift-l = "close";
 
       };
     };
+  };
+
+  system.defaults = {
+    spaces.spans-displays = true;
+    dock.expose-group-apps = true;
   };
 
   environment.systemPackages = with pkgs; [

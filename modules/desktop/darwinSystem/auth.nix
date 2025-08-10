@@ -5,6 +5,5 @@ _:
     enable = true;
     touchIdAuth = true;
     reattach = true;
-    #text = "auth sufficient pam_tid.so.2";
   };
 }

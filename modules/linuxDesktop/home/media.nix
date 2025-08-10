@@ -33,6 +33,7 @@ in
     drawing
     libreoffice-qt6-fresh
     marp-cli
+    telegram-desktop
   ];
 
   services.mpris-proxy.enable = true;
