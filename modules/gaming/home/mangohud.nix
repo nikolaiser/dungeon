@@ -1,7 +1,7 @@
 _: {
   programs.mangohud = {
     enable = true;
-    enableSessionWide = true;
+    # enableSessionWide = true;
   };
 
 }
