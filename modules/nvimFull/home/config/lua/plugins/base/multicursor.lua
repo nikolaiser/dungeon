@@ -114,10 +114,10 @@ return {
 		end)
 
 		-- Press `mdip` to add a cursor for every error diagnostic in the range `ip`.
-		set({ "n", "x" }, "md", function()
-			-- See `:h vim.diagnostic.GetOpts`.
-			mc.diagnosticMatchCursors({ severity = vim.diagnostic.severity.ERROR })
-		end)
+		-- set({ "n", "x" }, "md", function()
+		-- 	-- See `:h vim.diagnostic.GetOpts`.
+		-- 	mc.diagnosticMatchCursors({ severity = vim.diagnostic.severity.ERROR })
+		-- end)
 
 		-- Mappings defined in a keymap layer only apply when there are
 		-- multiple cursors. This lets you have overlapping mappings.

@@ -44,6 +44,8 @@
       lf
       databricks-cli
       databricks-sql-cli
+      claude-code
+      gradle
     ];
 
   programs.java = {

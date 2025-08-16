@@ -20,7 +20,6 @@
       unzip
       age
       libargon2
-      wl-clipboard
       xclip
       # inputs.agenix.packages.${system}.default
     ];

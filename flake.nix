@@ -31,7 +31,7 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
 
     private = {
-      url = "github:nikolaiser/dungeon-private";
+      url = "git+ssh://git@github.com/nikolaiser/dungeon-private";
       #url = "git+file:///home/nikolaiser/Documents/dungeon-private";
       inputs.nixpkgs.follows = "nixpkgs";
     };

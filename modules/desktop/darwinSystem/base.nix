@@ -3,6 +3,8 @@
 {
   environment.systemPackages = with pkgs; [
     raycast
+    colima
+    docker
   ];
 
   system.defaults.dock.autohide = true;

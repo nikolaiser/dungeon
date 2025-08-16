@@ -5,6 +5,11 @@
   ...
 }:
 
+let
+  screenshotScript = pkgs.writeShellScript "screenshot" ''
+    ${pkgs.darwin.system_cmds}/bin/screencapture -ic
+  '';
+in
 {
   services.aerospace = {
     enable = true;
@@ -58,13 +63,14 @@
         cmd-b = "exec-and-forget open -n -a \"Google Chrome\"";
         cmd-shift-enter = "exec-and-forget ${lib.exe pkgs.alacritty}";
         cmd-shift-l = "close";
+        cmd-s = "exec-and-forget ${screenshotScript}/bin/screenshot";
 
       };
     };
   };
 
   system.defaults = {
-    spaces.spans-displays = true;
+    spaces.spans-displays = false;
     dock.expose-group-apps = true;
   };
 
