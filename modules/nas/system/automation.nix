@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   services = {
@@ -17,10 +17,11 @@
     zigbee2mqtt = {
       enable = true;
       settings = {
-        homeassistant = true;
+        homeassistant = lib.mkForce true;
         permit_join = true;
         serial = {
           port = "/dev/serial/by-id/usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0";
+          adapter = "zstack";
         };
         mqtt = {
           server = "mqtt://localhost:1883";
