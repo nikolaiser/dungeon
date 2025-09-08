@@ -55,6 +55,7 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"lewis6991/gitsigns.nvim",
+			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		opts = function()
 			local ai = require("mini.ai")

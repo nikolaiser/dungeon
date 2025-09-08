@@ -16,7 +16,7 @@ let
       inputs.steel.packages.${system}.default
       nil
       nixd
-      schemat
+      #schemat
       tmux
       nixfmt-rfc-style
     ]

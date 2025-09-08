@@ -15,13 +15,13 @@ return {
 			end
 		end,
 	},
-	{
-		"jmbuhr/otter.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		opts = {},
-	},
+	-- {
+	-- 	"jmbuhr/otter.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	opts = {},
+	-- },
 	{
 		"folke/trouble.nvim",
 		opts = {}, -- for default options, refer to the configuration section for custom setup.

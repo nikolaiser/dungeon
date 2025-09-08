@@ -37,7 +37,6 @@
       visualvm
       rclone
       just
-      inputs.kent.packages.${system}.default
       visualvm
       nix-output-monitor
       xplr
