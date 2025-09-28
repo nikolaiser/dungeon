@@ -29,7 +29,7 @@ in
     vial
     via
     playerctl
-    libsForQt5.plasma-pa
+    # libsForQt5.plasma-pa
     drawing
     libreoffice-qt6-fresh
     marp-cli
