@@ -2,13 +2,23 @@
   lib,
   pkgs,
   config,
+  system,
   ...
 }:
 {
   programs = {
-    alacritty.enable = true;
+    alacritty = {
+      enable = true;
+    };
     # TODO: Do it properly
     fish.interactiveShellInit = # fish
+      let
+        colimaInit = ''
+          set -x TESTCONTAINERS_HOST_OVERRIDE (colima ls -j | jq -r '.address')
+          set -x TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE /var/run/docker.sock
+          set -x DOCKER_HOST unix:///Users/nikolai.sergeev/.config/colima/default/docker.sock
+        '';
+      in
       ''
         if status is-interactive
          and not set -q TMUX
@@ -21,7 +31,8 @@
         fish_add_path --global --move --path "/opt/homebrew/bin" "/opt/homebrew/sbin";
         if test -n "$MANPATH[1]"; set --global --export MANPATH \'\' $MANPATH; end;
         if not contains "/opt/homebrew/share/info" $INFOPATH; set --global --export INFOPATH "/opt/homebrew/share/info" $INFOPATH; end
-      '';
+      ''
+      + (if system == "aarch64-darwin" then colimaInit else "");
 
     starship.settings = lib.mkForce {
       format = lib.concatStrings [

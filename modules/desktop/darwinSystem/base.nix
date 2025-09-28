@@ -3,11 +3,12 @@
 {
   environment.systemPackages = with pkgs; [
     raycast
-    colima
-    docker
   ];
 
-  system.defaults.dock.autohide = true;
+  system.defaults = {
+    dock.autohide = true;
+    NSGlobalDomain.AppleFontSmoothing = 0;
+  };
 
   homebrew = {
 
