@@ -72,6 +72,22 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
+
+    gyg-dev = {
+      url = "git+ssh://git@github.com/getyourguide/dev";
+      flake = false;
+    };
+
   };
 
   outputs =
@@ -232,10 +248,19 @@
             )
             inputs.home-manager.darwinModules.home-manager
             inputs.stylix.darwinModules.stylix
+            inputs.nix-homebrew.darwinModules.nix-homebrew
             { home-manager.extraSpecialArgs = specialArgs; }
             {
               shared.enable = true;
               shell.enable = true;
+            }
+            {
+              nix-homebrew.taps = {
+                "homebrew/homebrew-core" = inputs.homebrew-core;
+                "homebrew/homebrew-cask" = inputs.homebrew-cask;
+                "getyourguide/dev" = inputs.gyg-dev;
+              };
+
             }
           ];
         };

@@ -1,7 +1,10 @@
 { pkgs, system, ... }:
 {
-  programs.ssh.addKeysToAgent = "yes";
-  programs.ssh.enable = true;
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = true;
+    addKeysToAgent = "yes";
+  };
 
   programs.gpg.enable = true;
   services.gpg-agent = {

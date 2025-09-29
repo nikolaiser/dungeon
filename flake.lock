@@ -145,6 +145,23 @@
         "type": "github"
       }
     },
+    "brew-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758543057,
+        "narHash": "sha256-lw3V2jOGYphUFHYQ5oARcb6urlbNpUCLJy1qhsGdUmc=",
+        "owner": "Homebrew",
+        "repo": "brew",
+        "rev": "5b236456eb93133c2bd0d60ef35ed63f1c0712f6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Homebrew",
+        "ref": "4.6.12",
+        "repo": "brew",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -546,6 +563,22 @@
         "type": "github"
       }
     },
+    "gyg-dev": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758794883,
+        "narHash": "sha256-yWkh8Z4ibqVBTdIz75jmyqkhQBscIwgPeOYD2mOZ2m0=",
+        "ref": "refs/heads/main",
+        "rev": "24ba8c68a9a4b4026538d5a8510d5b361c58c4ae",
+        "revCount": 146,
+        "type": "git",
+        "url": "ssh://git@github.com/getyourguide/dev"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/getyourguide/dev"
+      }
+    },
     "helix": {
       "inputs": {
         "nixpkgs": [
@@ -631,6 +664,38 @@
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "homebrew-cask": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759173428,
+        "narHash": "sha256-UaE3fKhR5+JCHGn3Xm24GyfiAn6Y5E7RbUoZM0LLpPI=",
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "rev": "9a74503a8eee6baa5879f0e364b299f7785f9201",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-cask",
+        "type": "github"
+      }
+    },
+    "homebrew-core": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759173553,
+        "narHash": "sha256-fKZyN3EBDHw6K7fx+Ss/4K+tbn+S6lbivwl2CupDA2Y=",
+        "owner": "homebrew",
+        "repo": "homebrew-core",
+        "rev": "d213bbf817815343eed5cabb4c90d1f99087ab76",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-core",
         "type": "github"
       }
     },
@@ -988,6 +1053,24 @@
         "type": "github"
       }
     },
+    "nix-homebrew": {
+      "inputs": {
+        "brew-src": "brew-src"
+      },
+      "locked": {
+        "lastModified": 1758598228,
+        "narHash": "sha256-qr60maXGbZ4FX5tejPRI3nr0bnRTnZ3AbbbfO6/6jq4=",
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "rev": "f36e5db56e117f7df701ab152d0d2036ea85218c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "zhaofengli",
+        "repo": "nix-homebrew",
+        "type": "github"
+      }
+    },
     "nix-ld": {
       "inputs": {
         "nixpkgs": [
@@ -1319,13 +1402,17 @@
       "inputs": {
         "agenix": "agenix",
         "agenix-rekey": "agenix-rekey",
+        "gyg-dev": "gyg-dev",
         "helix": "helix",
         "home-manager": "home-manager_2",
+        "homebrew-cask": "homebrew-cask",
+        "homebrew-core": "homebrew-core",
         "hyprland": "hyprland",
         "mcphub-nvim": "mcphub-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nix-darwin": "nix-darwin",
         "nix-flatpak": "nix-flatpak",
+        "nix-homebrew": "nix-homebrew",
         "nix-ld": "nix-ld",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",

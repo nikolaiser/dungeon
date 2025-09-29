@@ -14,25 +14,41 @@
     fish.interactiveShellInit = # fish
       let
         colimaInit = ''
-          set -x TESTCONTAINERS_HOST_OVERRIDE (colima ls -j | jq -r '.address')
-          set -x TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE /var/run/docker.sock
-          set -x DOCKER_HOST unix:///Users/nikolai.sergeev/.config/colima/default/docker.sock
+          set colima_cache_file ~/.cache/colima_address
+          set cache_age_minutes 60
+
+          if not test -f $colima_cache_file
+              mkdir -p (dirname $colima_cache_file)
+              colima ls -j | jq -r '.address' > $colima_cache_file 2>/dev/null
+          else
+              # Check if file is older than 60 minutes  
+              set file_age (math (date +%s) - (stat -f %m $colima_cache_file))
+              if test $file_age -gt (math $cache_age_minutes \* 60)
+                  colima ls -j | jq -r '.address' > $colima_cache_file 2>/dev/null
+              end
+          end
+          set -x TESTCONTAINERS_HOST_OVERRIDE (cat $colima_cache_file 2>/dev/null)
+
         '';
+
+        brewInit = ''
+          brew shellenv 2>/dev/null | source || true
+        '';
+
+        macosInit = ''
+          ${colimaInit}
+
+          ${brewInit}
+        '';
+
       in
       ''
         if status is-interactive
          and not set -q TMUX
           exec tmux new-session -A -s main
         end
-
-        set --global --export HOMEBREW_PREFIX "/opt/homebrew";
-        set --global --export HOMEBREW_CELLAR "/opt/homebrew/Cellar";
-        set --global --export HOMEBREW_REPOSITORY "/opt/homebrew";
-        fish_add_path --global --move --path "/opt/homebrew/bin" "/opt/homebrew/sbin";
-        if test -n "$MANPATH[1]"; set --global --export MANPATH \'\' $MANPATH; end;
-        if not contains "/opt/homebrew/share/info" $INFOPATH; set --global --export INFOPATH "/opt/homebrew/share/info" $INFOPATH; end
       ''
-      + (if system == "aarch64-darwin" then colimaInit else "");
+      + (if system == "aarch64-darwin" then macosInit else "");
 
     starship.settings = lib.mkForce {
       format = lib.concatStrings [

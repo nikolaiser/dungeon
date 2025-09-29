@@ -3,6 +3,7 @@
   lib,
   config,
   inputs,
+  system,
   ...
 }:
 
@@ -119,10 +120,21 @@
       prefix = "C-s";
 
       extraConfig = # tmux
+        let
+          alacrittyTerminal = ''
+            set-option -ga terminal-overrides ",alacritty:Tc"
+            set -g default-terminal "alacritty"
+          '';
+          footTerminal = ''
+            set -ag terminal-overrides ",xterm-256color:RGB"
+          '';
+
+          terminal = if system == "aarch64-darwin" then alacrittyTerminal else footTerminal;
+        in
         ''
           bind-key m display-popup -E "${lib.exe pkgs.tmux-sessionizer}"
 
-          set -ag terminal-overrides ",xterm-256color:RGB"
+          ${terminal}
 
           set -g allow-passthrough on
 
