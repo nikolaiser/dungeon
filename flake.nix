@@ -6,6 +6,8 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
+    nixpkgs-omada.url = "github:pathob/NixOS-nixpkgs/omada-sdn-controller";
+
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -126,6 +128,12 @@
               config.allowUnfree = true;
             };
 
+            pkgs-omada = import inputs.nixpkgs-omada {
+              inherit overlays system;
+
+              config.allowUnfree = true;
+            };
+
           };
 
         in
@@ -169,6 +177,7 @@
               shared.enable = true;
               shell.enable = true;
             }
+            "${inputs.nixpkgs-omada}/nixos/modules/services/networking/omada.nix"
           ];
         };
 

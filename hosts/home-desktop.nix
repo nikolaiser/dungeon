@@ -63,50 +63,52 @@
 
   swapDevices = [ ];
 
-  networking = {
+  # networking = {
+  #
+  #   nameservers = [
+  #     "10.10.0.1"
+  #   ];
+  #
+  #   interfaces.enp24s0.ipv4 = {
+  #     addresses = [
+  #       {
+  #         address = "10.10.163.212";
+  #         prefixLength = 16;
+  #       }
+  #     ];
+  #     routes = [
+  #       {
+  #         address = "0.0.0.0"; # Default route
+  #         prefixLength = 0;
+  #         via = "10.10.0.1";
+  #       }
+  #     ];
+  #   };
+  #
+  #   # interfaces.enp8s0.ipv4 = {
+  #   #   addresses = [
+  #   #     {
+  #   #       address = "10.2.0.2";
+  #   #       prefixLength = 8;
+  #   #     }
+  #   #   ];
+  #   #   routes = [
+  #   #     {
+  #   #       address = "10.2.0.5"; # Default route
+  #   #       prefixLength = 32;
+  #   #       via = "10.2.0.5";
+  #   #     }
+  #   #   ];
+  #   #
+  #   # };``
+  #   defaultGateway = {
+  #     address = "10.10.0.1";
+  #     interface = "enp24s0";
+  #   };
+  #
+  # };
 
-    nameservers = [
-      "10.10.0.1"
-    ];
-
-    interfaces.enp24s0.ipv4 = {
-      addresses = [
-        {
-          address = "10.10.163.212";
-          prefixLength = 16;
-        }
-      ];
-      routes = [
-        {
-          address = "0.0.0.0"; # Default route
-          prefixLength = 0;
-          via = "10.10.0.1";
-        }
-      ];
-    };
-
-    interfaces.enp8s0.ipv4 = {
-      addresses = [
-        {
-          address = "10.2.0.2";
-          prefixLength = 8;
-        }
-      ];
-      routes = [
-        {
-          address = "10.2.0.5"; # Default route
-          prefixLength = 32;
-          via = "10.2.0.5";
-        }
-      ];
-
-    };
-    defaultGateway = {
-      address = "10.10.0.1";
-      interface = "enp24s0";
-    };
-
-  };
+  networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

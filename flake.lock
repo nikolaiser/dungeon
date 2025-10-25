@@ -1139,6 +1139,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-omada": {
+      "locked": {
+        "lastModified": 1744279797,
+        "narHash": "sha256-D2rgyEU/bDqCD76szBB/iUeHjaMV2lCRJaJDv4AKIas=",
+        "owner": "pathob",
+        "repo": "NixOS-nixpkgs",
+        "rev": "30100112fd7f5899e3c82450651172ceb9db466b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pathob",
+        "ref": "omada-sdn-controller",
+        "repo": "NixOS-nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1758791193,
@@ -1417,6 +1433,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-master": "nixpkgs-master",
+        "nixpkgs-omada": "nixpkgs-omada",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
         "private": "private",

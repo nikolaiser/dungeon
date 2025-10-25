@@ -22,6 +22,16 @@
     "kvm-amd"
     "vfio"
     "vfio_pci"
+    "ip_tables"
+    "iptable_filter"
+    "iptable_nat"
+    "ip6_tables"
+    "ip6table_filter"
+    "ip6table_nat"
+    "x_tables"
+    "xt_conntrack"
+    "nf_conntrack"
+    "nf_nat"
   ];
   boot.extraModulePackages = [ ];
   boot.supportedFilesystems = {
