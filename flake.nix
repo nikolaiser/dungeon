@@ -287,7 +287,7 @@
             networking.hostId = "bda049b5";
             cad.enable = true;
             smart.enable = true;
-            helix.enable = true;
+            helix.enable = false;
             hyprland.enable = true;
           }
         ];

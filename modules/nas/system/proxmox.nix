@@ -12,7 +12,7 @@
 
   nix.settings = {
     substituters = [ "https://cache.saumon.network/proxmox-nixos" ];
-    trusted-public-keys = [ "proxmox-nixos:nveXDuVVhFDRFx8Dn19f1WDEaNRJjPrF2CPD2D+m1ys=" ];
+    trusted-public-keys = [ "proxmox-nixos:D9RYSWpQQC/msZUWphOY2I5RLH5Dd6yQcaHIuug7dWM=" ];
   };
 
   services.proxmox-ve = {

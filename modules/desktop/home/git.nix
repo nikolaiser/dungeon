@@ -20,30 +20,23 @@ in
 
   programs.git = {
     enable = true;
-    aliases = {
-      ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
-      ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
-    };
     extraConfig = gitConfig;
-    ignores = [
-      "*.bloop"
-      "*.bsp"
-      "*.metals"
-      "*.metals.sbt"
-      "*metals.sbt"
-      "*.direnv"
-      #"*.envrc" # there is lorri, nix-direnv & simple direnv; let people decide
-      "*hie.yaml" # ghcide files
-      "*.mill-version" # used by metals
-      "*.jvmopts" # should be local to every project
-    ];
-    userEmail = "mail@nikolaiser.com";
-    userName = "nikolaiser";
+    settings = {
+      aliases = {
+        ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
+        ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
+      };
+      user = {
+        email = "mail@nikolaiser.com";
+        name = "nikolaiser";
+      };
 
-    signing = {
-      key = "980B9E9C5686F13A";
-      signByDefault = true;
+      signing = {
+        key = "980B9E9C5686F13A";
+        signByDefault = true;
+      };
     };
+
   };
 
   programs.scmpuff = {
