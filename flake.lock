@@ -1290,11 +1290,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762036680,
-        "narHash": "sha256-u05N6zvzU7ODqBEWHcm1aBPjpDKMPzqn155YD3oneAE=",
+        "lastModified": 1762207129,
+        "narHash": "sha256-hIWRCxvPioClgEJ8WtERKQ9qAJAvwRsAz210FZL3d7w=",
         "ref": "refs/heads/main",
-        "rev": "b7d4e4b2394b7bc5d2da882eb12b445079592396",
-        "revCount": 334,
+        "rev": "d1469ed34d90ffb71e6dc5037469c242c9c367e1",
+        "revCount": 335,
         "type": "git",
         "url": "ssh://git@github.com/nikolaiser/dungeon-private"
       },
@@ -1351,7 +1351,6 @@
         "proxmox-nixos": "proxmox-nixos",
         "steel": "steel",
         "stylix": "stylix",
-        "vim-tmux-navigator-sturdy": "vim-tmux-navigator-sturdy",
         "zwift": "zwift"
       }
     },
@@ -1645,22 +1644,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "vim-tmux-navigator-sturdy": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1752434344,
-        "narHash": "sha256-Wbnd/Q0tzuLTWiDUw3xcjdL4xFedLdd+dul+92pT5k8=",
-        "owner": "nikolaiser",
-        "repo": "vim-tmux-navigator-sturdy",
-        "rev": "682f2d7d97f92338be004a1acff22cecc9b67002",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nikolaiser",
-        "repo": "vim-tmux-navigator-sturdy",
         "type": "github"
       }
     },

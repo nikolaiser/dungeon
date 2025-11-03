@@ -40,11 +40,6 @@
 
     stylix.url = "github:danth/stylix";
 
-    vim-tmux-navigator-sturdy = {
-      url = "github:nikolaiser/vim-tmux-navigator-sturdy";
-      flake = false;
-    };
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     agenix.url = "github:ryantm/agenix";

@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  osConfig,
   inputs,
   system,
   ...
@@ -48,6 +49,7 @@
       enableNushellIntegration = true;
       settings = {
         inline_height = "5";
+        sync_address = "https://atuin.${osConfig.nas.baseDomain.public}";
       };
     };
 
