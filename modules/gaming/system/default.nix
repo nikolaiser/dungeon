@@ -44,6 +44,7 @@
       jdks = [
         graalvmPackages.graalvm-ce
         jdk17
+        jdk21
       ];
     })
     wineWowPackages.waylandFull

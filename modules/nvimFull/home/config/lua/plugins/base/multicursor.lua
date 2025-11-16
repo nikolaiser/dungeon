@@ -11,7 +11,7 @@ return {
 		set({ "n", "x" }, "<M-up>", function()
 			mc.lineAddCursor(-1)
 		end)
-		set({ "n", "x" }, "M-<down>", function()
+		set({ "n", "x" }, "<M-down>", function()
 			mc.lineAddCursor(1)
 		end)
 

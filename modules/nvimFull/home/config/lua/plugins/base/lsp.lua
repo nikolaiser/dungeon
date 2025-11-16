@@ -65,6 +65,7 @@ return {
 			format_after_save = {
 				-- timeout_ms = 2000,
 				lsp_format = "fallback",
+				-- lsp_format = "never",
 			},
 		},
 	},

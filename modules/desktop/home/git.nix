@@ -21,6 +21,15 @@ in
   programs.git = {
     enable = true;
     extraConfig = gitConfig;
+
+    ignores = [
+      ".direnv"
+      "bin"
+      ".metals"
+      "project/metals.sbt"
+      "project/project"
+    ];
+
     settings = {
       aliases = {
         ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";

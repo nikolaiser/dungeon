@@ -49,7 +49,8 @@
       enableNushellIntegration = true;
       settings = {
         inline_height = "5";
-        sync_address = "https://atuin.${osConfig.nas.baseDomain.public}";
+        sync_address =
+          if system == "aarch64-darwin" then "" else "https://atuin.${osConfig.nas.baseDomain.public}";
       };
     };
 

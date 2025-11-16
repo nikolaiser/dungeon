@@ -76,11 +76,6 @@ return {
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "echasnovski/mini.icons", "ravitemer/mcphub.nvim" },
-		opts = {
-			lualine_x = {
-				{ require("mcphub.extensions.lualine") },
-			},
-		},
+		dependencies = { "echasnovski/mini.icons" },
 	},
 }

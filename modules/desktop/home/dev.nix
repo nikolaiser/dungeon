@@ -45,6 +45,8 @@
       databricks-sql-cli
       claude-code
       gradle
+      (pnpm_9.override { withNode = false; })
+      nodejs_20
     ];
 
   programs.java = {

@@ -9,6 +9,9 @@
   programs = {
     alacritty = {
       enable = true;
+      settings = {
+        scrolling.multiplier = 1;
+      };
     };
     # TODO: Do it properly
     fish.interactiveShellInit = # fish

@@ -17,36 +17,36 @@ return {
 	-- 		})
 	-- 	end,
 	-- },
-	{
-		"olimorris/codecompanion.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			"ravitemer/mcphub.nvim",
-			"nvim-lualine/lualine.nvim",
-		},
-		opts = {
-			strategies = {
-				chat = {
-					adapter = {
-						name = "copilot",
-						model = "claude-3.5-sonnet",
-					},
-				},
-			},
-
-			extensions = {
-				mcphub = {
-					callback = "mcphub.extensions.codecompanion",
-					opts = {
-						make_vars = true,
-						make_slash_commands = true,
-						show_result_in_chat = true,
-					},
-				},
-			},
-		},
-	},
+	-- {
+	-- 	"olimorris/codecompanion.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"ravitemer/mcphub.nvim",
+	-- 		"nvim-lualine/lualine.nvim",
+	-- 	},
+	-- 	opts = {
+	-- 		strategies = {
+	-- 			chat = {
+	-- 				adapter = {
+	-- 					name = "copilot",
+	-- 					model = "claude-3.5-sonnet",
+	-- 				},
+	-- 			},
+	-- 		},
+	--
+	-- 		extensions = {
+	-- 			mcphub = {
+	-- 				callback = "mcphub.extensions.codecompanion",
+	-- 				opts = {
+	-- 					make_vars = true,
+	-- 					make_slash_commands = true,
+	-- 					show_result_in_chat = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	-- {
 	-- 	"yetone/avante.nvim",
 	-- 	event = "VeryLazy",
