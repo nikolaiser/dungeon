@@ -1290,11 +1290,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1763322035,
-        "narHash": "sha256-07dtCFq6qJgoMy8yX5/0S73oD0bhrLhHWY590D61S78=",
+        "lastModified": 1763486420,
+        "narHash": "sha256-ZTtfrAM2mKgWwz7eSFN1AntZiA8RiIT3Hal+0NvUo5I=",
         "ref": "refs/heads/main",
-        "rev": "cdef59625b8c547fd2a8534c47e387a6d25db295",
-        "revCount": 336,
+        "rev": "5c7b84238448ee20cc68e322398bb6ecae5c5075",
+        "revCount": 337,
         "type": "git",
         "url": "ssh://git@github.com/nikolaiser/dungeon-private"
       },

@@ -252,6 +252,7 @@
             )
             inputs.home-manager.darwinModules.home-manager
             inputs.stylix.darwinModules.stylix
+            inputs.private.darwinModules.default
             inputs.nix-homebrew.darwinModules.nix-homebrew
             { home-manager.extraSpecialArgs = specialArgs; }
             {
