@@ -85,6 +85,8 @@
       flake = false;
     };
 
+    nixpkgs-seafile-patch.url = "github:nikolaiser/nixpkgs/nixos-25.05-patch";
+
   };
 
   outputs =
@@ -124,6 +126,12 @@
             };
 
             pkgs-omada = import inputs.nixpkgs-omada {
+              inherit overlays system;
+
+              config.allowUnfree = true;
+            };
+
+            pkgs-seafile-patch = import inputs.nixpkgs-seafile-patch {
               inherit overlays system;
 
               config.allowUnfree = true;
@@ -173,6 +181,7 @@
               shell.enable = true;
             }
             "${inputs.nixpkgs-omada}/nixos/modules/services/networking/omada.nix"
+            "${inputs.nixpkgs-seafile-patch}/nixos/modules/services/networking/seafile.nix"
           ];
         };
 
