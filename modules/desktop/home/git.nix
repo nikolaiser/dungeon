@@ -1,26 +1,8 @@
 { pkgs, lib, ... }:
-let
-  gitConfig = {
-    core = {
-      editor = "nvim";
-      pager = "${lib.exe pkgs.diff-so-fancy} | less --tabs=4 -RFX";
-    };
-    diff.tool = "vimdiff";
-    merge.tool = "vimdiff";
-    difftool.prompt = false;
-    mergetool.prompt = true;
-    "difftool \"vimdiff\"".cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";
-    "mergetool \"vimdiff\"".cmd = "nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
-    init.defaultBranch = "main";
-    push.autoSetupRemote = true;
-  };
-
-in
 {
 
   programs.git = {
     enable = true;
-    extraConfig = gitConfig;
 
     ignores = [
       ".direnv"
@@ -44,6 +26,19 @@ in
         key = "980B9E9C5686F13A";
         signByDefault = true;
       };
+
+      core = {
+        editor = "nvim";
+        pager = "${lib.exe pkgs.diff-so-fancy} | less --tabs=4 -RFX";
+      };
+      diff.tool = "vimdiff";
+      merge.tool = "vimdiff";
+      difftool.prompt = false;
+      mergetool.prompt = true;
+      "difftool \"vimdiff\"".cmd = "nvim -d \"$LOCAL\" \"$REMOTE\"";
+      "mergetool \"vimdiff\"".cmd = "nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'";
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
 
   };

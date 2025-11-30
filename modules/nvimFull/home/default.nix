@@ -37,7 +37,7 @@ let
       markdownlint-cli2
       nodejs_22
       lazygit
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       hadolint
       nixd
       statix

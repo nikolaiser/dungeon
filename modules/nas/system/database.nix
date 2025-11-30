@@ -21,7 +21,6 @@ in
       package = pkgs.postgresql_17;
       extensions =
         ps: with ps; [
-          pgvectorscale
           pgvector
           vectorchord
         ];

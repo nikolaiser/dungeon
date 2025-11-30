@@ -6,7 +6,7 @@
 
 {
   home = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     file = {
       youtubeApiKeys = {
         source = config.lib.file.mkOutOfStoreSymlink osConfig.age.secrets.kodiYoutubeApiKeys.path;

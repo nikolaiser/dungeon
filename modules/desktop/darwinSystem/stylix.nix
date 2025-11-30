@@ -12,6 +12,7 @@ in
 
   stylix = {
     enable = true;
+    enableReleaseChecks = false;
     image = ../../linuxDesktop/home/wallpapers/wallhaven-3looxy_3840x2160.png;
 
     base16Scheme = ../../linuxDesktop/system/theme/carbonfox.yaml;

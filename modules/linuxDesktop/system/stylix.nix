@@ -9,6 +9,7 @@ in
 
   stylix = {
     enable = true;
+    enableReleaseChecks = false;
     image = ../home/wallpapers/wallhaven-3looxy_3840x2160.png;
 
     targets.fish.enable = false;

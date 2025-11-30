@@ -2,8 +2,8 @@
 {
   programs.ssh = {
     enable = true;
-    enableDefaultConfig = true;
-    addKeysToAgent = "yes";
+    enableDefaultConfig = false;
+    matchBlocks."*".addKeysToAgent = "yes";
   };
 
   programs.gpg.enable = true;

@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}:
 
 let
   paperlessUrl = "paperless.${config.nas.baseDomain.private}";
@@ -9,6 +14,7 @@ in
   services = {
     paperless = {
       enable = true;
+      package = pkgs-master.paperless-ngx;
       dataDir = paperlessDataDir;
       mediaDir = paperlessMediaDir;
       port = 28981;

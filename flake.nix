@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
 
     nixpkgs-omada.url = "github:pathob/NixOS-nixpkgs/omada-sdn-controller";
@@ -38,7 +38,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -85,8 +88,6 @@
       flake = false;
     };
 
-    nixpkgs-seafile-patch.url = "github:nikolaiser/nixpkgs/nixos-25.05-patch";
-
   };
 
   outputs =
@@ -131,12 +132,6 @@
               config.allowUnfree = true;
             };
 
-            pkgs-seafile-patch = import inputs.nixpkgs-seafile-patch {
-              inherit overlays system;
-
-              config.allowUnfree = true;
-            };
-
           };
 
         in
@@ -174,14 +169,13 @@
               nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
               systemd.tmpfiles.rules = [ "d /var/tmp/agenix-rekey 1777 root root" ];
 
-              system.stateVersion = "25.05";
+              system.stateVersion = "25.11";
             }
             {
               shared.enable = true;
               shell.enable = true;
             }
             "${inputs.nixpkgs-omada}/nixos/modules/services/networking/omada.nix"
-            "${inputs.nixpkgs-seafile-patch}/nixos/modules/services/networking/seafile.nix"
           ];
         };
 
