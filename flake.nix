@@ -95,7 +95,7 @@
     let
       overlays = [
         (import ./overlays inputs)
-        inputs.agenix-rekey.overlays.default
+        # inputs.agenix-rekey.overlays.default
         inputs.nur.overlays.default
       ];
 
@@ -153,17 +153,17 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.agenix.nixosModules.default
-            inputs.agenix-rekey.nixosModules.default
+            # inputs.agenix-rekey.nixosModules.default
             inputs.zwift.nixosModules.zwift
             inputs.stylix.nixosModules.stylix
             inputs.proxmox-nixos.nixosModules.proxmox-ve
             { home-manager.extraSpecialArgs = specialArgs; }
             {
               age = {
-                rekey = {
-                  storageMode = "derivation";
-                  cacheDir = "/var/tmp/agenix-rekey/\"$UID\"";
-                };
+                # rekey = {
+                #   storageMode = "derivation";
+                #   cacheDir = "/var/tmp/agenix-rekey/\"$UID\"";
+                # };
                 identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
               };
               nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
@@ -202,6 +202,7 @@
             {
               ssh.enable = true;
               shared.username = "ops";
+              zfs.enable = true;
             }
           ]
         );
@@ -308,7 +309,6 @@
               hostId = "d4cf0337";
             };
             smart.enable = true;
-            zfs.enable = true;
             nas.enable = true;
             monitoring.enable = true;
             nodeExporter.enable = true;
@@ -318,8 +318,27 @@
           }
         ];
 
+        soroka = mkx86_64ServerSystem [
+          "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
+          ./hosts/soroka.nix
+          {
+            # desktop.enable = true;
+            # linuxDesktop.enable = true;
+            # gaming.enable = true;
+            networking = {
+              hostName = "soroka";
+              hostId = "c5429214";
+            };
+            # hyprland.enable = true;
+            systemd-boot.enable = true;
+          }
+        ];
+
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+        ];
+        baseImageNetbootx86_64 = mkx86_64ServerSystem [
+          "${inputs.nixpkgs}/nixos/modules/installer/netboot/netboot-minimal.nix"
         ];
 
       };
