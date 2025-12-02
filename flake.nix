@@ -95,7 +95,7 @@
     let
       overlays = [
         (import ./overlays inputs)
-        # inputs.agenix-rekey.overlays.default
+        inputs.agenix-rekey.overlays.default
         inputs.nur.overlays.default
       ];
 
@@ -153,17 +153,17 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.nix-flatpak.nixosModules.nix-flatpak
             inputs.agenix.nixosModules.default
-            # inputs.agenix-rekey.nixosModules.default
+            inputs.agenix-rekey.nixosModules.default
             inputs.zwift.nixosModules.zwift
             inputs.stylix.nixosModules.stylix
             inputs.proxmox-nixos.nixosModules.proxmox-ve
             { home-manager.extraSpecialArgs = specialArgs; }
             {
               age = {
-                # rekey = {
-                #   storageMode = "derivation";
-                #   cacheDir = "/var/tmp/agenix-rekey/\"$UID\"";
-                # };
+                rekey = {
+                  storageMode = "derivation";
+                  cacheDir = "/var/tmp/agenix-rekey/\"$UID\"";
+                };
                 identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
               };
               nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
@@ -321,16 +321,23 @@
         soroka = mkx86_64ServerSystem [
           "${inputs.nixos-hardware}/common/cpu/intel/alder-lake"
           ./hosts/soroka.nix
+          (
+            { lib, ... }:
+            {
+              shared.username = lib.mkForce "soroka";
+            }
+          )
           {
-            # desktop.enable = true;
-            # linuxDesktop.enable = true;
+            desktop.enable = true;
+            linuxDesktop.enable = true;
             # gaming.enable = true;
             networking = {
               hostName = "soroka";
               hostId = "c5429214";
             };
-            # hyprland.enable = true;
+            hyprland.enable = true;
             systemd-boot.enable = true;
+            drawing.enable = true;
           }
         ];
 
