@@ -341,6 +341,19 @@
           }
         ];
 
+        mityan = mkx86_64ServerSystem [
+          ./hosts/mityan.nix
+          {
+            networking = {
+              hostName = "mityan";
+              hostId = "50ac0cbe";
+            };
+            systemd-boot.enable = true;
+            couch.enable = true;
+            nvidiagpu.enable = true;
+          }
+        ];
+
         baseImagex86_64 = mkx86_64ServerSystem [
           "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
         ];
