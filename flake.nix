@@ -330,7 +330,7 @@
           {
             desktop.enable = true;
             linuxDesktop.enable = true;
-            # gaming.enable = true;
+            gaming.enable = true;
             networking = {
               hostName = "soroka";
               hostId = "c5429214";
