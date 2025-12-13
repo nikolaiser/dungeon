@@ -28,7 +28,7 @@
     settings = {
       default_session = {
         user = config.shared.username;
-        command = "${pkgs.gamescope}/bin/gamescope  -W 3840 -H 2160 -f -e --xwayland-count 2 --hdr-enabled --hdr-itm-enabled  -- ${pkgs.steam}/bin/steam -tenfoot";
+        command = "${pkgs.gamescope}/bin/gamescope  -W 3840 -H 2160 -f -e --xwayland-count 2 --hdr-enabled --hdr-itm-enabled -- ${pkgs.steam}/bin/steam -tenfoot > /dev/null 2>&1";
       };
     };
   };
