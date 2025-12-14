@@ -186,6 +186,7 @@
           ++ [
             {
               desktop.enable = true;
+              soundSupport.enable = true;
               linuxDesktop.enable = true;
               systemd-boot.enable = true;
               nvimFull.enable = true;
@@ -338,6 +339,7 @@
             hyprland.enable = true;
             systemd-boot.enable = true;
             drawing.enable = true;
+            soundSupport.enable = true;
           }
         ];
 
@@ -351,6 +353,7 @@
             systemd-boot.enable = true;
             couch.enable = true;
             nvidiagpu.enable = true;
+            soundSupport.enable = true;
           }
         ];
 
