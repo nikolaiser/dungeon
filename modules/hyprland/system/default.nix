@@ -6,6 +6,7 @@
 }:
 
 {
+  stylixConfig.enable = true;
   xdg.portal = {
     enable = true;
 

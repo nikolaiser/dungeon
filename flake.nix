@@ -118,18 +118,21 @@
               inherit overlays system;
 
               config.allowUnfree = true;
+              config.allowUnfreePredicate = (pkg: true);
             };
 
             pkgs-master = import inputs.nixpkgs-master {
               inherit overlays system;
 
               config.allowUnfree = true;
+              config.allowUnfreePredicate = (pkg: true);
             };
 
             pkgs-omada = import inputs.nixpkgs-omada {
               inherit overlays system;
 
               config.allowUnfree = true;
+              config.allowUnfreePredicate = (pkg: true);
             };
 
           };

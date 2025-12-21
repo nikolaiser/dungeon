@@ -17,4 +17,7 @@
     enable = true;
     openFirewall = true;
   };
+
+  qt.enable = true;
+  stylixConfig.enable = true;
 }
