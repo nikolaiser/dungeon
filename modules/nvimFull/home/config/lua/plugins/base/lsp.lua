@@ -9,6 +9,21 @@ return {
 			local blink = require("blink.cmp")
 			local capabilities = blink.get_lsp_capabilities(clientCapabilities)
 
+			local configs = require("lspconfig.configs")
+
+			if not configs.brichka then
+				configs.brichka = {
+					default_config = {
+						cmd = { "brichka", "lsp" },
+						filetypes = { "sql", "scala" },
+						root_dir = function()
+							return vim.fn.getcwd()
+						end,
+						settings = {},
+					},
+				}
+			end
+
 			for server, serverOpts in pairs(opts.servers) do
 				serverOpts.capabilities = capabilities
 				lspconfig[server].setup(serverOpts)

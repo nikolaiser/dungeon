@@ -24,6 +24,8 @@ let
       rust-analyzer
       terraform-ls
       gopls
+      gotools
+      gofumpt
       lua-language-server
       yaml-language-server
       helm-ls
@@ -56,6 +58,7 @@ let
       execline
       jdt-language-server
       gnumake
+      (inputs.brichka.packages."${system}".brichka)
       #schemat
     ]
   );

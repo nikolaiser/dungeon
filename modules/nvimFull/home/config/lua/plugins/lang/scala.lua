@@ -40,6 +40,7 @@ return {
 					}
 				end,
 			},
+			{ "nvim-telescope/telescope.nvim" },
 		},
 		config = function(self)
 			local metals_config = require("metals").bare_config()
@@ -77,15 +78,15 @@ return {
 				group = nvim_metals_group,
 			})
 		end,
-		-- keys = {
-		-- 	{
-		-- 		"<leader>cw",
-		-- 		function()
-		-- 			require("telescope").extensions.metals.commands()
-		-- 		end,
-		-- 		desc = "Metals commands",
-		-- 	},
-		-- },
+		keys = {
+			{
+				"<leader>cw",
+				function()
+					require("telescope").extensions.metals.commands()
+				end,
+				desc = "Metals commands",
+			},
+		},
 	},
 	{
 		"rgroli/other.nvim",

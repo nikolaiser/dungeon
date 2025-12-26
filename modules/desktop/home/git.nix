@@ -10,6 +10,7 @@
       ".metals"
       "project/metals.sbt"
       "project/project"
+      ".bloop"
     ];
 
     settings = {

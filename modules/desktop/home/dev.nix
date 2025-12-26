@@ -47,6 +47,8 @@
       gradle
       (pnpm_9.override { withNode = false; })
       nodejs_20
+      (inputs.brichka.packages."${system}".brichka)
+      visidata
     ];
 
   programs.java = {

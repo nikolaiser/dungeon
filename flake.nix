@@ -88,6 +88,11 @@
       flake = false;
     };
 
+    brichka = {
+      url = "git+ssh://git@github.com/nikolaiser/brichka";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =

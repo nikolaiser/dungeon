@@ -93,19 +93,30 @@
           set fish_greeting  # disable greeting
         '';
 
-      shellAliases = {
-        ls = "${lib.exe pkgs.eza}";
-        la = "${lib.exe pkgs.eza} -la";
-        tree = "${lib.exe pkgs.eza} -T";
-        htop = "${lib.exe pkgs.bottom}";
-        cat = "${lib.exe pkgs.bat}";
-        nano = "${lib.exe pkgs.micro}";
-        #ga = "git add";
-        gc = "git commit";
-        #gco = "git checkout";
-        gp = "git push";
-        ps = "${lib.exe pkgs.procs}";
-      };
+      shellAliases =
+        let
+          brichkaPackage = inputs.brichka.packages."${system}".brichka;
+        in
+        {
+          ls = "${lib.exe pkgs.eza}";
+          la = "${lib.exe pkgs.eza} -la";
+          tree = "${lib.exe pkgs.eza} -T";
+          htop = "${lib.exe pkgs.bottom}";
+          cat = "${lib.exe pkgs.bat}";
+          nano = "${lib.exe pkgs.micro}";
+          #ga = "git add";
+          gc = "git commit";
+          #gco = "git checkout";
+          gp = "git push";
+          ps = "${lib.exe pkgs.procs}";
+          br = "${lib.exe brichkaPackage} run";
+          brf = "${lib.exe brichkaPackage} run -f";
+          bcc = "${lib.exe brichkaPackage} context create";
+          bcs = "${lib.exe brichkaPackage} context status";
+          bcd = "${lib.exe brichkaPackage} context delete";
+          bcls = "${lib.exe brichkaPackage} cluster select";
+          bcli = "${lib.exe brichkaPackage} cluster info";
+        };
 
       functions = {
         envsource = ''
