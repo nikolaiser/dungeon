@@ -173,10 +173,10 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1766395442,
-        "narHash": "sha256-Vy0dQVuRrshzZxI74YtZdYyVuQJoAk2R5qBQ18GDxks=",
+        "lastModified": 1766777705,
+        "narHash": "sha256-QhCbZRmOidWJhaLrHbf6ojrT8SOeB5TUFcq+Kxi3Ap0=",
         "ref": "refs/heads/main",
-        "rev": "9e6ccfecebfdfe23f4d2dab4f96203c2eba49748",
+        "rev": "b2e5ed4838adb3a6e916e5ea47e9e12dae851d0d",
         "revCount": 1,
         "type": "git",
         "url": "ssh://git@github.com/nikolaiser/brichka"
@@ -1442,11 +1442,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765653785,
-        "narHash": "sha256-GL9pvcWZSBjsy6YGRuP/TaX1C4pppte55M29AsVaAiI=",
+        "lastModified": 1766920076,
+        "narHash": "sha256-syA0Jhyz0rp3IaxCJ+eXcj/B0CiKWwJ/ulGOQ+an9gQ=",
         "ref": "refs/heads/main",
-        "rev": "23399359ba73b4797e89b574a5a2ad7a7606c61e",
-        "revCount": 346,
+        "rev": "a028851bcb807fd5036b5ec817cc31870150ae79",
+        "revCount": 347,
         "type": "git",
         "url": "ssh://git@github.com/nikolaiser/dungeon-private"
       },

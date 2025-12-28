@@ -14,7 +14,7 @@ in
   services = {
     paperless = {
       enable = true;
-      package = pkgs-master.paperless-ngx;
+      package = pkgs.paperless-ngx;
       dataDir = paperlessDataDir;
       mediaDir = paperlessMediaDir;
       port = 28981;
