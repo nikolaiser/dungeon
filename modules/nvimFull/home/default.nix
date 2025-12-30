@@ -22,6 +22,7 @@ let
       nixpkgs-fmt
       nil
       rust-analyzer
+      rustc
       terraform-ls
       gopls
       gotools

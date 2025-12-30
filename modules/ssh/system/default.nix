@@ -6,6 +6,7 @@
     enable = true;
     settings.PasswordAuthentication = lib.mkDefault false;
     settings.KbdInteractiveAuthentication = false;
+    settings.AcceptEnv = lib.mkForce null;
   };
 
   users.users.${config.shared.username}.openssh.authorizedKeys.keys = [

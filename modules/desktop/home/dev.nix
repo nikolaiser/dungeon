@@ -11,31 +11,17 @@
     with pkgs;
 
     [
-      _1password-cli
-      dyff
       gh
-      kconf
       kubectl
       kubectx
-      kubefwd
-      kubelogin-oidc
-      (pkgs.wrapHelm pkgs.kubernetes-helm {
-        plugins = with pkgs.kubernetes-helmPlugins; [ helm-secrets ];
-      })
-      lua
       mongosh
       pciutils
       cargo
-      postgresql_16
-      #(sbt.override { jre = pkgs.temurin-bin-21; })
+      postgresql_17
       (sbt.override { jre = pkgs.temurin-bin-11; })
       scala_3
       scala-cli
-      sops
-      terraform
       usbutils
-      visualvm
-      rclone
       just
       visualvm
       nix-output-monitor
