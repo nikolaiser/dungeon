@@ -93,6 +93,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    rift = {
+      url = "github:acsandmann/rift/v0.2.8";
+      flake = false;
+    };
+
   };
 
   outputs =
@@ -383,6 +388,7 @@
             desktop.enable = true;
             nvimFull.enable = true;
             shared.username = "nikolai.sergeev";
+            rift.enable = true;
           }
         ];
       };
