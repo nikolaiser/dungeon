@@ -7,10 +7,6 @@
 }:
 {
   programs = {
-    kitty = {
-      enable = true;
-      enableGitIntegration = true;
-    };
     alacritty = {
       enable = true;
       settings = {

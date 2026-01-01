@@ -147,8 +147,8 @@
       extraConfig = # tmux
         let
           alacrittyTerminal = ''
-            set -g default-terminal screen-256color
-            set -g terminal-overrides ",alacritty:RGB"
+            set-option -ga terminal-overrides ",alacritty:Tc"
+            set -g default-terminal "alacritty"
           '';
           footTerminal = ''
             set -ag terminal-overrides ",xterm-256color:RGB"
@@ -161,7 +161,7 @@
 
           ${terminal}
 
-          set -gq allow-passthrough on
+          set -g allow-passthrough on
           set -g visual-activity off
 
           set -ga update-environment TERM

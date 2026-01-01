@@ -2,9 +2,9 @@ return {
 	"neovim/nvim-lspconfig",
 	opts = {
 		servers = {
-			-- ltex = {
-			-- 	language = "en-US",
-			-- },
+			ltex = {
+				language = "en-US",
+			},
 		},
 	},
 }
