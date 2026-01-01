@@ -1,5 +1,0 @@
-Foo
-
-
-![render](test.png)
-
