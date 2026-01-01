@@ -98,6 +98,11 @@
       flake = false;
     };
 
+    sql-language-server = {
+      url = "github:joe-re/sql-language-server/release";
+      flake = false;
+    };
+
   };
 
   outputs =

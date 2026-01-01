@@ -61,6 +61,8 @@ let
       gnumake
       (inputs.brichka.packages."${system}".brichka)
       #schemat
+      ueberzugpp
+      imagemagick
     ]
   );
 
@@ -125,9 +127,12 @@ let
       };
     };
   };
+
 in
 {
-  home.packages = [ nvim-wrapped ];
+  home.packages = [
+    nvim-wrapped
+  ];
 
   xdg.configFile = {
     nvim = {

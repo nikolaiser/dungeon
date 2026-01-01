@@ -115,6 +115,7 @@
           bcs = "${lib.exe brichkaPackage} context status";
           bcd = "${lib.exe brichkaPackage} context delete";
           bcls = "${lib.exe brichkaPackage} cluster select";
+          bclst = "${lib.exe brichkaPackage} cluster start";
           bcli = "${lib.exe brichkaPackage} cluster info";
         };
 
@@ -161,6 +162,7 @@
           ${terminal}
 
           set -g allow-passthrough on
+          set -g visual-activity off
 
           set -ga update-environment TERM
           set -ga update-environment TERM_PROGRAM
