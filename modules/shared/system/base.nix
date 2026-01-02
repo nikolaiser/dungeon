@@ -34,7 +34,7 @@ in
       ];
       nix-path = "nixpkgs=flake:nixpkgs";
     };
-    package = pkgs.nixVersions.nix_2_29;
+    package = pkgs.nixVersions.latest;
   };
 
   networking.firewall.enable = true;
