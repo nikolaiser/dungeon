@@ -3,6 +3,7 @@
   lib,
   inputs,
   osConfig ? null,
+  config,
   ...
 }:
 
@@ -127,7 +128,7 @@ in
       };
 
       bind = [
-        "${secondaryMod}, RETURN, exec, ${lib.exe pkgs.foot}"
+        "${secondaryMod}, RETURN, exec, ${lib.exe config.programs.ghostty.package}"
         "${secondaryMod}, L, killactive"
         "${mainMod}, J, exec, ${lib.exe pkgs.fuzzel}"
         "${mainMod}, F, togglesplit"

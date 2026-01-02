@@ -14,7 +14,7 @@
       gh
       kubectl
       kubectx
-      mongosh
+      # mongosh
       pciutils
       cargo
       postgresql_17

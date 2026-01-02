@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-master,
   lib,
   config,
   osConfig,
@@ -87,9 +88,11 @@
     fish = {
       enable = true;
 
+      package = pkgs-master.fish;
+
       shellInit = # fish
         ''
-          set -g fish_key_bindings fish_default_key_bindings
+          fish_default_key_bindings
           set fish_greeting  # disable greeting
         '';
 
@@ -145,33 +148,19 @@
       prefix = "C-s";
 
       extraConfig = # tmux
-        let
-          ghosttyTerminal = ''
-            set -ag terminal-overrides ",xterm-ghostty:Tc"
-            set -g default-terminal "tmux-256color"
-          '';
-          kittyTerminal = ''
-            set -ag terminal-overrides ",xterm-kitty:Tc"
-            set -g default-terminal "tmux-256color"
-          '';
-          alacrittyTerminal = ''
-            set-option -ga terminal-overrides ",alacritty:Tc"
-            set -g default-terminal "alacritty"
-          '';
-          footTerminal = ''
-            set -ag terminal-overrides ",xterm-256color:RGB"
-          '';
-
-          terminal = if system == "aarch64-darwin" then ghosttyTerminal else footTerminal;
-        in
         ''
           bind-key m display-popup -E "${lib.exe pkgs.tmux-sessionizer}"
 
-          ${terminal}
+          set -ag terminal-overrides ",xterm-ghostty:Tc"
+          set -g default-terminal "tmux-256color"
 
           set -g allow-passthrough on
           set -g visual-activity off
           set-option -g focus-events on
+
+
+          set -g extended-keys on
+          set -as terminal-features 'xterm*:extkeys'
 
           set -ga update-environment TERM
           set -ga update-environment TERM_PROGRAM

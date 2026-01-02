@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}:
 
 {
 
@@ -9,7 +14,7 @@
       "wheel"
       "docker"
     ];
-    shell = pkgs.fish;
+    shell = pkgs-master.fish;
   };
 
   home-manager.backupFileExtension =

@@ -7,31 +7,6 @@
 }:
 {
   programs = {
-    ghostty = {
-      enable = true;
-      enableFishIntegration = true;
-      installBatSyntax = true;
-      package = (if system == "aarch64-darwin" then pkgs.ghostty-bin else pkgs.ghostty);
-      clearDefaultKeybinds = true;
-      settings = {
-        confirm-close-surface = false;
-        shell-integration = "fish";
-      };
-    };
-    kitty = {
-      enable = true;
-      enableGitIntegration = true;
-      settings = {
-        # text_composition_strategy = "legacy";
-        confirm_os_window_close = 0;
-      };
-    };
-    alacritty = {
-      enable = true;
-      settings = {
-        scrolling.multiplier = 1;
-      };
-    };
     # TODO: Do it properly
     fish.interactiveShellInit = # fish
       let

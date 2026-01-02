@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  pkgs-master,
+  ...
+}:
 
 {
 
@@ -8,7 +13,7 @@
 
   users.users.${config.shared.username} = {
     home = "/Users/${config.shared.username}";
-    shell = pkgs.fish;
+    shell = pkgs-master.fish;
     uid = 502;
   };
 

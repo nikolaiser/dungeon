@@ -47,7 +47,7 @@ let
       efm-langserver
       curl
       docker-compose-language-service
-      sqlfluff
+      # sqlfluff
       taplo
       tree-sitter
       nixfmt-rfc-style
