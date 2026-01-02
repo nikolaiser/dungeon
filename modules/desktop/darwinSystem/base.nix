@@ -18,6 +18,6 @@
   };
 
   system.defaults = {
-    spaces.spans-displays = true;
+    spaces.spans-displays = false;
   };
 }
