@@ -1,16 +1,5 @@
 return {
 	{
-		"saghen/blink.compat",
-		opts = {},
-		config = function()
-			-- monkeypatch cmp.ConfirmBehavior for Avante
-			require("cmp").ConfirmBehavior = {
-				Insert = "insert",
-				Replace = "replace",
-			}
-		end,
-	},
-	{
 		"saghen/blink.cmp",
 		event = "InsertEnter",
 		opts_extend = {

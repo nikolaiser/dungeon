@@ -6,6 +6,14 @@ return {
 		},
 	},
 	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				brichka = {},
+			},
+		},
+	},
+	{
 		"scalameta/nvim-metals",
 		ft = { "scala", "sbt" },
 		dependencies = {
