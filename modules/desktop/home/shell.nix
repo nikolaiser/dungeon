@@ -7,6 +7,25 @@
 }:
 {
   programs = {
+    ghostty = {
+      enable = true;
+      enableFishIntegration = true;
+      installBatSyntax = true;
+      package = pkgs.ghostty-bin;
+      clearDefaultKeybinds = true;
+      settings = {
+        confirm-close-surface = false;
+        shell-integration = "fish";
+      };
+    };
+    kitty = {
+      enable = true;
+      enableGitIntegration = true;
+      settings = {
+        # text_composition_strategy = "legacy";
+        confirm_os_window_close = 0;
+      };
+    };
     alacritty = {
       enable = true;
       settings = {

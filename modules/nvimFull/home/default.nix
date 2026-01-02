@@ -61,7 +61,6 @@ let
       gnumake
       (inputs.brichka.packages."${system}".brichka)
       #schemat
-      ueberzugpp
       imagemagick
     ]
   );
@@ -75,6 +74,7 @@ let
     vim.g.metals_binary = "${lib.exe metalsPackage}"
     vim.g.lombok_path = "${pkgs.lombok}/share/java/lombok.jar"
     vim.g.mcphub_path = "${mcphubPath}"
+    vim.g.puppeteer_path = "${lib.exe pkgs.google-chrome}"
   '';
 
   nvimConfig =

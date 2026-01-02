@@ -1,5 +1,0 @@
-return {
-	{
-		"mpas/marp-nvim",
-	},
-}

@@ -35,6 +35,9 @@
       nodejs_20
       (inputs.brichka.packages."${system}".brichka)
       visidata
+      (mermaid-cli.overrideAttrs {
+        makeWrapperArgs = "--set PUPPETEER_EXECUTABLE_PATH '${lib.getExe pkgs.google-chrome}'";
+      })
     ];
 
   programs.java = {

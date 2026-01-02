@@ -348,4 +348,4 @@ comb1 = "Meta + Shift"
 "Meta + Slash" = "toggle_orientation"
 "Meta + J" = {exec = ["open", "-a",  "Raycast"]}
 "Meta + B" = {exec = ["open", "-n", "-a",  "Google Chrome"] }
-"Meta + Shift + Enter" = {exec = ["open", "-n", "-a", "Alacritty"] }
+"Meta + Shift + Enter" = {exec = ["open", "-n", "-a", "Ghostty"] }

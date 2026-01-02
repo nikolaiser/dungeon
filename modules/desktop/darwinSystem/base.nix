@@ -14,6 +14,6 @@
     JAVA_HOME = "${pkgs.temurin-bin.home}";
     TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE = "/var/run/docker.sock";
     DOCKER_HOST = "unix:///Users/nikolai.sergeev/.config/colima/default/docker.sock";
-    TERM = "alacritty";
+    TERM = "ghostty";
   };
 }

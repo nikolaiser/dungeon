@@ -6,7 +6,6 @@ return {
 			plugins = { spelling = true },
 			defaults = {
 				mode = { "n", "v" },
-				{ "<leader>a", group = "avante" },
 				{ "<leader>b", group = "buffer" },
 				{ "<leader>c", group = "code" },
 				{ "<leader>f", group = "file/find" },
