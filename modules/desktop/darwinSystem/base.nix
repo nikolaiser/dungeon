@@ -16,4 +16,8 @@
     DOCKER_HOST = "unix:///Users/nikolai.sergeev/.config/colima/default/docker.sock";
     TERM = "ghostty";
   };
+
+  system.defaults = {
+    spaces.spans-displays = true;
+  };
 }

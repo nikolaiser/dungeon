@@ -14,7 +14,7 @@ in
 {
 
   system.defaults = {
-    spaces.spans-displays = false;
+    # spaces.spans-displays = false;
     dock.expose-group-apps = true;
   };
 

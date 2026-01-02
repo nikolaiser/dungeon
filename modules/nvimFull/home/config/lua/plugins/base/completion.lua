@@ -13,7 +13,6 @@ return {
 		-- branch = "main",
 		-- build = "nix run .#build-plugin --accept-flake-config",
 		opts = {
-			friendly_snippets = true,
 			keymap = { preset = "enter" },
 			appearance = {
 				-- sets the fallback highlight groups to nvim-cmp's highlight groups

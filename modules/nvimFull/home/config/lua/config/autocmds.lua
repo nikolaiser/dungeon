@@ -135,3 +135,13 @@ vim.api.nvim_create_autocmd("FileType", {
 		})
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	command = "set formatoptions-=cro",
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "*",
+	command = "setlocal formatoptions-=cro",
+})
