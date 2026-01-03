@@ -73,8 +73,6 @@ let
     vim.g.is_nix_package = 1
     vim.g.metals_binary = "${lib.exe metalsPackage}"
     vim.g.lombok_path = "${pkgs.lombok}/share/java/lombok.jar"
-    vim.g.mcphub_path = "${mcphubPath}"
-    vim.g.puppeteer_path = "${lib.exe pkgs.google-chrome}"
   '';
 
   nvimConfig =

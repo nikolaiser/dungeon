@@ -11,6 +11,8 @@ in
 {
   time.timeZone = "Europe/Berlin";
 
+  programs.fish.enable = true;
+
   environment.systemPackages = with pkgs; [
     git
   ];

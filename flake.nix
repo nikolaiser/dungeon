@@ -93,13 +93,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    rift = {
-      url = "github:acsandmann/rift/v0.2.8";
+    sql-language-server = {
+      url = "github:joe-re/sql-language-server/release";
       flake = false;
     };
 
-    sql-language-server = {
-      url = "github:joe-re/sql-language-server/release";
+    acsandmann-tap = {
+      url = "github:acsandmann/homebrew-tap";
       flake = false;
     };
 
