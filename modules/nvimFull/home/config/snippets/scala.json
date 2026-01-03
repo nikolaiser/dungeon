@@ -15,12 +15,14 @@
     "prefix": "brnn",
     "body": [
       "//> using scala 2.13",
-      "//> using dep com.nikolaiser::brichka-helpers::0.1.0",
       "//> using dep org.apache.spark::spark-sql::3.5.7",
-      "//> using options \"-Yimports:java.lang,scala,scala.Predef,dev.DatabricksPredef\"",
       "",
       "// brichka: exclude",
       "import org.apache.spark.sql.functions._",
+      "import org.apache.spark.sql.{DataFrame, SparkSession}",
+      "",
+      "val spark: SparkSession = null.asInstanceOf[SparkSession]",
+      "def display(df: DataFrame): Unit = ()",
       "// brichka: include"
     ],
     "description": "Brichka new notebook"
