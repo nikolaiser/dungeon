@@ -76,23 +76,23 @@ return {
 		set({ "n", "x" }, "g<c-x>", mc.sequenceDecrement)
 
 		-- Add a cursor and jump to the next/previous search result.
-		set("n", "<leader>/n", function()
-			mc.searchAddCursor(1)
-		end)
-		set("n", "<leader>/N", function()
-			mc.searchAddCursor(-1)
-		end)
-
-		-- Jump to the next/previous search result without adding a cursor.
-		set("n", "<leader>/s", function()
-			mc.searchSkipCursor(1)
-		end)
-		set("n", "<leader>/S", function()
-			mc.searchSkipCursor(-1)
-		end)
+		-- set("n", "<leader>/n", function()
+		-- 	mc.searchAddCursor(1)
+		-- end)
+		-- set("n", "<leader>/N", function()
+		-- 	mc.searchAddCursor(-1)
+		-- end)
+		--
+		-- -- Jump to the next/previous search result without adding a cursor.
+		-- set("n", "<leader>/s", function()
+		-- 	mc.searchSkipCursor(1)
+		-- end)
+		-- set("n", "<leader>/S", function()
+		-- 	mc.searchSkipCursor(-1)
+		-- end)
 
 		-- Add a cursor to every search result in the buffer.
-		set("n", "<leader>/A", mc.searchAllAddCursors)
+		-- set("n", "<leader>/A", mc.searchAllAddCursors)
 
 		-- Pressing `<leader>miwap` will create a cursor in every match of the
 		-- string captured by `iw` inside range `ap`.

@@ -97,23 +97,6 @@ return {
 		},
 	},
 	{
-		"rgroli/other.nvim",
-		opts = {
-			mappings = {
-				{
-					pattern = "^(.*)/main/(.*)%.scala$",
-					target = "%1/test/%2Spec.scala",
-					context = "test",
-				},
-				{
-					pattern = "^(.*)%.scala$",
-					target = "%1Live.scala",
-					context = "live",
-				},
-			},
-		},
-	},
-	{
 		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
