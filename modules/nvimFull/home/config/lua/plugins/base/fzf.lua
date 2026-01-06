@@ -370,7 +370,7 @@ return {
 			desc = "Goto Declaration",
 		},
 		{
-			"gr",
+			"<leader>cu",
 			function()
 				Snacks.picker.lsp_references()
 			end,
