@@ -30,19 +30,25 @@
       databricks-cli
       databricks-sql-cli
       claude-code
+      cursor-cli
       gradle
       (pnpm_9.override { withNode = false; })
       nodejs_20
       (inputs.brichka.packages."${system}".brichka)
-      visidata
       (mermaid-cli.overrideAttrs {
         makeWrapperArgs = "--set PUPPETEER_EXECUTABLE_PATH '${lib.getExe pkgs.google-chrome}'";
       })
     ];
 
-  programs.java = {
-    enable = true;
-    package = pkgs.temurin-bin-11;
+  programs = {
+    java = {
+      enable = true;
+      package = pkgs.temurin-bin-11;
+    };
+    visidata = {
+      enable = true;
+      visidatarc = '''';
+    };
   };
 
 }

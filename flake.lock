@@ -189,11 +189,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1767727897,
-        "narHash": "sha256-8jK3o0EiFnhw/w/s7JtKTCLJmqmeLomNjcKpr34IjUU=",
+        "lastModified": 1767818060,
+        "narHash": "sha256-PfxPl9UJ5ZKd8P03KpG/Cr+2mvmQsUqeAwyRMpT/1GI=",
         "ref": "refs/heads/main",
-        "rev": "be565b05a1e6951021161b8a52835c1601be7031",
-        "revCount": 7,
+        "rev": "a131477ca481dc872ead8225a8cb7ee70f5c27e0",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.com/nikolaiser/brichka"
       },

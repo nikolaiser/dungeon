@@ -6,7 +6,14 @@
       "acsandmann/tap" = inputs.acsandmann-tap;
     };
   };
-  homebrew.brews = [
-    "rift"
-  ];
+  homebrew = {
+    brews = [
+      "rift"
+    ];
+
+    casks = [
+      "hammerspoon"
+    ];
+  };
+
 }

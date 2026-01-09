@@ -1,0 +1,1 @@
+-- inspired by https://github.com/brianwk/dotfiles/blob/main/dot_hammerspoon/init.lua

@@ -21,7 +21,7 @@
       "import org.apache.spark.sql.functions._",
       "import org.apache.spark.sql.{DataFrame, SparkSession}",
       "",
-      "val spark: SparkSession = null.asInstanceOf[SparkSession]",
+      "val spark: SparkSession = ???",
       "def display(df: DataFrame): Unit = ()",
       "// brichka: include"
     ],

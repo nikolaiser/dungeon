@@ -62,6 +62,7 @@ let
       (inputs.brichka.packages."${system}".brichka)
       #schemat
       imagemagick
+      sql-formatter
     ]
   );
 
