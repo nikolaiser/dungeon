@@ -88,7 +88,7 @@
     fish = {
       enable = true;
 
-      package = pkgs-master.fish;
+      package = pkgs.fish;
 
       shellInit = # fish
         ''

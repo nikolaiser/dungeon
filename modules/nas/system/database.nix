@@ -39,21 +39,21 @@ in
         port = 6380;
       };
     };
-    qdrant = {
-      enable = true;
-      settings = {
-        storage = {
-          storage_path = qdrantDataDir;
-          snapshots_path = qdrantSnapshotDir;
-        };
-        service = {
-          host = "0.0.0.0";
-          http_port = "6333";
-          grpc_port = "6334";
-        };
-        telemetry_disabled = true;
-      };
-    };
+    # qdrant = {
+    #   enable = true;
+    #   settings = {
+    #     storage = {
+    #       storage_path = qdrantDataDir;
+    #       snapshots_path = qdrantSnapshotDir;
+    #     };
+    #     service = {
+    #       host = "0.0.0.0";
+    #       http_port = "6333";
+    #       grpc_port = "6334";
+    #     };
+    #     telemetry_disabled = true;
+    #   };
+    # };
   };
 
   systemd.services.qdrant.serviceConfig = {

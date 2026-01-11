@@ -14,7 +14,7 @@
       "wheel"
       "docker"
     ];
-    shell = pkgs-master.fish;
+    shell = pkgs.fish;
   };
 
   home-manager.backupFileExtension =

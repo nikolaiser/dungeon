@@ -13,7 +13,7 @@
 
   users.users.${config.shared.username} = {
     home = "/Users/${config.shared.username}";
-    shell = pkgs-master.fish;
+    shell = pkgs.fish;
     uid = 502;
   };
 
