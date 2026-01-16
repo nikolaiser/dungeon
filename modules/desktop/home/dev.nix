@@ -38,6 +38,7 @@
       (mermaid-cli.overrideAttrs {
         makeWrapperArgs = "--set PUPPETEER_EXECUTABLE_PATH '${lib.getExe pkgs.google-chrome}'";
       })
+      _1password-cli
     ];
 
   programs = {
