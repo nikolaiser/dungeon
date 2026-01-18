@@ -48,7 +48,7 @@
     };
     visidata = {
       enable = true;
-      visidatarc = '''';
+      visidatarc = "";
     };
   };
 

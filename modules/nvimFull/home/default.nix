@@ -50,7 +50,7 @@ let
       # sqlfluff
       taplo
       tree-sitter
-      nixfmt-rfc-style
+      nixfmt
       scalafmt
       stylua
       protols

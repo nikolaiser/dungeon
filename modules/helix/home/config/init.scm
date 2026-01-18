@@ -25,7 +25,7 @@
   (language-servers '("steel-language-server")))
 
 (helix.define-language "nix"
-  (formatter (command "nixfmt-rfc-style"))
+  (formatter (command "nixfmt"))
   (auto-format #true)
   (language-servers '("nil" "nixd")))
 
