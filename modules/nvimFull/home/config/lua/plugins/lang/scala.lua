@@ -64,6 +64,36 @@ return {
 				require("metals").setup_dap()
 			end
 
+			-- metals_config.settings = {
+			-- 	serverVersion = "2.0.0-M2",
+			-- 	serverProperties = {
+			-- 		"-Djol.magicFieldOffset=true",
+			-- 		"-Djol.tryWithSudo=true",
+			-- 		"-Djdk.attach.allowAttachSelf",
+			-- 		"--add-opens=java.base/java.nio=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.resources=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED",
+			-- 		"--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED",
+			-- 		"--add-opens=java.base/sun.nio.ch=ALL-UNNAMED",
+			-- 		"--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED",
+			-- 		"--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED",
+			-- 		"--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED",
+			-- 		"--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED",
+			-- 		"-XX:+DisplayVMOutputToStderr",
+			-- 		"-Xlog:disable",
+			-- 		"-Xlog:all=warning,gc=warning:stderr",
+			-- 	},
+			-- }
+
 			metals_config.settings = {
 				metalsBinaryPath = vim.g.metals_binary,
 				showImplicitArguments = true,

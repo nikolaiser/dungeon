@@ -127,14 +127,23 @@
           #gco = "git checkout";
           gp = "git push";
           ps = "${lib.exe pkgs.procs}";
-          br = "${lib.exe brichkaPackage} run";
-          brf = "${lib.exe brichkaPackage} run -f";
-          bcc = "${lib.exe brichkaPackage} context create";
-          bcs = "${lib.exe brichkaPackage} context status";
-          bcd = "${lib.exe brichkaPackage} context delete";
-          bcls = "${lib.exe brichkaPackage} cluster select";
-          bclst = "${lib.exe brichkaPackage} cluster start";
-          bcli = "${lib.exe brichkaPackage} cluster info";
+          # br = "${lib.exe brichkaPackage} run";
+          # brf = "${lib.exe brichkaPackage} run -f";
+          # bcc = "${lib.exe brichkaPackage} context create";
+          # bcs = "${lib.exe brichkaPackage} context status";
+          # bcd = "${lib.exe brichkaPackage} context delete";
+          # bcls = "${lib.exe brichkaPackage} cluster select";
+          # bclst = "${lib.exe brichkaPackage} cluster start";
+          # bcli = "${lib.exe brichkaPackage} cluster info";
+          jn = "${lib.exe pkgs.jujutsu} new";
+          jl = "${lib.exe pkgs.jujutsu} log";
+          je = "${lib.exe pkgs.jujutsu} edit";
+          jbm = "${lib.exe pkgs.jujutsu} bookmark move --to @";
+          jbc = "${lib.exe pkgs.jujutsu} bookmark create";
+          jd = "${lib.exe pkgs.jujutsu} describe";
+          jp = "${lib.exe pkgs.jujutsu} git push";
+          jf = "${lib.exe pkgs.jujutsu} git fetch";
+          ji = "${lib.exe pkgs.jujutsu} git init --colocate .";
         };
 
       functions = {

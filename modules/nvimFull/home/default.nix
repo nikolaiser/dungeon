@@ -31,7 +31,7 @@ let
       yaml-language-server
       helm-ls
       coursier
-      marksman
+      # marksman
       vscode-langservers-extracted
       typos-lsp
       nodePackages.bash-language-server
@@ -62,6 +62,7 @@ let
       #schemat
       imagemagick
       sql-formatter
+      emmylua-ls
     ]
   );
 

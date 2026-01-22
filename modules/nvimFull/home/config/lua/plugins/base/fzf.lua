@@ -1,3 +1,4 @@
+---@module 'snacks'
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -6,6 +7,7 @@ return {
 		"echasnovski/mini.icons",
 		"nvim-tree/nvim-web-devicons",
 	},
+	---@type snacks.Config
 	opts = {
 		picker = {},
 		explorer = {},

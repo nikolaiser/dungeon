@@ -39,6 +39,7 @@
         makeWrapperArgs = "--set PUPPETEER_EXECUTABLE_PATH '${lib.getExe pkgs.google-chrome}'";
       })
       _1password-cli
+      cargo-dist
     ];
 
   programs = {

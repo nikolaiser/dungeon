@@ -55,6 +55,14 @@
             auto-track = true;
           };
         };
+        ui = {
+          diff-editor = [
+            "nvim"
+            "-c"
+            "DiffEditor $left $right $output"
+          ];
+        };
+        remotes.origin.auto-track-bookmarks = "*";
       };
     };
   };
