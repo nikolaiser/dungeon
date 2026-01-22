@@ -18,12 +18,12 @@ in
     dock.expose-group-apps = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    autoraise
-  ];
-
-  homebrew.casks = [
-    "mediosz/tap/swipeaerospace"
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   autoraise
+  # ];
+  #
+  # homebrew.casks = [
+  #   "mediosz/tap/swipeaerospace"
+  # ];
 
 }

@@ -47,23 +47,23 @@
       ''
       + (if system == "aarch64-darwin" then macosInit else "");
 
-    starship.settings = lib.mkForce {
-      format = lib.concatStrings [
-        "$directory"
-        "$git_branch"
-        "$git_commit"
-        "$git_state"
-        "$git_status"
-        "$nix_shell"
-        "$cmd_duration"
-
-        "$line_break"
-        "$character"
-      ];
-      git_branch = {
-        only_attached = true;
-      };
-    };
+    # starship.settings = lib.mkForce {
+    #   format = lib.concatStrings [
+    #     "$directory"
+    #     "$git_branch"
+    #     "$git_commit"
+    #     "$git_state"
+    #     "$git_status"
+    #     "$nix_shell"
+    #     "$cmd_duration"
+    #
+    #     "$line_break"
+    #     "$character"
+    #   ];
+    #   git_branch = {
+    #     only_attached = true;
+    #   };
+    # };
   };
 
   home.packages = with pkgs; [ tmux-sessionizer ];

@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = augroup("highlight_yank"),
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.on_yank()
 	end,
 })
 
@@ -110,24 +110,24 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 --
 --
 --
-vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*sql",
-	callback = function(args)
-		require("conform").format({ bufnr = args.buf })
-	end,
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+-- 	pattern = "*sql",
+-- 	callback = function(args)
+-- 		require("conform").format({ bufnr = args.buf })
+-- 	end,
+-- })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "scheme",
-	callback = function(ev)
-		vim.lsp.start({
-			name = "steel-language-server",
-			cmd = { "steel-language-server" },
-
-			root_dir = vim.fs.root(ev.buf, {}),
-		})
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "scheme",
+-- 	callback = function(ev)
+-- 		vim.lsp.start({
+-- 			name = "steel-language-server",
+-- 			cmd = { "steel-language-server" },
+--
+-- 			root_dir = vim.fs.root(ev.buf, {}),
+-- 		})
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",

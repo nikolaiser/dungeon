@@ -15,7 +15,7 @@ return {
 		{
 			"<leader><space>",
 			function()
-				Snacks.picker.smart({ hidden = true })
+				Snacks.picker.smart({ hidden = true, ignored = true, follow = true })
 			end,
 			desc = "Smart Find Files",
 		},
@@ -29,7 +29,7 @@ return {
 		{
 			"<leader>/",
 			function()
-				Snacks.picker.grep({ hidden = true })
+				Snacks.picker.grep({ hidden = true, follow = true })
 			end,
 			desc = "Grep",
 		},
@@ -50,7 +50,7 @@ return {
 		{
 			"<leader>e",
 			function()
-				Snacks.explorer()
+				Snacks.explorer({ hidden = true, ignored = true, follow = true })
 			end,
 			desc = "File Explorer",
 		},

@@ -93,14 +93,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sql-language-server = {
-      url = "github:joe-re/sql-language-server/release";
-      flake = false;
-    };
-
     acsandmann-tap = {
       url = "github:acsandmann/homebrew-tap";
       flake = false;
+    };
+
+    jj-starship = {
+      url = "github:dmmulroy/jj-starship";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
@@ -286,7 +286,7 @@
               nix-homebrew.taps = {
                 "homebrew/homebrew-core" = inputs.homebrew-core;
                 "homebrew/homebrew-cask" = inputs.homebrew-cask;
-                "getyourguide/dev" = inputs.gyg-dev;
+                "getyourguide/homebrew-dev" = inputs.gyg-dev;
               };
 
             }

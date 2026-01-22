@@ -55,21 +55,20 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"lewis6991/gitsigns.nvim",
-			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		opts = function()
 			local ai = require("mini.ai")
 			return {
 				n_lines = 500,
 				custom_textobjects = {
-					o = ai.gen_spec.treesitter({ -- code block
-						a = { "@block.outer", "@conditional.outer", "@loop.outer", "@assignment.outer" },
-						i = { "@block.inner", "@conditional.inner", "@loop.inner", "@assignment.inner" },
-					}),
-
-					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
-					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
-					t = ai.gen_spec.treesitter({ a = "@type.outer", i = "@type.inner" }),
+					-- o = ai.gen_spec.treesitter({ -- code block
+					-- 	a = { "@block.outer", "@conditional.outer", "@loop.outer", "@assignment.outer" },
+					-- 	i = { "@block.inner", "@conditional.inner", "@loop.inner", "@assignment.inner" },
+					-- }),
+					--
+					-- f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
+					-- c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
+					-- t = ai.gen_spec.treesitter({ a = "@type.outer", i = "@type.inner" }),
 					d = { "%f[%d]%d+" }, -- digits
 					e = { -- Word with case
 						{
@@ -81,7 +80,6 @@ return {
 						"^().*()$",
 					},
 					g = ai_buffer,
-					i = ai_indent,
 					u = ai.gen_spec.function_call(), -- u for "Usage"
 					U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
 				},

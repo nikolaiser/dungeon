@@ -38,7 +38,6 @@ let
       gcc
       metalsPackage
       markdownlint-cli2
-      nodejs_22
       lazygit
       dockerfile-language-server
       hadolint

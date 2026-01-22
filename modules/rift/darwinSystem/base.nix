@@ -3,7 +3,7 @@
 
   nix-homebrew = {
     taps = {
-      "acsandmann/tap" = inputs.acsandmann-tap;
+      "acsandmann/homebrew-tap" = inputs.acsandmann-tap;
     };
   };
   homebrew = {
@@ -11,9 +11,9 @@
       "rift"
     ];
 
-    casks = [
-      "hammerspoon"
-    ];
+    # casks = [
+    #   "hammerspoon"
+    # ];
   };
 
 }

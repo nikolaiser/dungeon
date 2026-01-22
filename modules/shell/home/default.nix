@@ -62,28 +62,43 @@
       };
     };
 
-    starship = {
-      enable = true;
-      settings = {
-        format = lib.concatStrings [
-          "$username"
-          "$hostname"
-          "$directory"
-          "$git_branch"
-          "$git_commit"
-          "$git_state"
-          "$git_status"
-          "$nix_shell"
-          "$cmd_duration"
+    starship =
+      let
+        jjStarshipBin = lib.exe inputs.jj-starship.packages."${system}".default;
+      in
+      {
+        enable = true;
+        settings = {
+          format = lib.concatStrings [
+            "$username"
+            "$hostname"
+            "$directory"
+            # "$git_branch"
+            # "$git_commit"
+            # "$git_state"
+            # "$git_status"
+            "$custom.jj"
+            "$nix_shell"
+            "$cmd_duration"
 
-          "$line_break"
-          "$character"
-        ];
-        git_branch = {
-          only_attached = true;
+            "$line_break"
+            "$character"
+          ];
+          git_branch = {
+            only_attached = true;
+            disabled = true;
+          };
+          git_status = {
+            disabled = true;
+          };
+
+          custom.jj = {
+            when = "${jjStarshipBin} detect";
+            shell = [ "${jjStarshipBin}" ];
+            format = "$output";
+          };
         };
       };
-    };
 
     fish = {
       enable = true;
