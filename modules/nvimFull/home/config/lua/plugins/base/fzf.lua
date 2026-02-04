@@ -17,7 +17,7 @@ return {
 		{
 			"<leader><space>",
 			function()
-				Snacks.picker.smart({ hidden = true, ignored = true, follow = true })
+				Snacks.picker.smart({ hidden = true, follow = true })
 			end,
 			desc = "Smart Find Files",
 		},

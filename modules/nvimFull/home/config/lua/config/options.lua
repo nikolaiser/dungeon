@@ -48,3 +48,9 @@ end
 
 vim.g.root_lsp_ignore = { "helm_ls", "jsonls", "yamlls" }
 vim.highlight.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitter's priority level
+
+vim.filetype.add({
+	extension = {
+		sc = "scala",
+	},
+})

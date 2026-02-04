@@ -9,7 +9,8 @@
 }:
 
 let
-  metalsPackage = (pkgs.metals.override { jre = pkgs.temurin-bin-21; });
+  # metalsPackage = (pkgs.metals.override { jre = pkgs.temurin-bin-21; });
+  metalsPackage = pkgs.metals;
   binPath = lib.makeBinPath (
     with pkgs;
     [

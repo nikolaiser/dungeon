@@ -18,7 +18,8 @@
       pciutils
       cargo
       postgresql_17
-      (sbt.override { jre = pkgs.temurin-bin-11; })
+      sbt
+      # (sbt.override { jre = pkgs.temurin-bin-21; })
       scala_3
       scala-cli
       usbutils
@@ -45,7 +46,7 @@
   programs = {
     java = {
       enable = true;
-      package = pkgs.temurin-bin-11;
+      package = pkgs.temurin-bin-21;
     };
     visidata = {
       enable = true;
