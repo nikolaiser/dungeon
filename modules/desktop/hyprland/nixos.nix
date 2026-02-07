@@ -1,0 +1,57 @@
+{
+
+  dungeon.desktop._.hyprland.nixos =
+    {
+      pkgs,
+      inputs',
+      config,
+      ...
+    }:
+
+    {
+      xdg.portal = {
+        enable = true;
+
+        extraPortals = [
+          inputs'.hyprland.packages.xdg-desktop-portal-hyprland
+        ];
+        config = {
+          common = {
+            default = "hyprland";
+          };
+        };
+      };
+
+      environment.systemPackages = [
+        inputs'.hyprland.packages.xdg-desktop-portal-hyprland
+        pkgs.wl-clipboard
+      ];
+
+      services = {
+
+        gvfs.enable = true; # Mount, trash, and other functionalities
+        tumbler.enable = true; # Thumbnail support for images
+
+        displayManager = {
+          defaultSession = "hyprland";
+          ly = {
+            enable = true;
+          };
+        };
+      };
+
+      programs.hyprland = {
+        enable = true;
+        package = inputs'.hyprland.packages.hyprland;
+        portalPackage = inputs'.hyprland.packages.xdg-desktop-portal-hyprland;
+
+      };
+
+      nix.settings = {
+        substituters = [ "https://hyprland.cachix.org" ];
+        trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      };
+
+      security.polkit.enable = true;
+    };
+}
