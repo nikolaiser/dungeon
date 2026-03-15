@@ -23,6 +23,7 @@
       hardware._.gpu._.amd
       nix
       nvim._.full
+      nvim._.wrapped
       overlays
       shell
       sound

@@ -1313,6 +1313,38 @@
         "type": "github"
       }
     },
+    "plugins-lze": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773555725,
+        "narHash": "sha256-Ii/mrCHw8kw1IN0GIROm7O0NSz1jtDligb/qDNq1P3U=",
+        "owner": "BirdeeHub",
+        "repo": "lze",
+        "rev": "1d05835370e841c1605ec88d0541195c9410c34e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "lze",
+        "type": "github"
+      }
+    },
+    "plugins-lzextras": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773555737,
+        "narHash": "sha256-fG8glvgoeFRHU6fgfBTb5GUxY+2YY3QfqzVYERa7ogs=",
+        "owner": "BirdeeHub",
+        "repo": "lzextras",
+        "rev": "88f70fe95e3a6c4dc841ebed3b23c1f92c5cde42",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "lzextras",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1448,9 +1480,12 @@
         "nixpkgs-omada": "nixpkgs-omada",
         "nixpkgs-stable": "nixpkgs-stable",
         "nur": "nur",
+        "plugins-lze": "plugins-lze",
+        "plugins-lzextras": "plugins-lzextras",
         "private": "private",
         "proxmox-nixos": "proxmox-nixos",
         "stylix": "stylix",
+        "wrappers": "wrappers",
         "zwift": "zwift"
       }
     },
@@ -1713,6 +1748,26 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "wrappers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773553469,
+        "narHash": "sha256-DY3xNV1kgPEHX8X9HG7Uix5OIt0MQri8i7X+BqGM4DI=",
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
+        "rev": "c53fd67dbf1cccec37b8216128e5b647e70bd149",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules",
         "type": "github"
       }
     },
