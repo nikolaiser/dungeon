@@ -27,8 +27,6 @@ let
             identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
           };
           nix.settings.extra-sandbox-paths = [ "/var/tmp/agenix-rekey" ];
-          systemd.tmpfiles.rules = [ "d /var/tmp/agenix-rekey 1777 root root" ];
-
         };
     };
 in
@@ -54,6 +52,8 @@ in
 
   dungeon.agenix = den.lib.parametric {
     includes = [ aspect ];
+
+    nixos.systemd.tmpfiles.rules = [ "d /var/tmp/agenix-rekey 1777 root root" ];
   };
 
 }

@@ -27,7 +27,7 @@ let
             enableReleaseChecks = false;
             image = ./wallpapers/wallhaven-3looxy_3840x2160.png;
 
-            targets.fish.enable = false;
+            # targets.fish.enable = false;
 
             base16Scheme = ./themes/carbonfox.yaml;
 

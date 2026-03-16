@@ -1,7 +1,7 @@
 {
   dungeon.desktop._.colima = {
     homeManager = {
-      colima = {
+      services.colima = {
         enable = true;
       };
     };

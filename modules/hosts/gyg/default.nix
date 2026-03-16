@@ -1,17 +1,20 @@
 { dungeon, den, ... }:
 {
 
-  den.hosts.aarch64-darwin.hemmahos.users."nikolai.sergeev" = {
+  den.hosts.aarch64-darwin.gyg.users."nikolai.sergeev" = {
     aspect = "gyg-nikolai.sergeev";
   };
 
   den.aspects."gyg-nikolai.sergeev" = den.lib.parametric {
     includes = with dungeon; [
+      stylix
       nix
       nvim._.full
+      nvim._.wrapped
+      den._.primary-user
+      default
       overlays
       shell
-      stylix
       desktop
       desktop._.rift
       desktop._.colima
