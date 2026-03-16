@@ -51,7 +51,7 @@
             bind   -T copy-mode     MouseDragEnd1Pane send -X copy-selection-no-clear
 
             is_vim_or_hx="ps -o state= -o comm= -t '#{pane_tty}' \
-                | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|l?n?hx?x?|fzf)(diff)?$'"
+                | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|l?n?hx?x?|fzf|nvim-wrapped)(diff)?$'"
             bind-key -n C-Left if-shell "$is_vim_or_hx" "send-keys C-Left" "select-pane -L"
             bind-key -n C-Down if-shell "$is_vim_or_hx" "send-keys C-Down" "select-pane -D"
             bind-key -n C-Up if-shell "$is_vim_or_hx" "send-keys C-Up" "select-pane -U"

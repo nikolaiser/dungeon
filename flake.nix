@@ -61,12 +61,12 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    plugins-lze = {
-      url = "github:BirdeeHub/lze";
+    plugins-brichka = {
+      url = "github:nikolaiser/brichka.nvim";
       flake = false;
     };
-    plugins-lzextras = {
-      url = "github:BirdeeHub/lzextras";
+    plugins-nightfox = {
+      url = "github:EdenEast/nightfox.nvim";
       flake = false;
     };
     private = {

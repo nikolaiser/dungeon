@@ -7,13 +7,12 @@
 
     };
     # Demo on fetching plugins from outside nixpkgs
-    plugins-lze = {
-      url = "github:BirdeeHub/lze";
+    plugins-brichka = {
+      url = "github:nikolaiser/brichka.nvim";
       flake = false;
     };
-    # These 2 are already in nixpkgs, however this ensures you always fetch the most up to date version!
-    plugins-lzextras = {
-      url = "github:BirdeeHub/lzextras";
+    plugins-nightfox = {
+      url = "github:EdenEast/nightfox.nvim";
       flake = false;
     };
 
@@ -21,10 +20,15 @@
 
   dungeon.nvim._.wrapped = {
     os =
-      { pkgs, lib, ... }:
+      {
+        pkgs,
+        lib,
+        inputs',
+        ...
+      }:
       let
 
-        module = lib.modules.importApply ./_module.nix inputs;
+        module = (lib.modules.importApply ./_module.nix { inherit inputs inputs'; });
         wrapper = inputs.wrappers.lib.evalModule module;
       in
       {

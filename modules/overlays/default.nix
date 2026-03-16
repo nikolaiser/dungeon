@@ -3,6 +3,7 @@ let
   overlays = inputs': [
     (_: prev: {
       fish = inputs'.nixpkgs-stable.legacyPackages.fish;
+      ghostty-bin = inputs'.nixpkgs-stable.legacyPackages.ghostty-bin;
       omada-software-controller =
         inputs'.nixpkgs-omada.legacyPackages.omada-software-controller.overrideAttrs
           (final: prev: { meta.license.free = true; });

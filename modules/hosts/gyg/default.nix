@@ -9,7 +9,7 @@
     includes = with dungeon; [
       stylix
       nix
-      nvim._.full
+      # nvim._.full
       nvim._.wrapped
       den._.primary-user
       default

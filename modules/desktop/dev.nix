@@ -21,8 +21,8 @@
           databricks-cli
           claude-code
           cursor-cli
-          (pnpm_9.override { withNode = false; })
-          # nodejs-slim
+          (pnpm.override { withNode = false; })
+          nodejs_22
           (inputs'.brichka.packages.brichka)
           (mermaid-cli.overrideAttrs {
             makeWrapperArgs = "--set PUPPETEER_EXECUTABLE_PATH '${lib.getExe pkgs.google-chrome}'";
