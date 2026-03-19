@@ -1,9 +1,9 @@
 { dungeon, den, ... }:
 {
 
-  den.hosts.aarch64-darwin.gyg.users."nikolai.sergeev" = {
-    aspect = "gyg-nikolai.sergeev";
-  };
+  # den.hosts.aarch64-darwin.gyg.users."nikolai.sergeev" = {
+  #   aspect = "gyg-nikolai.sergeev";
+  # };
 
   den.aspects."gyg-nikolai.sergeev" = den.lib.parametric {
     includes = with dungeon; [

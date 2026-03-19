@@ -529,6 +529,8 @@ require("lze").load({
 		after = function()
 			local opts = {
 				image = {},
+				bigfile = {},
+				notifier = {},
 			}
 			require("snacks").setup(opts)
 		end,

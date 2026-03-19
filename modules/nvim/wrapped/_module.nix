@@ -86,6 +86,7 @@ in
     imagemagick
     coursier
     metals
+    git
   ];
   settings.dont_link = true;
   settings.lombokPath = "${pkgs.lombok}/share/java/lombok.jar";

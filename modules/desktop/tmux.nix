@@ -1,5 +1,5 @@
 {
-  dungeon.shell.homeManager =
+  dungeon.desktop.homeManager =
     {
       lib,
       pkgs,

@@ -19,6 +19,7 @@
       overlays
       nix
       selfhost
+      nvim._.wrapped
     ];
 
   };
