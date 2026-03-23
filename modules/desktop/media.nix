@@ -26,6 +26,7 @@
                     libreoffice-qt6-fresh
                     marp-cli
                     telegram-desktop
+                    discord
                   ];
 
                   services.mpris-proxy.enable = true;

@@ -1,10 +1,10 @@
 {
 
   dungeon.desktop = {
-    nixos =
+    os =
       { pkgs, ... }:
       {
-        environment.systemPackages = [ pkgs.supersonic-wayland ];
+        environment.systemPackages = [ pkgs.feishin ];
       };
   };
 }
