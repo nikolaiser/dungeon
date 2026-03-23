@@ -98,14 +98,18 @@
           };
 
           decoration = {
-            rounding = "10";
+            rounding = "20";
+            rounding_power = "2";
             blur = {
-              enabled = "false";
+              enabled = "true";
               size = "3";
-              passes = "1";
+              passes = "2";
+              vibrancy = "0.1696";
             };
             shadow = {
-              enabled = "false";
+              enabled = "true";
+              range = "4";
+              render_power = "3";
             };
           };
 
@@ -133,7 +137,8 @@
           bind = [
             "${secondaryMod}, RETURN, exec, ${lib.getExe config.programs.ghostty.package}"
             "${secondaryMod}, L, killactive"
-            "${mainMod}, J, exec, ${lib.getExe pkgs.fuzzel}"
+            "${mainMod}, J, exec, noctalia-shell ipc call launcher toggle"
+            "${mainMod}, B, exec, librewolf"
 
             "${mainMod}, 1, workspace, 1"
             "${mainMod}, 2, workspace, 2"
@@ -212,8 +217,9 @@
           };
 
           exec-once = [
-            "systemctl --user start hyprpaper"
-            "systemctl --user start swaync"
+            # "systemctl --user start hyprpaper"
+            # "systemctl --user start swaync"
+            "noctalia-shell"
           ];
 
           xwayland = {

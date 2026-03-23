@@ -57,6 +57,17 @@
     nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-omada.url = "github:pathob/NixOS-nixpkgs/omada-sdn-controller";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        noctalia-qs.follows = "noctalia-qs";
+      };
+    };
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -14,6 +14,7 @@
       den._.primary-user
       desktop
       desktop._.hyprland
+      desktop._.noctalia
       docker
       gaming._.controller._.xbox-elite
       gaming._.launchers

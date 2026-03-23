@@ -1,5 +1,5 @@
 {
-  dungeon.desktop._.hyprland.homeManager =
+  dungeon.desktop._.hyprland._.waybar.homeManager =
     {
       pkgs,
       lib,
