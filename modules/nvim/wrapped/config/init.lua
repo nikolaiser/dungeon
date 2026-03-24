@@ -14,6 +14,8 @@ vim.o.softtabstop = 2
 vim.o.expandtab = true
 vim.o.cmdheight = 1
 vim.o.wrap = true
+vim.o.confirm = true
+vim.o.termguicolors = true
 
 -- vim.highlight.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitter's priority level
 
@@ -259,6 +261,12 @@ require("lze").load({
 							module = "lazydev.integrations.blink",
 							-- make lazydev completions top priority (see `:h blink.cmp`)
 							score_offset = 100,
+						},
+						snippets = {
+							opts = {
+								friendly_snippets = true,
+								search_paths = { require(vim.g.nix_info_plugin_name)(nil, "settings", "snippetsPath") },
+							},
 						},
 					},
 				},
@@ -526,6 +534,7 @@ require("lze").load({
 	},
 	{
 		"snacks.nvim",
+		lazy = false,
 		after = function()
 			local opts = {
 				image = {},
@@ -866,12 +875,6 @@ require("lze").load({
 		-- after = function(plugin) end,
 	},
 	{
-		"wilder.nvim",
-		after = function()
-			require("wilder").setup({ modes = { ":", "/", "?" } })
-		end,
-	},
-	{
 		"fidget.nvim",
 		after = function()
 			require("fidget").setup({})
@@ -972,6 +975,7 @@ require("lze").load({
 				},
 				pyright = {},
 				rust_analyzer = {},
+				brichka = {},
 			}
 
 			for server, serverOpts in pairs(servers) do
@@ -1063,10 +1067,17 @@ require("lze").load({
 		ft = { "scala", "sbt" },
 
 		after = function()
+			local clientCapabilities = vim.lsp.protocol.make_client_capabilities()
+
+			local blink = require("blink.cmp")
+			local capabilities = blink.get_lsp_capabilities(clientCapabilities)
+
 			local metals_config = require("metals").bare_config()
 			metals_config.on_attach = function(client, bufnr)
 				-- your on_attach function
 			end
+
+			metals_config.capabilities = capabilities
 
 			metals_config.settings.metalsBinaryPath = require(vim.g.nix_info_plugin_name)(nil, "settings", "metalsPath")
 
@@ -1088,5 +1099,61 @@ require("lze").load({
 				desc = "Metals commands",
 			},
 		},
+	},
+	{
+		"brichka.nvim",
+		after = function()
+			local opts = {
+				cmd = {
+					brichka = "brichka",
+				},
+				run = {
+					init = true,
+				},
+			}
+			require("brichka").setup(opts)
+		end,
+		keys = {
+			{
+				"<leader>bs",
+				function()
+					require("brichka.cluster").select()
+				end,
+				desc = "Brichka select cluster",
+				mode = { "n" },
+			},
+			{
+				"<leader>br",
+				function()
+					require("brichka.run").run(vim.api.nvim_buf_get_lines(0, 0, -1, false), vim.bo.filetype)
+				end,
+				desc = "Brichka execute current buffer",
+				mode = { "n" },
+			},
+		},
+	},
+	{
+		"folke/noice.nvim",
+		event = "DeferredUIEnter",
+		after = function()
+			local opts = {
+				lsp = {
+					override = {
+						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+						["vim.lsp.util.stylize_markdown"] = true,
+						["cmp.entry.get_documentation"] = true,
+					},
+				},
+				presets = {
+					bottom_search = true, -- use a classic bottom cmdline for search
+					command_palette = true, -- position the cmdline and popupmenu together
+					long_message_to_split = true, -- long messages will be sent to a split
+					inc_rename = true, -- enables an input dialog for inc-rename.nvim
+					lsp_doc_border = false, -- add a border to hover docs and signature help
+				},
+			}
+
+			require("noice").setup(opts)
+		end,
 	},
 })

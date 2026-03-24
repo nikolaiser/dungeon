@@ -60,6 +60,9 @@
           brews = [
             "dev-bundle"
           ];
+          casks = [
+            "betterdisplay"
+          ];
           taps = builtins.attrNames config.nix-homebrew.taps;
 
         };
