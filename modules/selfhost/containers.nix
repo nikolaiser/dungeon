@@ -49,7 +49,7 @@
           restartcontainers = {
             serviceConfig = {
               Type = "oneshot";
-              ExecStart = "${pkgs.podman}/bin/podman restart --all";
+              ExecStart = "${pkgs.bash}/bin/bash -c '${pkgs.systemd}/bin/systemctl list-units --plain --no-legend \"podman-*.service\" | ${pkgs.gawk}/bin/awk \"{print \\$1}\" | ${pkgs.findutils}/bin/xargs -r ${pkgs.systemd}/bin/systemctl try-restart'";
             };
           };
         };

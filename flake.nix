@@ -22,7 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     den.url = "github:vic/den";
-    flake-aspects.url = "github:vic/flake-aspects";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -84,7 +83,6 @@
       url = "git+ssh://git@github.com/nikolaiser/dungeon-private";
       inputs = {
         den.follows = "den";
-        flake-aspects.follows = "flake-aspects";
         flake-parts.follows = "flake-parts";
         import-tree.follows = "import-tree";
         nixpkgs.follows = "nixpkgs";

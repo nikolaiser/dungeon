@@ -46,7 +46,7 @@
               jdk21
             ];
           })
-          wineWowPackages.waylandFull
+          wineWow64Packages.waylandFull
           winetricks
           # (lutris.override {
           #   extraLibraries = pkgs: [
