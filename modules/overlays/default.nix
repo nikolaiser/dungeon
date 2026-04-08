@@ -3,7 +3,7 @@ let
   overlays = inputs': [
     (_: prev: {
       fish = inputs'.nixpkgs-stable.legacyPackages.fish;
-      metals = inputs'.nixpkgs-stable.legacyPackages.metals;
+      # metals = inputs'.nixpkgs-stable.legacyPackages.metals;
       ghostty-bin = inputs'.nixpkgs-stable.legacyPackages.ghostty-bin;
       paperless-ngx = inputs'.nixpkgs-stable.legacyPackages.paperless-ngx;
       omada-software-controller =

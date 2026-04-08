@@ -1,11 +1,20 @@
 {
   dungeon.shell.homeManager =
-    { osConfig, ... }:
+    {
+      osConfig,
+      lib,
+      pkgs,
+      ...
+    }:
+    let
+      cachedAtuinInit = pkgs.runCommand "atuin-fish-init" { } ''
+        HOME=/tmp ${lib.getExe pkgs.atuin} init fish > $out
+      '';
+    in
     {
       programs.atuin = {
-
         enable = true;
-        enableFishIntegration = true;
+        enableFishIntegration = false;
         enableBashIntegration = true;
         enableNushellIntegration = true;
         settings = {
@@ -13,5 +22,9 @@
           sync_address = "https://atuin.${osConfig.nas.baseDomain.public}";
         };
       };
+
+      programs.fish.interactiveShellInit = ''
+        source ${cachedAtuinInit}
+      '';
     };
 }
