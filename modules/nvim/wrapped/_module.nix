@@ -87,7 +87,6 @@ in
     arrow-nvim
     nvim-spider
     nvim-treesitter-textobjects
-    nui-nvim
     lualine-nvim
     nvim-lspconfig
     nvim-metals
@@ -99,7 +98,12 @@ in
     fidget-nvim
     neovimPlugins.brichka
     nvim-treesitter.withAllGrammars
+    nui-nvim
     noice-nvim
+    undotree
+    which-key-nvim
+    nvim-lint
+    trouble-nvim
   ];
 
   extraPackages = with pkgs; [
@@ -122,6 +126,9 @@ in
     imagemagick
     coursier
     metals
+    golangci-lint
+    ruff
+    statix
     # metals-pkg
     git
   ];

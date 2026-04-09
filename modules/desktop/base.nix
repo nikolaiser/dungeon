@@ -1,14 +1,7 @@
 {
   dungeon.desktop = {
 
-    includes = [
-      (
-        { user, ... }:
-        {
-          darwin.environment.variables.DOCKER_HOST = "unix:///Users/${user.userName}/.config/colima/default/docker.sock";
-        }
-      )
-    ];
+    includes = [ ];
 
     nixos = {
 

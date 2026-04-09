@@ -16,6 +16,10 @@ vim.o.cmdheight = 1
 vim.o.wrap = true
 vim.o.confirm = true
 vim.o.termguicolors = true
+vim.o.signcolumn = "yes"
+vim.o.undofile = true
+vim.o.splitkeep = "screen"
+vim.o.jumpoptions = "stack"
 
 -- vim.highlight.priorities.semantic_tokens = 95 -- Or any number lower than 100, treesitter's priority level
 
@@ -24,6 +28,9 @@ vim.filetype.add({
 		sc = "scala",
 	},
 })
+
+vim.lsp.inlay_hint.enable(true)
+vim.diagnostic.config({ float = { border = "rounded" } })
 
 vim.keymap.set({ "i", "x", "n", "s" }, "<C-t>", "<cmd>w<cr><esc>", { desc = "Save File" })
 -- Clear search with <esc>
@@ -340,6 +347,7 @@ require("lze").load({
 	},
 	{
 		"mini.surround",
+		event = "DeferredUIEnter",
 		after = function()
 			local opts = {
 				mappings = {},
@@ -351,6 +359,7 @@ require("lze").load({
 
 	{
 		"mini.splitjoin",
+		event = "DeferredUIEnter",
 		after = function()
 			local opts = {
 				mappings = {
@@ -362,6 +371,7 @@ require("lze").load({
 	},
 	{
 		"mini.operators",
+		event = "DeferredUIEnter",
 		after = function()
 			require("mini.operators").setup()
 		end,
@@ -369,6 +379,7 @@ require("lze").load({
 	{ "mini.icons" },
 	{
 		"gitsigns.nvim",
+		event = "BufReadPost",
 		after = function()
 			local opts = {
 				on_attach = function(bufnr)
@@ -408,7 +419,6 @@ require("lze").load({
 					end)
 					map("n", "<leader>ghS", gitsigns.stage_buffer)
 					map("n", "<leader>ghu", gitsigns.undo_stage_hunk)
-					require("fidget").setup({})
 					map("n", "<leader>ghR", gitsigns.reset_buffer)
 					map("n", "<leader>ghp", gitsigns.preview_hunk)
 					map("n", "<leader>ghb", function()
@@ -545,6 +555,13 @@ require("lze").load({
 		end,
 	},
 	{
+		"undotree",
+		cmd = { "UndotreeToggle" },
+		keys = {
+			{ "<leader>su", "<cmd>UndotreeToggle<cr>", desc = "Undo Tree" },
+		},
+	},
+	{
 		"julienvincent/hunk.nvim",
 		cmd = { "DiffEditor" },
 		after = function()
@@ -616,6 +633,7 @@ require("lze").load({
 	},
 	{
 		"multicursor.nvim",
+		event = "DeferredUIEnter",
 		after = function()
 			local mc = require("multicursor-nvim")
 			mc.setup()
@@ -806,6 +824,7 @@ require("lze").load({
 	},
 	{
 		"arrow.nvim",
+		event = "DeferredUIEnter",
 		after = function()
 			local opts = {
 				show_icons = true,
@@ -876,6 +895,7 @@ require("lze").load({
 	},
 	{
 		"fidget.nvim",
+		event = "LspAttach",
 		after = function()
 			require("fidget").setup({})
 		end,
@@ -888,6 +908,7 @@ require("lze").load({
 	},
 	{
 		"conform.nvim",
+		event = "BufReadPost",
 		after = function()
 			local opts = {
 				format_after_save = {
@@ -1145,15 +1166,64 @@ require("lze").load({
 					},
 				},
 				presets = {
-					bottom_search = true, -- use a classic bottom cmdline for search
-					command_palette = true, -- position the cmdline and popupmenu together
-					long_message_to_split = true, -- long messages will be sent to a split
-					inc_rename = true, -- enables an input dialog for inc-rename.nvim
-					lsp_doc_border = false, -- add a border to hover docs and signature help
+					bottom_search = true,
+					command_palette = true,
+					long_message_to_split = true,
+					inc_rename = true,
+					lsp_doc_border = false,
 				},
 			}
-
 			require("noice").setup(opts)
 		end,
+	},
+	{
+		"which-key.nvim",
+		event = "DeferredUIEnter",
+		after = function()
+			require("which-key").setup({})
+			require("which-key").add({
+				{ "<leader>b", group = "buffer/brichka" },
+				{ "<leader>c", group = "code" },
+				{ "<leader>g", group = "git" },
+				{ "<leader>gh", group = "hunks" },
+				{ "<leader>gt", group = "toggle" },
+				{ "<leader>q", group = "quit" },
+				{ "<leader>s", group = "search" },
+				{ "<leader>w", group = "window" },
+				{ "<leader>x", group = "diagnostics" },
+			})
+		end,
+	},
+	{
+		"nvim-lint",
+		event = { "BufReadPost", "BufWritePost" },
+		after = function()
+			local lint = require("lint")
+			lint.linters_by_ft = {
+				go = { "golangcilint" },
+				python = { "ruff" },
+				nix = { "statix" },
+			}
+			vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
+				group = vim.api.nvim_create_augroup("local_lint", { clear = true }),
+				callback = function()
+					lint.try_lint()
+				end,
+			})
+		end,
+	},
+	{
+		"trouble.nvim",
+		cmd = { "Trouble" },
+		after = function()
+			require("trouble").setup({})
+		end,
+		keys = {
+			{ "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Diagnostics (Trouble)" },
+			{ "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Buffer Diagnostics (Trouble)" },
+			{ "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Symbols (Trouble)" },
+			{ "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+			{ "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+		},
 	},
 })
