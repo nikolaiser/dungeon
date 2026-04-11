@@ -20,6 +20,7 @@
           nix-output-monitor
           databricks-cli
           claude-code
+          codex
           cursor-cli
           (pnpm.override { withNode = false; })
           nodejs_22
@@ -28,6 +29,7 @@
             makeWrapperArgs = "--set PUPPETEER_EXECUTABLE_PATH '${lib.getExe pkgs.google-chrome}'";
           })
           _1password-cli
+          uv
         ];
 
       programs = {
@@ -39,6 +41,7 @@
           enable = true;
           visidatarc = "";
         };
+        opencode.enable = true;
       };
     };
 }
