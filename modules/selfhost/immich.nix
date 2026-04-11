@@ -3,6 +3,7 @@
     {
       config,
       lib,
+      pkgs,
       ...
     }:
 
@@ -18,11 +19,14 @@
       services = {
         immich = {
           enable = true;
+          package = pkgs.pkgsRocm.immich;
+          accelerationDevices = null;
           database.enable = false;
           mediaLocation = immichMediaDir;
           redis.enable = true;
           machine-learning.environment = {
             MACHINE_LEARNING_CACHE_FOLDER = lib.mkForce immichMlDir;
+            HSA_OVERRIDE_GFX_VERSION = "11.0.0";
           };
           database.user = "postgres";
           environment = lib.mkForce {

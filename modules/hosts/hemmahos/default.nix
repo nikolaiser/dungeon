@@ -2,7 +2,7 @@
 {
 
   den.hosts.x86_64-linux.hemmahos.users.nikolaiser = {
-    aspect = "hemmahos-nikolaiser";
+    aspect = den.aspects.hemmahos-nikolaiser;
   };
 
   den.aspects.hemmahos-nikolaiser = den.lib.parametric {
@@ -14,6 +14,7 @@
       den._.primary-user
       desktop
       desktop._.hyprland
+      desktop._.sway
       desktop._.noctalia
       docker
       gaming._.controller._.xbox-elite

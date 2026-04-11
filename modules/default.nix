@@ -23,7 +23,6 @@ let
 in
 {
 
-
   den.default = {
     includes = [
       # den._.home-manager
@@ -37,9 +36,14 @@ in
     nixos.system.stateVersion = "26.05";
     homeManager.home.stateVersion = "26.05";
 
-    os = {
-      time.timeZone = "Europe/Berlin";
-    };
+    os =
+      { pkgs, ... }:
+      {
+        time.timeZone = "Europe/Berlin";
+        home-manager.backupFileExtension =
+          "backup-"
+          + pkgs.lib.readFile "${pkgs.runCommand "timestamp" { } "echo -n `date '+%Y%m%d%H%M%S'` > $out"}";
+      };
   };
 
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];

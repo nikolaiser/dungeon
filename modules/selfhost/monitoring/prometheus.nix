@@ -32,6 +32,7 @@
         ];
         exporters = {
           zfs.enable = true;
+          node.enable = true;
         };
       };
 

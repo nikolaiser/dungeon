@@ -8,6 +8,8 @@
       services.printing.enable = true;
       qt.enable = true;
       # stylixConfig.enable = true;
+
+      services.displayManager.ly.enable = true;
     };
 
     darwin =

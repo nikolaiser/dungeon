@@ -38,15 +38,10 @@
         "_JAVA_AWT_WM_NONREPARENTING" = "1";
         "GTK_USE_PORTAL" = "1";
         "GTK_DEBUG" = "portals";
-        "XDG_CURRENT_DESKTOP" = "Hyprland";
-        "XDG_SESSION_TYPE" = "wayland";
-        "XDG_SESSION_DESKTOP" = "Hyprland";
         "GDK_BACKEND" = "wayland,x11";
         "QT_QPA_PLATFORM" = "wayland;xcb";
         "SDL_VIDEODRIVER" = "wayland";
         "CLUTTER_BACKEND" = "wayland";
-        "HYPRCURSOR_THEME" = "${osConfig.stylix.cursor.name}";
-        "HYPRCURSOR_SIZE" = "${toString osConfig.stylix.cursor.size}";
         "XCURSOR_THEME" = "${osConfig.stylix.cursor.name}";
         "XCURSOR_SIZE" = "${toString osConfig.stylix.cursor.size}";
       };
@@ -76,7 +71,14 @@
             # no_break_fs_vrr = "true";
           };
 
-          env = "XCURSOR_SIZE,24";
+          env = [
+            "XCURSOR_SIZE,24"
+            "XDG_CURRENT_DESKTOP,Hyprland"
+            "XDG_SESSION_TYPE,wayland"
+            "XDG_SESSION_DESKTOP,Hyprland"
+            "HYPRCURSOR_THEME,${osConfig.stylix.cursor.name}"
+            "HYPRCURSOR_SIZE,${toString osConfig.stylix.cursor.size}"
+          ];
 
           input = {
             kb_layout = "us,ru";

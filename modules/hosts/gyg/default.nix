@@ -2,7 +2,7 @@
 {
 
   den.hosts.aarch64-darwin.gyg.users."nikolai.sergeev" = {
-    aspect = "gyg-nikolai.sergeev";
+    aspect = den.aspects."gyg-nikolai.sergeev";
   };
 
   den.aspects."gyg-nikolai.sergeev" = den.lib.parametric {

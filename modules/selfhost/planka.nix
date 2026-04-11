@@ -5,10 +5,7 @@
     let
       plankaUrl = "planka.${config.nas.baseDomain.private}";
       plankaDataDir = "/var/lib/planka";
-      faviconsDir = "${plankaDataDir}/favicons";
-      userAvatarsDir = "${plankaDataDir}/userAvatars";
-      backgroundImagesDir = "${plankaDataDir}/backgroundImages";
-      attachmentsDir = "${plankaDataDir}/attachments";
+      dataDir = "${plankaDataDir}/data";
     in
     {
 
@@ -21,10 +18,7 @@
         };
         environmentFiles = [ config.age.secrets."planka.env".path ];
         volumes = [
-          "${faviconsDir}:/app/public/favicons"
-          "${userAvatarsDir}:/app/public/user-avatars"
-          "${backgroundImagesDir}:/app/public/background-images"
-          "${attachmentsDir}:/app/private/attachments"
+          "${dataDir}:/app/data"
         ];
         ports = [
           "3200:1337/tcp"
@@ -49,29 +43,8 @@
             };
           };
         };
-        "10-plankaFavicons" = {
-          "${faviconsDir}" = {
-            d = {
-              mode = "0750";
-            };
-          };
-        };
-        "10-plankaUserAvatars" = {
-          "${userAvatarsDir}" = {
-            d = {
-              mode = "0750";
-            };
-          };
-        };
-        "10-plankaBackgroundImages" = {
-          "${backgroundImagesDir}" = {
-            d = {
-              mode = "0750";
-            };
-          };
-        };
-        "10-plankaAttachments" = {
-          "${attachmentsDir}" = {
+        "10-plankaDataDir" = {
+          "${dataDir}" = {
             d = {
               mode = "0750";
             };

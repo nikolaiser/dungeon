@@ -62,6 +62,21 @@
         };
         opencode = {
           enable = true;
+          enableMcpIntegration = true;
+        };
+        mcp = {
+          enable = true;
+          servers = {
+
+            nixos = {
+              command = "nix";
+              args = [
+                "run"
+                "github:utensils/mcp-nixos"
+                "--"
+              ];
+            };
+          };
         };
       };
       # Link superpowers source directory (for lib/ access)
