@@ -191,15 +191,15 @@
       "locked": {
         "lastModified": 1770232577,
         "narHash": "sha256-UpjgQnz9I3rIcxoeQvT3/nHxUpjFAJo5AjyHh6tZXcs=",
-        "ref": "refs/heads/main",
+        "owner": "nikolaiser",
+        "repo": "brichka",
         "rev": "1c5eba867d850052f543f7691301b798c81f02d7",
-        "revCount": 34,
-        "type": "git",
-        "url": "ssh://git@github.com/nikolaiser/brichka"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/nikolaiser/brichka"
+        "owner": "nikolaiser",
+        "repo": "brichka",
+        "type": "github"
       }
     },
     "darwin": {
@@ -1133,22 +1133,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-fish-4-3-3": {
-      "locked": {
-        "lastModified": 1767787851,
-        "narHash": "sha256-I8a8TK3jvWSp084UYc6WXjjoF87RrjW1A5zKL1bXJGQ=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f3910d1ac9cbc72fab194a22fd2a774c9e0f872f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f3910d1ac9cbc72fab194a22fd2a774c9e0f872f",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1765674936,
@@ -1479,11 +1463,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1774985537,
-        "narHash": "sha256-l9+lUdfVhrw+ADtj3P791YpaU2wiq8Gduf4h3+uRuqs=",
+        "lastModified": 1776948874,
+        "narHash": "sha256-9JSncWajckB/Leoj+PQ+6jAlxST2o9/G9Q+y43VBzWI=",
         "ref": "refs/heads/main",
-        "rev": "ce1c15b24d83a6ade9715b354116b0feaf521441",
-        "revCount": 393,
+        "rev": "958afd33b984abc33b5e61518c5211f2b30cfca9",
+        "revCount": 396,
         "type": "git",
         "url": "ssh://git@github.com/nikolaiser/dungeon-private"
       },
@@ -1535,7 +1519,6 @@
         "nix-flatpak": "nix-flatpak",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-fish-4-3-3": "nixpkgs-fish-4-3-3",
         "nixpkgs-lib": [
           "nixpkgs"
         ],
@@ -1549,6 +1532,7 @@
         "private": "private",
         "proxmox-nixos": "proxmox-nixos",
         "stylix": "stylix",
+        "superpowers": "superpowers",
         "wrappers": "wrappers",
         "zwift": "zwift"
       }
@@ -1601,6 +1585,22 @@
       "original": {
         "owner": "nix-community",
         "repo": "stylix",
+        "type": "github"
+      }
+    },
+    "superpowers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1776369046,
+        "narHash": "sha256-cobQloF7Y6K0IC0/6xSnA2Io+fKgk2SRmCwoZZtVCco=",
+        "owner": "obra",
+        "repo": "superpowers",
+        "rev": "b55764852ac78870e65c6565fb585b6cd8b3c5c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "obra",
+        "repo": "superpowers",
         "type": "github"
       }
     },

@@ -29,9 +29,6 @@ in
 {
 
   flake-file.inputs = {
-    nixpkgs-fish-4-3-3 = {
-      url = "github:nixos/nixpkgs/f3910d1ac9cbc72fab194a22fd2a774c9e0f872f";
-    };
     nixpkgs-stable = {
       url = "github:nixos/nixpkgs/25.11";
     };

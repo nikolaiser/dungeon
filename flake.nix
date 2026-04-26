@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     brichka = {
-      url = "git+ssh://git@github.com/nikolaiser/brichka";
+      url = "github:nikolaiser/brichka";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     darwin = {
@@ -52,7 +52,6 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-    nixpkgs-fish-4-3-3.url = "github:nixos/nixpkgs/f3910d1ac9cbc72fab194a22fd2a774c9e0f872f";
     nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-omada.url = "github:pathob/NixOS-nixpkgs/omada-sdn-controller";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
@@ -92,6 +91,10 @@
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    superpowers = {
+      url = "github:obra/superpowers";
+      flake = false;
     };
     wrappers = {
       url = "github:BirdeeHub/nix-wrapper-modules";

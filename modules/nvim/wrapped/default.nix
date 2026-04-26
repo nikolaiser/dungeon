@@ -15,6 +15,10 @@
       url = "github:EdenEast/nightfox.nvim";
       flake = false;
     };
+    brichka = {
+      url = "github:nikolaiser/brichka";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
   };
 
