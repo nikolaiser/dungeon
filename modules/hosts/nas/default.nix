@@ -2,7 +2,7 @@
 {
 
   den.hosts.x86_64-linux.nas.users.ops = {
-    aspect = den.aspects.nas-ops;
+    aspect = "nas-ops";
   };
 
   den.aspects.nas-ops = den.lib.parametric {

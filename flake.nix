@@ -21,11 +21,11 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    den.url = "github:vic/den";
+    den.url = "github:vic/den?rev=fa6a8c2d6acdbd636e76c832900d6bccf98c9c5e";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
     };
     gyg-dev = {
       url = "git+ssh://git@github.com/getyourguide/dev";
@@ -52,7 +52,6 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
     nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
-    nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-omada.url = "github:pathob/NixOS-nixpkgs/omada-sdn-controller";
     nixpkgs-stable.url = "github:nixos/nixpkgs/25.11";
     noctalia = {

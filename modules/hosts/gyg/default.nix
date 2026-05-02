@@ -2,7 +2,7 @@
 {
 
   den.hosts.aarch64-darwin.gyg.users."nikolai.sergeev" = {
-    aspect = den.aspects."gyg-nikolai.sergeev";
+    aspect = "gyg-nikolai.sergeev";
   };
 
   den.aspects."gyg-nikolai.sergeev" = den.lib.parametric {
@@ -18,7 +18,11 @@
       desktop
       desktop._.rift
       desktop._.colima
+      agenix
     ];
+    darwin = {
+      networking.hostName = "Nikolais-MacBookPro.local";
+    };
 
   };
 

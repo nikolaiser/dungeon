@@ -2,7 +2,7 @@
 {
 
   den.hosts.x86_64-linux.hemmahos.users.nikolaiser = {
-    aspect = den.aspects.hemmahos-nikolaiser;
+    aspect = "hemmahos-nikolaiser";
   };
 
   den.aspects.hemmahos-nikolaiser = den.lib.parametric {

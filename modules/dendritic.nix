@@ -6,7 +6,8 @@
   ];
 
   flake-file.inputs = {
-    den.url = "github:vic/den";
+    # Pinning until https://github.com/denful/den/pull/475 is merged
+    den.url = "github:vic/den?rev=fa6a8c2d6acdbd636e76c832900d6bccf98c9c5e";
     flake-file.url = "github:vic/flake-file";
     home-manager = {
       url = "github:nix-community/home-manager";
