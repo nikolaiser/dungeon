@@ -34,6 +34,7 @@
           kernelParams = [ "nohibernate" ];
           supportedFilesystems = [ "zfs" ];
           kernelPackages = lib.mkForce latestKernelPackage;
+          zfs.requestEncryptionCredentials = false;
         };
         services.zfs = {
           autoScrub.enable = true;
