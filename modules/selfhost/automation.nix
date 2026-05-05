@@ -55,6 +55,14 @@
               proxyWebsockets = true;
             };
           };
+          "zigbee2mqtt.${config.nas.baseDomain.private}" = {
+            forceSSL = true;
+            useACMEHost = "${config.nas.baseDomain.private}";
+            locations."/" = {
+              proxyPass = "http://127.0.0.1:8072";
+              proxyWebsockets = true;
+            };
+          };
         };
 
       };

@@ -10,9 +10,9 @@
     {
       virtualisation.oci-containers.containers = {
         it-tools = {
-          image = "corentinth/it-tools:latest";
+          image = "sharevb/it-tools:latest";
           autoStart = true;
-          ports = [ "9191:80" ];
+          ports = [ "9191:8080" ];
         };
         swagger-editor = {
           image = "swaggerapi/swagger-editor:latest";
