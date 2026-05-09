@@ -21,7 +21,7 @@
       agenix
     ];
     darwin = {
-      networking.hostName = "Nikolais-MacBookPro.local";
+      networking.hostName = "Nikolais-MacBookPro";
     };
 
   };
