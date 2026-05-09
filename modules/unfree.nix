@@ -12,7 +12,7 @@ let
     };
 in
 {
-  den.default = den.lib.parametric {
+  den.default = {
     includes = [ allowAllUnfree ];
   };
 }

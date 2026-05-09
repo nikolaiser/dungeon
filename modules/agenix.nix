@@ -50,7 +50,7 @@ in
     };
   };
 
-  dungeon.agenix = den.lib.parametric {
+  dungeon.agenix = {
     includes = [ aspect ];
 
     nixos.systemd.tmpfiles.rules = [ "d /var/tmp/agenix-rekey 1777 root root" ];

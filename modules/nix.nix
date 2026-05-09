@@ -26,7 +26,7 @@ let
     };
 in
 {
-  dungeon.nix = den.lib.parametric {
+  dungeon.nix = {
     includes = [ aspect ];
     # Because of determinate
     darwin.nix.enable = false;

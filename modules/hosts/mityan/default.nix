@@ -1,10 +1,10 @@
 { dungeon, den, ... }:
 {
   den.hosts.x86_64-linux.mityan.users.ops = {
-    aspect = "mityan-ops";
+    aspect = den.aspects.mityan-ops;
   };
 
-  den.aspects.mityan-ops = den.lib.parametric {
+  den.aspects.mityan-ops = {
     includes = with dungeon; [
       default
       den._.primary-user

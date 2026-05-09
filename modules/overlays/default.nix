@@ -36,7 +36,7 @@ in
     nixpkgs-omada.url = "github:pathob/NixOS-nixpkgs/omada-sdn-controller";
   };
 
-  dungeon.overlays = den.lib.parametric {
+  dungeon.overlays = {
     includes = [ aspect ];
   };
 }

@@ -2,10 +2,10 @@
 {
 
   den.hosts.x86_64-linux.hemmahos.users.nikolaiser = {
-    aspect = "hemmahos-nikolaiser";
+    aspect = den.aspects.hemmahos-nikolaiser;
   };
 
-  den.aspects.hemmahos-nikolaiser = den.lib.parametric {
+  den.aspects.hemmahos-nikolaiser = {
     includes = with dungeon; [
       agenix
       avahi

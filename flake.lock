@@ -247,17 +247,16 @@
     },
     "den": {
       "locked": {
-        "lastModified": 1775836208,
-        "narHash": "sha256-GYi25TcbjbmJOD1iwlmkhsuyh3x2SYIiUz+kMEQf/tE=",
-        "owner": "vic",
+        "lastModified": 1778338322,
+        "narHash": "sha256-wKfczzDAzqsRx/u/LUN5OCVn5jewkZ7hDjzNa9Js8AE=",
+        "owner": "denful",
         "repo": "den",
-        "rev": "fa6a8c2d6acdbd636e76c832900d6bccf98c9c5e",
+        "rev": "cea4092b7d4b3edcaf10f9ab75b39be5b71df75a",
         "type": "github"
       },
       "original": {
-        "owner": "vic",
+        "owner": "denful",
         "repo": "den",
-        "rev": "fa6a8c2d6acdbd636e76c832900d6bccf98c9c5e",
         "type": "github"
       }
     },
@@ -1464,11 +1463,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1777757923,
-        "narHash": "sha256-FpqZIWA7NABUVQFsFqbaRxvv7aL4JvD5fj17iOeQSFU=",
+        "lastModified": 1778341346,
+        "narHash": "sha256-5B9okGbZ93OJXyezDFwluyQ3MeLnNIO3I8s6LYmF4kI=",
         "ref": "refs/heads/main",
-        "rev": "b5081c8cab12f6913bc39f850845cc6ff818e578",
-        "revCount": 405,
+        "rev": "b99e68da3493abeb774e614624f0cce9d3e4c9a4",
+        "revCount": 406,
         "type": "git",
         "url": "ssh://git@github.com/nikolaiser/dungeon-private"
       },

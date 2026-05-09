@@ -2,10 +2,10 @@
 {
 
   den.hosts.x86_64-linux.nas.users.ops = {
-    aspect = "nas-ops";
+    aspect = den.aspects.nas-ops;
   };
 
-  den.aspects.nas-ops = den.lib.parametric {
+  den.aspects.nas-ops = {
     includes = with dungeon; [
       default
       den._.primary-user

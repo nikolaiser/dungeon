@@ -2,16 +2,17 @@
 {
 
   dungeon = {
-    overlays = den.lib.parametric {
-      includes = [ 
-    ({
-      nixos = args: {
-        nixpkgs.overlays = [
-          ((import ./_overlay.nix) args)
-        ];
-      };
-      
-    })];
+    overlays = {
+      includes = [
+        ({
+          nixos = args: {
+            nixpkgs.overlays = [
+              ((import ./_overlay.nix) args)
+            ];
+          };
+
+        })
+      ];
     };
   };
 

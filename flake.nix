@@ -21,7 +21,7 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    den.url = "github:vic/den?rev=fa6a8c2d6acdbd636e76c832900d6bccf98c9c5e";
+    den.url = "github:denful/den";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";

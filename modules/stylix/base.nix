@@ -71,7 +71,7 @@ in
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  dungeon.stylix = den.lib.parametric {
+  dungeon.stylix = {
     includes = [
       dungeon.stylix._.specific
       commonConfig

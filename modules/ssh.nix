@@ -37,7 +37,7 @@ let
 in
 {
 
-  dungeon.ssh = den.lib.parametric {
+  dungeon.ssh = {
     includes = [ aspect ];
   };
 }
