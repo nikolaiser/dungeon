@@ -32,6 +32,7 @@
       stylix
       systemd-boot
       zfs
+      cad
     ];
 
   };
