@@ -47,6 +47,8 @@
       };
 
       wayland.windowManager.hyprland = {
+        # TODO: Switch to lua
+        configType = "hyprlang";
         enable = true;
         package = inputs'.hyprland.packages.hyprland;
         systemd = {

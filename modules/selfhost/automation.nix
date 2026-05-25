@@ -67,5 +67,9 @@
 
       };
 
+      networking.firewall.allowedTCPPorts = [
+        1883
+      ];
+
     };
 }
