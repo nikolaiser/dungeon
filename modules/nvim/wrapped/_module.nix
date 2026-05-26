@@ -107,6 +107,7 @@ in
   ];
 
   extraPackages = with pkgs; [
+    go
     gofumpt
     gopls
     helm-ls
