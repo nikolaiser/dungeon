@@ -27,6 +27,10 @@
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
+    grabli = {
+      url = "git+ssh://forgejo@10.10.163.211:2222/nikolaiser/grabli.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     gyg-dev = {
       url = "git+ssh://git@github.com/getyourguide/dev";
       flake = false;
