@@ -17,6 +17,7 @@
       shell
       desktop
       desktop._.rift
+      work
       desktop._.colima
       agenix
     ];
